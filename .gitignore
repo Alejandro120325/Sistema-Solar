@@ -1,0 +1,12 @@
+# Compilados de Maven
+target/
+
+# Configuracion local de IntelliJ IDEA
+.idea/
+*.iml
+
+# Archivo .war generado
+*.war
+
+# Logs
+*.log

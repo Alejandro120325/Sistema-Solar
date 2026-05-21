@@ -1,0 +1,251 @@
+/* ================================================================
+   sitio.css - Tema visual "Oro y Espacio" para las paginas Bootstrap
+   (inicio, login, registro y panel de administrador).
+   El explorador 3D usa su propio archivo: style.css
+   ================================================================ */
+
+:root {
+    --fondo:        #070711;
+    --fondo-2:      #0e0e1f;
+    --panel:        #15152b;
+    --borde:        #2a2a44;
+    --oro:          #e7b53c;
+    --oro-claro:    #f6d985;
+    --texto:        #e9e9f2;
+    --texto-tenue:  #9aa0b8;
+}
+
+body {
+    background: radial-gradient(circle at 20% 0%, #1a1a3a 0%, var(--fondo) 55%);
+    color: var(--texto);
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* ---- Marca y textos dorados ---- */
+.texto-oro { color: var(--oro) !important; }
+
+.navbar-marca {
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--oro) !important;
+}
+.navbar-marca i { color: var(--oro-claro); }
+
+/* ---- Barra de navegacion ---- */
+.navbar.barra-sitio {
+    background: rgba(10, 10, 22, 0.95);
+    border-bottom: 1px solid var(--borde);
+    backdrop-filter: blur(6px);
+}
+.barra-sitio .nav-link { color: var(--texto-tenue) !important; }
+.barra-sitio .nav-link:hover,
+.barra-sitio .nav-link:focus { color: var(--oro) !important; }
+
+/* ---- Botones ---- */
+.btn-oro {
+    background: linear-gradient(135deg, var(--oro), var(--oro-claro));
+    border: none;
+    color: #1a1300;
+    font-weight: 600;
+}
+.btn-oro:hover, .btn-oro:focus { color: #000; filter: brightness(1.08); }
+
+.btn-contorno-oro {
+    border: 1px solid var(--oro);
+    color: var(--oro);
+    background: transparent;
+}
+.btn-contorno-oro:hover, .btn-contorno-oro:focus {
+    background: var(--oro);
+    color: #1a1300;
+}
+
+/* ---- Tarjetas / paneles ---- */
+.card, .panel-oscuro {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+}
+.card-categoria { transition: transform .2s ease, border-color .2s ease; }
+.card-categoria:hover {
+    transform: translateY(-6px);
+    border-color: var(--oro);
+}
+.card-categoria .icono {
+    font-size: 2.6rem;
+    color: var(--oro);
+}
+
+/* ---- Seccion hero (portada) ---- */
+.hero {
+    padding: 6rem 0 4rem;
+    text-align: center;
+}
+.hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, var(--oro-claro), var(--oro));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.etiqueta-ods {
+    display: inline-block;
+    border: 1px solid var(--oro);
+    color: var(--oro);
+    border-radius: 999px;
+    padding: .35rem 1.1rem;
+    font-size: .85rem;
+    letter-spacing: 1px;
+}
+
+.seccion { padding: 4rem 0; }
+.seccion-titulo {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+}
+.seccion-titulo::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: var(--oro);
+    margin: .8rem auto 0;
+}
+
+/* ---- model-viewer (Realidad Aumentada) ---- */
+model-viewer {
+    width: 100%;
+    height: 420px;
+    background: #05050d;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+/* ---- Galeria de imagenes ---- */
+.galeria img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+}
+
+/* ---- Pie de pagina ---- */
+.pie-sitio {
+    background: var(--fondo-2);
+    border-top: 1px solid var(--borde);
+    color: var(--texto-tenue);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+/* ---- Tablas del panel admin ---- */
+.table { color: var(--texto); }
+.table > :not(caption) > * > * { background-color: transparent; }
+.tabla-admin thead { background: #1d1d38; color: var(--oro); }
+.tabla-admin tbody tr:hover { background: #1b1b34; }
+
+/* ---- Panel admin: barra lateral ---- */
+.admin-layout { display: flex; min-height: 100vh; }
+.admin-menu {
+    width: 240px;
+    background: var(--fondo-2);
+    border-right: 1px solid var(--borde);
+    padding: 1.5rem 0;
+    flex-shrink: 0;
+}
+.admin-menu a {
+    display: block;
+    padding: .8rem 1.5rem;
+    color: var(--texto-tenue);
+    text-decoration: none;
+}
+.admin-menu a:hover { background: #1b1b34; color: var(--oro); }
+.admin-menu a.activo {
+    color: var(--oro);
+    border-left: 3px solid var(--oro);
+    background: #1b1b34;
+}
+.admin-contenido { flex: 1; padding: 2rem; }
+
+.tarjeta-stat {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+}
+.tarjeta-stat .numero {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--oro);
+}
+
+/* ================================================================
+   ACCESIBILIDAD
+   ================================================================ */
+
+/* Elemento 1: enlace para saltar al contenido (visible al tabular) */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    z-index: 2000;
+    background: var(--oro);
+    color: #000;
+    padding: .7rem 1.2rem;
+    font-weight: 700;
+    border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
+
+/* Elemento 2: modo de alto contraste (se activa con la barra de accesibilidad) */
+body.alto-contraste {
+    background: #000 !important;
+}
+body.alto-contraste,
+body.alto-contraste .card,
+body.alto-contraste .panel-oscuro,
+body.alto-contraste .navbar,
+body.alto-contraste .admin-menu,
+body.alto-contraste .pie-sitio,
+body.alto-contraste .tarjeta-stat {
+    background: #000 !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+body.alto-contraste a,
+body.alto-contraste .nav-link,
+body.alto-contraste .texto-oro,
+body.alto-contraste .hero h1 {
+    color: #ffff00 !important;
+    -webkit-text-fill-color: #ffff00 !important;
+}
+body.alto-contraste .btn-oro,
+body.alto-contraste .btn-contorno-oro {
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border: 2px solid #ffff00 !important;
+}
+
+/* Barra de accesibilidad */
+.barra-accesibilidad .btn {
+    padding: .15rem .55rem;
+    border: 1px solid var(--oro);
+    color: var(--oro);
+    background: transparent;
+}
+.barra-accesibilidad .btn:hover { background: var(--oro); color: #000; }
+
+/* Foco visible y claro en todo el sitio (accesibilidad de teclado) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--oro-claro);
+    outline-offset: 2px;
+}
