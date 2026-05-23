@@ -67,7 +67,12 @@
             </div>
             <div class="mb-4">
                 <label for="clave" class="form-label">Contrasena</label>
-                <input type="password" class="form-control" id="clave" name="clave" required>
+                <div class="campo-clave">
+                    <input type="password" class="form-control" id="clave" name="clave" required>
+                    <button type="button" class="toggle-clave" aria-label="Mostrar contrasena">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
             <button type="submit" class="btn btn-oro w-100 mb-3">
                 <i class="fa fa-sign-in" aria-hidden="true"></i> Entrar

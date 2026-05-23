@@ -11,12 +11,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="${ctx}/css/sitio.css">
-    <!-- Componente de Realidad Aumentada -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body data-bs-theme="dark">
 
-<!-- ACCESIBILIDAD (elemento 1): enlace para saltar al contenido principal -->
+<!-- ACCESIBILIDAD (elemento 1): enlace para saltar al contenido -->
 <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
 
 <!-- ===================== BARRA DE NAVEGACION ===================== -->
@@ -31,123 +30,168 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="menuPrincipal">
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav mx-auto">
                 <li class="nav-item"><a class="nav-link" href="#contenido">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="#categorias">Categorias</a></li>
                 <li class="nav-item"><a class="nav-link" href="#realidad-aumentada">Realidad Aumentada</a></li>
                 <li class="nav-item"><a class="nav-link" href="#multimedia">Multimedia</a></li>
             </ul>
 
-            <!-- ACCESIBILIDAD (elemento 2): tamano de texto y alto contraste -->
-            <div class="barra-accesibilidad btn-group me-3" role="group"
-                 aria-label="Opciones de accesibilidad">
-                <button type="button" class="btn" id="acc-menos"
-                        aria-label="Reducir tamano del texto" title="Reducir texto">A-</button>
-                <button type="button" class="btn" id="acc-mas"
-                        aria-label="Aumentar tamano del texto" title="Aumentar texto">A+</button>
-                <button type="button" class="btn" id="acc-contraste"
-                        aria-label="Activar o desactivar alto contraste" title="Alto contraste">
-                    <i class="fa fa-adjust" aria-hidden="true"></i>
-                </button>
-            </div>
+            <div class="d-flex align-items-center nav-acciones">
+                <!-- ACCESIBILIDAD (elemento 2): tamano de texto y alto contraste -->
+                <div class="barra-accesibilidad btn-group" role="group"
+                     aria-label="Opciones de accesibilidad">
+                    <button type="button" class="btn" id="acc-menos"
+                            aria-label="Reducir tamano del texto" title="Reducir texto">A-</button>
+                    <button type="button" class="btn" id="acc-mas"
+                            aria-label="Aumentar tamano del texto" title="Aumentar texto">A+</button>
+                    <button type="button" class="btn" id="acc-contraste" aria-pressed="false"
+                            aria-label="Activar o desactivar alto contraste" title="Alto contraste">
+                        <i class="fa fa-adjust" aria-hidden="true"></i>
+                    </button>
+                </div>
 
-            <!-- Area de sesion -->
-            <c:choose>
-                <c:when test="${not empty sessionScope.usuario}">
-                    <span class="navbar-text me-3 texto-oro">
-                        <i class="fa fa-user-circle" aria-hidden="true"></i>
-                        ${sessionScope.usuario.nombreCompleto}
-                    </span>
-                    <c:choose>
-                        <c:when test="${sessionScope.usuario.admin}">
-                            <a class="btn btn-contorno-oro btn-sm me-2" href="${ctx}/admin/dashboard">Panel</a>
-                        </c:when>
-                        <c:otherwise>
-                            <a class="btn btn-contorno-oro btn-sm me-2" href="${ctx}/explorador.jsp">Explorador</a>
-                        </c:otherwise>
-                    </c:choose>
-                    <a class="btn btn-oro btn-sm" href="${ctx}/logout">Salir</a>
-                </c:when>
-                <c:otherwise>
-                    <a class="btn btn-contorno-oro btn-sm me-2" href="${ctx}/login.jsp">Entrar</a>
-                    <a class="btn btn-oro btn-sm" href="${ctx}/registro.jsp">Registrarse</a>
-                </c:otherwise>
-            </c:choose>
+                <c:choose>
+                    <c:when test="${not empty sessionScope.usuario}">
+                        <span class="navbar-text texto-oro">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                            ${sessionScope.usuario.nombreCompleto}
+                        </span>
+                        <c:choose>
+                            <c:when test="${sessionScope.usuario.admin}">
+                                <a class="btn btn-contorno-oro btn-sm" href="${ctx}/admin/dashboard">Panel</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a class="btn btn-contorno-oro btn-sm" href="${ctx}/explorador.jsp">Explorador</a>
+                            </c:otherwise>
+                        </c:choose>
+                        <a class="btn btn-oro btn-sm" href="${ctx}/logout">Salir</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="btn btn-contorno-oro btn-sm" href="${ctx}/login.jsp">Entrar</a>
+                        <a class="btn btn-oro btn-sm" href="${ctx}/registro.jsp">Registrarse</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
         </div>
     </div>
 </nav>
 
 <main id="contenido">
 
-    <!-- ===================== PORTADA / HERO ===================== -->
-    <section class="hero container">
-        <span class="etiqueta-ods">
-            <i class="fa fa-graduation-cap" aria-hidden="true"></i> ODS 4 - Educacion de Calidad
-        </span>
-        <h1 class="mt-3">SISTEMA SOLAR</h1>
-        <p class="lead text-secondary mx-auto" style="max-width: 700px;">
-            Plataforma educativa interactiva para aprender astronomia con modelos 3D,
-            realidad aumentada, video, imagenes y audio. El universo, al alcance de todos.
-        </p>
-        <div class="mt-4">
-            <a href="${ctx}/explorador.jsp" class="btn btn-oro btn-lg me-2">
-                <i class="fa fa-rocket" aria-hidden="true"></i> Explorar en 3D
-            </a>
-            <a href="${ctx}/registro.jsp" class="btn btn-contorno-oro btn-lg">Crear una cuenta</a>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+        <div class="hero-espacio" aria-hidden="true">
+            <div class="hero-planeta"></div>
+        </div>
+        <div class="container hero-inner">
+            <span class="hero-eyebrow">ODS 4 &middot; Educacion de Calidad</span>
+            <h1 class="hero-titulo">Sistema Solar</h1>
+            <p class="hero-sub">
+                Una plataforma educativa para explorar el universo con modelos 3D,
+                realidad aumentada y contenido multimedia, con la precision y la
+                elegancia de un observatorio profesional.
+            </p>
+            <div class="hero-acciones">
+                <a href="${ctx}/explorador.jsp" class="btn btn-oro btn-lg">
+                    <i class="fa fa-rocket" aria-hidden="true"></i> Explorar en 3D
+                </a>
+                <a href="${ctx}/registro.jsp" class="btn btn-contorno-oro btn-lg">Crear una cuenta</a>
+            </div>
+        </div>
+        <a href="#franja" class="hero-scroll" aria-label="Desplazar hacia abajo">
+            <span>Descubre mas</span>
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </a>
+    </section>
+
+    <!-- ===================== FRANJA DE ESTADISTICAS ===================== -->
+    <section class="franja-stats" id="franja">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-6 col-lg-3">
+                    <div class="stat">
+                        <span class="stat-num" data-contador="8">0</span>
+                        <span class="stat-lbl">Planetas en 3D</span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat">
+                        <span class="stat-num" data-contador="3">0</span>
+                        <span class="stat-lbl">Categorias educativas</span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat">
+                        <span class="stat-num" data-contador="11">0</span>
+                        <span class="stat-lbl">Texturas en alta resolucion</span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat">
+                        <span class="stat-num" data-contador="100" data-sufijo="%">0</span>
+                        <span class="stat-lbl">Experiencia interactiva</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ===================== CATEGORIAS (minimo 3) ===================== -->
-    <section id="categorias" class="seccion container">
-        <h2 class="seccion-titulo">Nuestras Categorias</h2>
-        <div class="row g-4">
-
-            <div class="col-md-4">
-                <div class="card card-categoria h-100 text-center p-4">
-                    <div class="icono"><i class="fa fa-globe" aria-hidden="true"></i></div>
-                    <h3 class="h5 mt-3">1. Exploracion 3D</h3>
-                    <p class="text-secondary">
-                        Recorre el Sol y los planetas en un motor 3D interactivo,
-                        con enciclopedia, estructura interna y minijuegos.
-                    </p>
-                    <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro mt-auto">Ingresar</a>
-                </div>
+    <!-- ===================== CATEGORIAS ===================== -->
+    <section id="categorias" class="seccion">
+        <div class="container">
+            <div class="seccion-encabezado">
+                <p class="kicker">Explora el conocimiento</p>
+                <h2 class="seccion-titulo">Nuestras Categorias</h2>
             </div>
+            <div class="row g-4 justify-content-center">
 
-            <div class="col-md-4">
-                <div class="card card-categoria h-100 text-center p-4">
-                    <div class="icono"><i class="fa fa-cube" aria-hidden="true"></i></div>
-                    <h3 class="h5 mt-3">2. Realidad Aumentada</h3>
-                    <p class="text-secondary">
-                        Observa modelos 3D del espacio en tu propio entorno usando
-                        la camara de tu celular.
-                    </p>
-                    <a href="#realidad-aumentada" class="btn btn-contorno-oro mt-auto">Ver en AR</a>
+                <div class="col-md-6 col-lg-4">
+                    <article class="card card-categoria h-100">
+                        <span class="card-num">01</span>
+                        <div class="icono"><i class="fa fa-globe" aria-hidden="true"></i></div>
+                        <h3>Exploracion 3D</h3>
+                        <p>Recorre el Sol y los planetas en un motor 3D interactivo, con
+                           enciclopedia, estructura interna y minijuegos.</p>
+                        <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Ingresar</a>
+                    </article>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card card-categoria h-100 text-center p-4">
-                    <div class="icono"><i class="fa fa-film" aria-hidden="true"></i></div>
-                    <h3 class="h5 mt-3">3. Multimedia Educativa</h3>
-                    <p class="text-secondary">
-                        Aprende con video, una galeria de imagenes de los planetas
-                        y audio ambiental espacial.
-                    </p>
-                    <a href="#multimedia" class="btn btn-contorno-oro mt-auto">Ver recursos</a>
+                <div class="col-md-6 col-lg-4">
+                    <article class="card card-categoria h-100">
+                        <span class="card-num">02</span>
+                        <div class="icono"><i class="fa fa-cube" aria-hidden="true"></i></div>
+                        <h3>Realidad Aumentada</h3>
+                        <p>Observa modelos 3D del espacio en tu propio entorno usando
+                           la camara de tu celular.</p>
+                        <a href="#realidad-aumentada" class="btn btn-contorno-oro">Ver en AR</a>
+                    </article>
                 </div>
-            </div>
 
+                <div class="col-md-6 col-lg-4">
+                    <article class="card card-categoria h-100">
+                        <span class="card-num">03</span>
+                        <div class="icono"><i class="fa fa-film" aria-hidden="true"></i></div>
+                        <h3>Multimedia Educativa</h3>
+                        <p>Aprende con video, una galeria de imagenes de los planetas
+                           y audio ambiental espacial.</p>
+                        <a href="#multimedia" class="btn btn-contorno-oro">Ver recursos</a>
+                    </article>
+                </div>
+
+            </div>
         </div>
     </section>
 
     <!-- ===================== REALIDAD AUMENTADA ===================== -->
-    <section id="realidad-aumentada" class="seccion" style="background: var(--fondo-2);">
+    <section id="realidad-aumentada" class="seccion seccion--alt">
         <div class="container">
-            <h2 class="seccion-titulo">Realidad Aumentada</h2>
-            <div class="row align-items-center g-4">
+            <div class="seccion-encabezado">
+                <p class="kicker">Tecnologia inmersiva</p>
+                <h2 class="seccion-titulo">Realidad Aumentada</h2>
+            </div>
+            <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <!-- Modelo 3D con soporte de AR (funciona en celulares Android/iOS) -->
                     <model-viewer
                             src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
                             alt="Modelo 3D de un astronauta para realidad aumentada"
@@ -162,71 +206,74 @@
                     </model-viewer>
                 </div>
                 <div class="col-lg-6">
-                    <h3 class="h4 texto-oro">Lleva el espacio a tu habitacion</h3>
+                    <h3 class="h3 texto-oro">Lleva el espacio a tu habitacion</h3>
                     <p class="text-secondary">
                         Gira el modelo 3D con el mouse o el dedo. Desde un celular,
                         toca el boton <strong>"Ver en mi espacio (AR)"</strong> para
                         proyectar el modelo en el mundo real con la camara.
                     </p>
-                    <ul class="text-secondary">
-                        <li>Compatible con Android (Scene Viewer) e iOS (Quick Look).</li>
-                        <li>No necesita instalar ninguna aplicacion.</li>
+                    <ul class="ar-lista">
+                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> Compatible con Android (Scene Viewer) e iOS (Quick Look).</li>
+                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> No necesita instalar ninguna aplicacion.</li>
+                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> Funciona directamente desde el navegador web.</li>
                     </ul>
-                    <%-- Para usar un planeta en AR, reemplaza el atributo "src" por la
-                         ruta de tu propio archivo .glb, por ejemplo: ${ctx}/modelos/tierra.glb --%>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===================== MULTIMEDIA ===================== -->
-    <section id="multimedia" class="seccion container">
-        <h2 class="seccion-titulo">Multimedia Educativa</h2>
-
-        <div class="row g-4">
-            <div class="col-lg-7">
-                <h3 class="h5 texto-oro mb-3"><i class="fa fa-film" aria-hidden="true"></i> Video</h3>
-                <div class="ratio ratio-16x9">
-                    <video controls preload="metadata" poster="${ctx}/js/textures/stars.jpg">
-                        <source src="${ctx}/videos/intro-bg.mp4" type="video/mp4">
-                        Tu navegador no soporta la reproduccion de video.
-                    </video>
-                </div>
-                <p class="small text-secondary mt-2">
-                    Video introductorio al Sistema Solar.
-                </p>
+    <section id="multimedia" class="seccion">
+        <div class="container">
+            <div class="seccion-encabezado">
+                <p class="kicker">Aprende viendo y escuchando</p>
+                <h2 class="seccion-titulo">Multimedia Educativa</h2>
             </div>
 
-            <div class="col-lg-5">
-                <h3 class="h5 texto-oro mb-3"><i class="fa fa-volume-up" aria-hidden="true"></i> Audio</h3>
-                <div class="card panel-oscuro p-4">
-                    <p class="text-secondary mb-3">
-                        El explorador 3D incluye <strong>musica ambiental espacial</strong> y
-                        efectos de sonido generados en tiempo real. Actívalos con el boton de
-                        audio dentro del explorador.
-                    </p>
-                    <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">
-                        <i class="fa fa-headphones" aria-hidden="true"></i> Escuchar en el explorador
-                    </a>
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="marco-video">
+                        <div class="ratio ratio-16x9">
+                            <video controls preload="metadata" poster="${ctx}/js/textures/stars.jpg">
+                                <source src="${ctx}/videos/intro-bg.mp4" type="video/mp4">
+                                Tu navegador no soporta la reproduccion de video.
+                            </video>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <h3 class="h5 texto-oro mt-5 mb-3">
-            <i class="fa fa-picture-o" aria-hidden="true"></i> Galeria de imagenes
-        </h3>
-        <div class="row g-3 galeria">
-            <div class="col-6 col-md-3">
-                <img src="${ctx}/js/textures/earth.jpg" alt="Imagen de la superficie del planeta Tierra">
+            <h3 class="sub-titulo">Galeria de planetas</h3>
+            <div class="row g-3 galeria justify-content-center">
+                <div class="col-6 col-md-3">
+                    <img src="${ctx}/js/textures/earth.jpg" alt="Imagen de la superficie del planeta Tierra">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="${ctx}/js/textures/mars.jpg" alt="Imagen de la superficie del planeta Marte">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="${ctx}/js/textures/jupiter.jpg" alt="Imagen del planeta Jupiter">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="${ctx}/js/textures/saturn.jpg" alt="Imagen del planeta Saturno">
+                </div>
             </div>
-            <div class="col-6 col-md-3">
-                <img src="${ctx}/js/textures/mars.jpg" alt="Imagen de la superficie del planeta Marte">
-            </div>
-            <div class="col-6 col-md-3">
-                <img src="${ctx}/js/textures/jupiter.jpg" alt="Imagen del planeta Jupiter y sus bandas de nubes">
-            </div>
-            <div class="col-6 col-md-3">
-                <img src="${ctx}/js/textures/saturn.jpg" alt="Imagen del planeta Saturno">
+
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8">
+                    <div class="card panel-oscuro audio-card">
+                        <div class="icono-audio"><i class="fa fa-headphones" aria-hidden="true"></i></div>
+                        <h3 class="h5 texto-oro">Audio ambiental espacial</h3>
+                        <p class="text-secondary mb-3">
+                            El explorador 3D incluye musica ambiental y efectos de sonido
+                            generados en tiempo real. Actívalos con el boton de audio dentro
+                            del explorador.
+                        </p>
+                        <a href="${ctx}/explorador.jsp" class="btn btn-oro">
+                            <i class="fa fa-play" aria-hidden="true"></i> Escuchar en el explorador
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -236,17 +283,49 @@
 <!-- ===================== PIE DE PAGINA ===================== -->
 <footer class="pie-sitio">
     <div class="container">
-        <p class="mb-1 texto-oro">
-            <i class="fa fa-sun-o" aria-hidden="true"></i> SISTEMA SOLAR
-        </p>
-        <p class="mb-0 small">
-            Proyecto educativo - Objetivo de Desarrollo Sostenible 4: Educacion de Calidad<br>
-            Universidad Politecnica Salesiana &middot; <%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %>
-        </p>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <p class="pie-marca"><i class="fa fa-sun-o" aria-hidden="true"></i> SISTEMA SOLAR</p>
+                <p class="small mb-0">
+                    Plataforma web educativa para descubrir el universo mediante modelos 3D,
+                    realidad aumentada y contenido multimedia. Un proyecto por una educacion
+                    de calidad para todos.
+                </p>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <p class="pie-titulo">Navegacion</p>
+                <ul class="pie-links">
+                    <li><a href="#contenido">Inicio</a></li>
+                    <li><a href="#categorias">Categorias</a></li>
+                    <li><a href="#realidad-aumentada">Realidad Aumentada</a></li>
+                    <li><a href="#multimedia">Multimedia</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <p class="pie-titulo">Accesos</p>
+                <ul class="pie-links">
+                    <li><a href="${ctx}/explorador.jsp">Explorador 3D</a></li>
+                    <li><a href="${ctx}/login.jsp">Iniciar sesion</a></li>
+                    <li><a href="${ctx}/registro.jsp">Registrarse</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <p class="pie-titulo">Proyecto</p>
+                <ul class="pie-links">
+                    <li><i class="fa fa-graduation-cap" aria-hidden="true"></i> ODS 4 - Educacion de Calidad</li>
+                    <li><i class="fa fa-university" aria-hidden="true"></i> Universidad Politecnica Salesiana</li>
+                </ul>
+            </div>
+        </div>
+        <div class="pie-bottom">
+            &copy; <%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %>
+            Sistema Solar &middot; Proyecto educativo - Objetivo de Desarrollo Sostenible 4
+        </div>
     </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="${ctx}/js/accesibilidad.js"></script>
+<script src="${ctx}/js/efectos.js"></script>
 </body>
 </html>

@@ -42,25 +42,25 @@
         <div class="row g-4 mb-4">
             <div class="col-6 col-lg-3">
                 <div class="tarjeta-stat">
-                    <div class="numero">${totalUsuarios}</div>
+                    <div class="numero" data-contador="${totalUsuarios}">0</div>
                     <div class="text-secondary"><i class="fa fa-users" aria-hidden="true"></i> Usuarios totales</div>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
                 <div class="tarjeta-stat">
-                    <div class="numero">${totalEstudiantes}</div>
+                    <div class="numero" data-contador="${totalEstudiantes}">0</div>
                     <div class="text-secondary"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Estudiantes</div>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
                 <div class="tarjeta-stat">
-                    <div class="numero">${totalBloqueados}</div>
+                    <div class="numero" data-contador="${totalBloqueados}">0</div>
                     <div class="text-secondary"><i class="fa fa-ban" aria-hidden="true"></i> Bloqueados</div>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
                 <div class="tarjeta-stat">
-                    <div class="numero">${totalBitacora}</div>
+                    <div class="numero" data-contador="${totalBitacora}">0</div>
                     <div class="text-secondary"><i class="fa fa-list-alt" aria-hidden="true"></i> Eventos en bitacora</div>
                 </div>
             </div>
@@ -94,5 +94,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="${ctx}/js/accesibilidad.js"></script>
+<script src="${ctx}/js/efectos.js"></script>
 </body>
 </html>

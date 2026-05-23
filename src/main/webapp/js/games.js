@@ -33,11 +33,46 @@ function shuffle(arr) {
     return a;
 }
 
+// ---------------------------------------------------------
+// PUNTUACIONES: envia el resultado del minijuego al servidor
+// ---------------------------------------------------------
+let _planetaActual = null;
+
+const NOMBRES_PLANETA = {
+    sun: 'Sol', mercury: 'Mercurio', venus: 'Venus', earth: 'Tierra',
+    mars: 'Marte', jupiter: 'Jupiter', saturn: 'Saturno', uranus: 'Urano',
+    neptune: 'Neptuno', pluto: 'Pluton'
+};
+
+function reportarPuntuacion(puntaje, maximo) {
+    if (!_planetaActual) return;
+    const ctx = window.CONTEXT_PATH || '';
+    const planeta = NOMBRES_PLANETA[_planetaActual] || _planetaActual;
+    try {
+        const datos = new URLSearchParams();
+        datos.set('planeta', planeta);
+        datos.set('puntaje', puntaje);
+        datos.set('maximo', maximo);
+        fetch(ctx + '/puntuacion', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: datos.toString()
+        });
+    } catch (e) { /* si falla, el juego no se interrumpe */ }
+}
+
+// Extrae el patron "X/Y" del mensaje final y lo registra como puntuacion
+function reportarDesdeMensaje(msg) {
+    const m = String(msg).match(/(\d+)\s*\/\s*(\d+)/);
+    if (m) reportarPuntuacion(parseInt(m[1], 10), parseInt(m[2], 10));
+}
+
 function showWin(container, msg) {
     const win = el('div', 'game-win');
     win.innerHTML = `<div class="game-win__title">¡EXCELENTE!</div><div class="game-win__msg">${msg}</div>`;
     container.appendChild(win);
     audio.sfxWin();
+    reportarDesdeMensaje(msg);
 }
 
 function showLose(container, msg) {
@@ -45,6 +80,7 @@ function showLose(container, msg) {
     lose.innerHTML = `<div class="game-win__title">¡INTÉNTALO DE NUEVO!</div><div class="game-win__msg">${msg}</div>`;
     container.appendChild(lose);
     audio.sfxLose();
+    reportarDesdeMensaje(msg);
 }
 
 // =========================================================
@@ -153,7 +189,7 @@ function game_mercury(c) {
                 gameOver = true;
                 m.classList.add('hit');
                 cleanup();
-                showLose(c, '¡Te golpeó un meteorito! Vuelve a intentarlo.');
+                showLose(c, `¡Te golpeó un meteorito! Puntaje: ${25 - timeLeft}/25`);
                 return;
             }
             if (m._y > H + 30) { m.remove(); meteors.splice(k, 1); }
@@ -168,7 +204,7 @@ function game_mercury(c) {
         if (timeLeft <= 0) {
             gameOver = true;
             cleanup();
-            showWin(c, '¡Sobreviviste a la lluvia de meteoritos!');
+            showWin(c, '¡Sobreviviste a la lluvia de meteoritos! Puntaje: 25/25');
         }
     }, 1000);
 
@@ -213,7 +249,7 @@ function game_venus(c) {
                 matched++;
                 first = null;
                 if (matched === symbols.length) {
-                    setTimeout(() => showWin(c, `¡Encontraste todas las parejas en ${moves} movimientos!`), 400);
+                    setTimeout(() => showWin(c, `¡Parejas completadas! Puntaje: ${symbols.length}/${symbols.length} en ${moves} movimientos`), 400);
                 }
             } else {
                 lock = true;
@@ -293,10 +329,10 @@ function game_earth(c) {
 
     function next() {
         itemSlot.innerHTML = '';
-        if (score >= 8) { showWin(c, `¡Reciclador experto! Aciertos: ${score}, errores: ${errors}.`); return; }
+        if (score >= 8) { showWin(c, `¡Reciclador experto! Puntaje: ${score}/8 (errores: ${errors})`); return; }
         if (queue.length === 0 || errors >= 4) {
             if (score >= 8) showWin(c, `Aciertos: ${score}`);
-            else showLose(c, `Necesitas 8 aciertos. Lograste ${score}.`);
+            else showLose(c, `Puntaje: ${score}/8 - ¡Necesitas 8 aciertos!`);
             return;
         }
         current = queue.shift();
@@ -347,7 +383,7 @@ function game_mars(c) {
         found = true;
         rover.classList.add('found');
         cleanup();
-        showWin(c, `¡Encontraste al rover en ${30 - timeLeft} segundos!`);
+        showWin(c, `¡Rover encontrado! Puntaje: ${timeLeft}/30 (en ${30 - timeLeft}s)`);
     };
     arena.appendChild(rover);
 
@@ -372,7 +408,7 @@ function game_mars(c) {
         if (timeLeft <= 0) {
             cleanup();
             rover.classList.add('found');
-            showLose(c, 'Se acabó el tiempo. ¡Aquí estaba el rover!');
+            showLose(c, 'Se acabo el tiempo. Puntaje: 0/30');
         }
     }, 1000);
 
@@ -507,7 +543,7 @@ function game_saturn(c) {
                 expectedNext++;
                 document.getElementById('rg-prog').textContent = expectedNext;
                 if (expectedNext >= sizes.length) {
-                    showWin(c, '¡Anillos ordenados perfectamente!');
+                    showWin(c, `¡Anillos ordenados perfectamente! Puntaje: ${sizes.length}/${sizes.length}`);
                 }
             } else {
                 r.classList.add('shake');
@@ -655,7 +691,7 @@ function game_neptune(c) {
     function endGame(won) {
         ended = true;
         cancelAnimationFrame(rafId);
-        if (won) showWin(c, '¡Capturaste a Tritón en su órbita retrógrada!');
+        if (won) showWin(c, '¡Capturaste a Triton! Puntaje: 5/5');
         else showLose(c, `Capturas: ${captures}/5`);
     }
 
@@ -750,7 +786,7 @@ function game_pluto(c) {
                     }
                     foundWords++;
                     document.querySelector(`[data-word="${target.word}"]`).classList.add('done');
-                    if (foundWords >= placed.length) showWin(c, `¡Encontraste las ${placed.length} palabras!`);
+                    if (foundWords >= placed.length) showWin(c, `¡Palabras encontradas! Puntaje: ${placed.length}/${placed.length}`);
                 }
                 firstCell = null;
             };
@@ -793,6 +829,7 @@ export function openGame(planetId) {
     const title = document.getElementById('game-title');
     if (!modal || !body) return;
 
+    _planetaActual = planetId;
     title.textContent = GAME_TITLES[planetId] || 'MINIJUEGO';
     body.innerHTML = '';
     currentBody = body;

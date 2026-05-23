@@ -18,6 +18,9 @@
         <a href="${ctx}/admin/bitacora" class="${activo == 'bitacora' ? 'activo' : ''}">
             <i class="fa fa-list-alt" aria-hidden="true"></i> Bitacora
         </a>
+        <a href="${ctx}/admin/puntuaciones" class="${activo == 'puntuaciones' ? 'activo' : ''}">
+            <i class="fa fa-trophy" aria-hidden="true"></i> Puntuaciones
+        </a>
         <a href="${ctx}/index.jsp">
             <i class="fa fa-home" aria-hidden="true"></i> Ver el sitio
         </a>

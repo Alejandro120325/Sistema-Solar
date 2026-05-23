@@ -75,8 +75,13 @@
 
                 <div class="mb-4">
                     <label for="clave" class="form-label">Contrasena</label>
-                    <input type="password" class="form-control" id="clave" name="clave"
-                           minlength="8" ${esNuevo ? 'required' : ''}>
+                    <div class="campo-clave">
+                        <input type="password" class="form-control" id="clave" name="clave"
+                               minlength="8" ${esNuevo ? 'required' : ''}>
+                        <button type="button" class="toggle-clave" aria-label="Mostrar contrasena">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </button>
+                    </div>
                     <div class="form-text">
                         <c:choose>
                             <c:when test="${esNuevo}">Minimo 8 caracteres.</c:when>

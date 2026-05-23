@@ -17,7 +17,7 @@ import java.io.IOException;
  * Protege el explorador 3D y el registro de interacciones.
  * Solo entran usuarios con sesion iniciada y que no esten bloqueados.
  */
-@WebFilter(urlPatterns = {"/explorador.jsp", "/interaccion"})
+@WebFilter(urlPatterns = {"/explorador.jsp", "/interaccion", "/puntuacion"})
 public class FiltroAutenticacion implements Filter {
 
     @Override

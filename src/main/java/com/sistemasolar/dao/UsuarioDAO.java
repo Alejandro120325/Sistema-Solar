@@ -1,7 +1,6 @@
 package com.sistemasolar.dao;
 
 import com.sistemasolar.modelo.Usuario;
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +12,8 @@ import java.util.List;
 
 /**
  * Acceso a datos de la tabla "usuarios".
- * Las contrasenas se guardan SIEMPRE cifradas con BCrypt.
+ * Nota: en este proyecto academico las contrasenas se guardan en texto
+ * plano para poder revisarlas directamente en la base de datos local.
  */
 public class UsuarioDAO {
 
@@ -30,8 +30,7 @@ public class UsuarioDAO {
     }
 
     /**
-     * Inserta un usuario nuevo. La clave que llega en el objeto debe venir
-     * EN TEXTO PLANO: aqui se cifra antes de guardarla.
+     * Inserta un usuario nuevo. La clave se guarda tal cual (texto plano).
      * @return el id generado, o -1 si fallo.
      */
     public int registrar(Usuario u) throws SQLException {
@@ -42,7 +41,7 @@ public class UsuarioDAO {
 
             ps.setString(1, u.getNombreCompleto());
             ps.setString(2, u.getEmail());
-            ps.setString(3, BCrypt.hashpw(u.getClave(), BCrypt.gensalt()));
+            ps.setString(3, u.getClave());
             ps.setString(4, u.getRol()   == null ? "ESTUDIANTE" : u.getRol());
             ps.setString(5, u.getEstado() == null ? "ACTIVO"     : u.getEstado());
             ps.executeUpdate();
@@ -68,7 +67,7 @@ public class UsuarioDAO {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Usuario u = mapear(rs);
-                    if (BCrypt.checkpw(clavePlana, u.getClave())) {
+                    if (clavePlana.equals(u.getClave())) {
                         return u;
                     }
                 }
@@ -120,12 +119,12 @@ public class UsuarioDAO {
         }
     }
 
-    /** Cambia solo la contrasena (recibe la clave en texto plano y la cifra). */
+    /** Cambia solo la contrasena del usuario (texto plano). */
     public boolean actualizarClave(int id, String clavePlana) throws SQLException {
         String sql = "UPDATE usuarios SET clave = ? WHERE id = ?";
         try (Connection con = ConexionBD.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, BCrypt.hashpw(clavePlana, BCrypt.gensalt()));
+            ps.setString(1, clavePlana);
             ps.setInt(2, id);
             return ps.executeUpdate() > 0;
         }

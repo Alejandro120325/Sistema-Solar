@@ -25,6 +25,9 @@
     function aplicarContraste(activo) {
         document.body.classList.toggle("alto-contraste", activo);
         localStorage.setItem(CLAVE_CONTRASTE, activo ? "1" : "0");
+        // Marca visualmente el boton como activado/desactivado
+        var btn = document.getElementById("acc-contraste");
+        if (btn) btn.setAttribute("aria-pressed", activo ? "true" : "false");
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -41,5 +44,18 @@
         if (btnContraste) btnContraste.addEventListener("click", function () {
             aplicarContraste(!document.body.classList.contains("alto-contraste"));
         });
+    });
+
+    // --- Mostrar / ocultar contrasena ---
+    document.addEventListener("click", function (e) {
+        var btn = e.target.closest ? e.target.closest(".toggle-clave") : null;
+        if (!btn) return;
+        var campo = btn.parentElement.querySelector("input");
+        if (!campo) return;
+        var icono = btn.querySelector("i");
+        var mostrar = (campo.type === "password");
+        campo.type = mostrar ? "text" : "password";
+        if (icono) icono.className = mostrar ? "fa fa-eye-slash" : "fa fa-eye";
+        btn.setAttribute("aria-label", mostrar ? "Ocultar contrasena" : "Mostrar contrasena");
     });
 })();

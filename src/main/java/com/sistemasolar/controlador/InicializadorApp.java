@@ -13,14 +13,14 @@ import javax.servlet.annotation.WebListener;
  * defecto para que siempre se pueda entrar al panel.
  *
  *   Administrador por defecto:
- *       email: admin@sistemasolar.com
- *       clave: admin12345
+ *       email: admin@gmail.com
+ *       clave: Admin123
  */
 @WebListener
 public class InicializadorApp implements ServletContextListener {
 
-    private static final String ADMIN_EMAIL = "admin@sistemasolar.com";
-    private static final String ADMIN_CLAVE = "admin12345";
+    private static final String ADMIN_EMAIL = "admin@gmail.com";
+    private static final String ADMIN_CLAVE = "Admin123";
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -28,7 +28,7 @@ public class InicializadorApp implements ServletContextListener {
             UsuarioDAO dao = new UsuarioDAO();
             if (!dao.emailExiste(ADMIN_EMAIL)) {
                 Usuario admin = new Usuario();
-                admin.setNombreCompleto("Administrador del Sistema");
+                admin.setNombreCompleto("admin");
                 admin.setEmail(ADMIN_EMAIL);
                 admin.setClave(ADMIN_CLAVE);
                 admin.setRol("ADMIN");

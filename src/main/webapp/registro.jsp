@@ -57,14 +57,24 @@
             </div>
             <div class="mb-3">
                 <label for="clave" class="form-label">Contrasena</label>
-                <input type="password" class="form-control" id="clave" name="clave"
-                       minlength="8" required>
+                <div class="campo-clave">
+                    <input type="password" class="form-control" id="clave" name="clave"
+                           minlength="8" required>
+                    <button type="button" class="toggle-clave" aria-label="Mostrar contrasena">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </button>
+                </div>
                 <div class="form-text">Minimo 8 caracteres.</div>
             </div>
             <div class="mb-4">
                 <label for="claveConfirmar" class="form-label">Repetir contrasena</label>
-                <input type="password" class="form-control" id="claveConfirmar" name="claveConfirmar"
-                       minlength="8" required>
+                <div class="campo-clave">
+                    <input type="password" class="form-control" id="claveConfirmar" name="claveConfirmar"
+                           minlength="8" required>
+                    <button type="button" class="toggle-clave" aria-label="Mostrar contrasena">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
             <button type="submit" class="btn btn-oro w-100 mb-3">
                 <i class="fa fa-user-plus" aria-hidden="true"></i> Registrarme
