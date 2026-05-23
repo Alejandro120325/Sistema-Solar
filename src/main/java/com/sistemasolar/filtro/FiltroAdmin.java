@@ -40,8 +40,8 @@ public class FiltroAdmin implements Filter {
             return;
         }
         if (!usuario.isAdmin()) {
-            // Es estudiante: no puede ver el panel, se le envia al explorador.
-            resp.sendRedirect(req.getContextPath() + "/explorador.jsp");
+            // Es estudiante: no puede ver el panel, se le envia al inicio.
+            resp.sendRedirect(req.getContextPath() + "/index.jsp");
             return;
         }
 

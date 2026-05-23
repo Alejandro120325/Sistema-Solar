@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ================================================================
-   sitio.css  ·  Sistema Solar  ·  Tema "Observatorio" High-End
+   sitio.css  Â·  Sistema Solar  Â·  Tema "Observatorio" High-End
    Estetica: obsidiana profunda + oro champagne + azul nebulosa.
    ================================================================ */
 
@@ -222,10 +222,9 @@ a { text-decoration: none; }
 .barra-accesibilidad .btn:first-child { border-radius: 9px 0 0 9px; }
 .barra-accesibilidad .btn:last-child  { border-radius: 0 9px 9px 0; }
 .barra-accesibilidad .btn:hover { background: var(--oro); color: #1c1404; }
-#acc-contraste[aria-pressed="true"] { background: var(--grad-oro); color: #1c1404; }
 
 /* ================================================================
-   HERO  ·  Horizonte planetario cinematografico
+   HERO  Â·  Horizonte planetario cinematografico
    ================================================================ */
 .hero {
     position: relative;
@@ -254,7 +253,7 @@ a { text-decoration: none; }
         0 -5px 50px rgba(108, 128, 189, 0.22),
         inset 0 14px 80px rgba(228, 192, 127, 0.08);
 }
-/* Viñeta cinematografica sutil */
+/* ViÃ±eta cinematografica sutil */
 .hero::after {
     content: "";
     position: absolute;
@@ -392,7 +391,7 @@ a { text-decoration: none; }
 }
 
 /* ================================================================
-   TARJETAS  ·  Cristal con borde de gradiente (reflejo de luz)
+   TARJETAS  Â·  Cristal con borde de gradiente (reflejo de luz)
    ================================================================ */
 .card, .panel-oscuro, .tarjeta-stat {
     border: 1px solid transparent;
@@ -493,20 +492,6 @@ model-viewer {
 .marco-video .ratio { border-radius: 12px; overflow: hidden; }
 .marco-video video { width: 100%; height: 100%; object-fit: cover; }
 
-.galeria img {
-    width: 100%;
-    height: 184px;
-    object-fit: cover;
-    border-radius: 14px;
-    border: 1px solid var(--linea-2);
-    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1),
-                border-color 0.4s ease, box-shadow 0.4s ease;
-}
-.galeria img:hover {
-    transform: scale(1.05);
-    border-color: var(--oro);
-    box-shadow: 0 22px 46px -18px rgba(228, 192, 127, 0.45);
-}
 .audio-card { padding: 2.2rem; text-align: center; }
 .audio-card .icono-audio {
     width: 70px; height: 70px;
@@ -769,105 +754,6 @@ input:focus-visible, select:focus-visible {
 }
 
 /* ================================================================
-   TEMA CLARO  ·  alternativa de alto contraste (boton de la barra)
-   Fondo claro + texto oscuro = maximo contraste, estetica diurna.
-   Se logra redefiniendo las variables de color del tema.
-   ================================================================ */
-body.alto-contraste {
-    --obsidiana: #f3f1ea;
-    --carbon:    #ffffff;
-    --vidrio:    #ffffff;
-    --vidrio-2:  rgba(0, 0, 0, 0.045);
-    --linea:     rgba(20, 24, 40, 0.12);
-    --linea-2:   rgba(20, 24, 40, 0.2);
-    --oro:       #9a6f12;
-    --oro-claro: #7c570c;
-    --oro-hondo: #c8983a;
-    --texto:     #20212b;
-    --texto-2:   #51546a;
-    --texto-3:   #7f8398;
-    --grad-oro:  linear-gradient(135deg, #c8983a 0%, #9a6f12 60%, #7c570c 100%);
-    --sombra:    0 22px 50px -30px rgba(40, 44, 70, 0.4);
-    background: #f3f1ea;
-}
-
-/* Se ocultan los elementos decorativos del tema oscuro */
-body.alto-contraste::before,
-body.alto-contraste::after,
-body.alto-contraste .hero-espacio,
-body.alto-contraste .hero::after { display: none !important; }
-
-/* Brillo calido sutil en el hero claro */
-body.alto-contraste .hero {
-    background: radial-gradient(ellipse 62% 52% at 50% 32%, rgba(154, 111, 18, 0.07), transparent 70%);
-}
-
-/* Barra de navegacion clara */
-body.alto-contraste .navbar.barra-sitio {
-    background: rgba(255, 255, 255, 0.88);
-    border-bottom-color: rgba(20, 24, 40, 0.12);
-}
-body.alto-contraste .navbar-marca { color: #20212b !important; }
-
-/* Tarjetas: blancas, limpias, con sombra suave */
-body.alto-contraste .card,
-body.alto-contraste .panel-oscuro,
-body.alto-contraste .tarjeta-stat,
-body.alto-contraste .marco-video,
-body.alto-contraste .table-responsive {
-    background: #ffffff !important;
-    border: 1px solid rgba(20, 24, 40, 0.12) !important;
-    box-shadow: 0 20px 44px -30px rgba(40, 44, 70, 0.38) !important;
-    backdrop-filter: none !important;
-}
-
-/* Titulos oscuros (en el tema oscuro eran blancos) */
-body.alto-contraste .seccion-titulo,
-body.alto-contraste .card-categoria h3,
-body.alto-contraste .pie-titulo { color: #20212b !important; }
-
-body.alto-contraste .hero-titulo {
-    background: linear-gradient(180deg, #20212b 28%, #9a6f12 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: none;
-}
-
-/* Bandas y secciones alternas con un tinte claro */
-body.alto-contraste .franja-stats { background: rgba(20, 24, 40, 0.03) !important; }
-body.alto-contraste .seccion--alt { background: rgba(20, 24, 40, 0.025) !important; }
-
-/* Campos de formulario y botones claros */
-body.alto-contraste .form-control,
-body.alto-contraste .form-select,
-body.alto-contraste .btn-contorno-oro,
-body.alto-contraste .barra-accesibilidad .btn {
-    background: #ffffff !important;
-}
-body.alto-contraste .tabla-admin thead th { background: #f3f1ea !important; }
-
-/* Pie de pagina y menu de administrador claros */
-body.alto-contraste .pie-sitio {
-    background: #ebe8de !important;
-    border-top-color: rgba(20, 24, 40, 0.12) !important;
-}
-body.alto-contraste .admin-menu {
-    background: #ffffff !important;
-    border-right-color: rgba(20, 24, 40, 0.12) !important;
-}
-
-/* Visor 3D con fondo claro */
-body.alto-contraste model-viewer {
-    background: radial-gradient(circle at 50% 38%, #ffffff, #e7e4da 78%) !important;
-}
-
-/* Alertas legibles sobre fondo claro */
-body.alto-contraste .alert-success { background: #e3f5ec !important; border-color: #9bd9b8 !important; color: #1c6b43 !important; }
-body.alto-contraste .alert-danger  { background: #fbe6e7 !important; border-color: #e3a3a8 !important; color: #9b2c33 !important; }
-body.alto-contraste .alert-warning { background: #f8efd8 !important; border-color: #d9c074 !important; color: #7c570c !important; }
-
-/* ================================================================
    RESPONSIVE
    ================================================================ */
 @media (max-width: 991px) {
@@ -886,4 +772,1025 @@ body.alto-contraste .alert-warning { background: #f8efd8 !important; border-colo
     .hero { min-height: 92vh; }
     .hero-inner { padding: 4rem 1rem; }
     .seccion { padding: 4rem 0; }
+}
+
+/* ================================================================
+   PREMIUM DARK-ONLY REFRESH
+   ================================================================ */
+:root {
+    --obsidiana: #02040b;
+    --carbon: #070a13;
+    --vidrio: rgba(255, 255, 255, 0.055);
+    --vidrio-2: rgba(112, 194, 255, 0.08);
+    --linea: rgba(190, 218, 255, 0.105);
+    --linea-2: rgba(228, 192, 127, 0.28);
+    --oro: #eac77f;
+    --oro-claro: #fff0c8;
+    --oro-hondo: #b88943;
+    --nebula: #8297ff;
+    --cian: #7fe2ff;
+    --azul-tierra: #2e8ed8;
+    --verde-tierra: #54b88b;
+    --texto: #f7f8ff;
+    --texto-2: #b5bdd4;
+    --texto-3: #7e879f;
+    --grad-oro: linear-gradient(135deg, #fff0c8 0%, #eac77f 52%, #b88943 100%);
+    --sombra: 0 28px 90px -34px rgba(0, 0, 0, 0.95);
+}
+
+body {
+    background:
+        radial-gradient(1200px 720px at 50% -18%, rgba(58, 92, 158, 0.20), transparent 64%),
+        radial-gradient(900px 660px at 94% 18%, rgba(234, 199, 127, 0.07), transparent 62%),
+        linear-gradient(180deg, #03050d 0%, #050712 44%, #02040b 100%);
+}
+
+body::after {
+    background:
+        radial-gradient(900px 620px at 8% -10%, rgba(87, 126, 210, 0.17), transparent 60%),
+        radial-gradient(760px 560px at 100% 0%, rgba(234, 199, 127, 0.09), transparent 58%),
+        radial-gradient(1100px 760px at 50% 120%, rgba(34, 87, 126, 0.17), transparent 64%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 32%);
+}
+
+body::before {
+    opacity: 0.82;
+    background-image:
+        radial-gradient(1px 1px at 40px 60px, rgba(255,255,255,0.95), transparent),
+        radial-gradient(1px 1px at 180px 130px, rgba(150,210,255,0.65), transparent),
+        radial-gradient(1.4px 1.4px at 110px 240px, rgba(255,244,220,0.72), transparent),
+        radial-gradient(1px 1px at 290px 90px, rgba(255,255,255,0.46), transparent),
+        radial-gradient(1.2px 1.2px at 340px 280px, rgba(180,220,255,0.7), transparent),
+        radial-gradient(1px 1px at 360px 34px, rgba(255,255,255,0.38), transparent);
+    background-size: 420px 420px;
+}
+
+.navbar.barra-sitio {
+    background: rgba(3, 5, 13, 0.76);
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.34);
+}
+
+.barra-sitio .nav-link {
+    position: relative;
+}
+
+.barra-sitio .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.22rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--oro), transparent);
+    opacity: 0;
+    transform: scaleX(0.3);
+    transition: opacity 0.26s ease, transform 0.26s ease;
+}
+
+.barra-sitio .nav-link:hover::after,
+.barra-sitio .nav-link:focus::after {
+    opacity: 0.8;
+    transform: scaleX(1);
+}
+
+.btn-oro, .btn-contorno-oro {
+    border-radius: 13px;
+    min-height: 42px;
+}
+
+.btn-contorno-oro:hover,
+.btn-contorno-oro:focus {
+    box-shadow: 0 16px 34px -20px rgba(127, 226, 255, 0.55),
+                inset 0 0 26px rgba(127, 226, 255, 0.05);
+}
+
+.alerta-sesion {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero {
+    min-height: calc(100vh - 56px);
+    background:
+        radial-gradient(ellipse 70% 46% at 50% 30%, rgba(127, 226, 255, 0.055), transparent 70%),
+        linear-gradient(180deg, rgba(2,4,11,0.1), rgba(2,4,11,0.94) 92%);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(2, 4, 11, 0.18), transparent 30%, rgba(2, 4, 11, 0.88) 100%),
+        radial-gradient(ellipse 80% 50% at 50% 42%, transparent 56%, rgba(1,2,7,0.58) 100%);
+}
+
+.hero::after {
+    background: radial-gradient(ellipse 78% 68% at 50% 38%, transparent 54%, rgba(1, 2, 8, 0.64) 100%);
+}
+
+.hero-espacio::before,
+.hero-espacio::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hero-espacio::before {
+    background:
+        radial-gradient(1px 1px at 16% 27%, rgba(255,255,255,0.75), transparent),
+        radial-gradient(1px 1px at 36% 18%, rgba(127,226,255,0.6), transparent),
+        radial-gradient(1.2px 1.2px at 67% 24%, rgba(255,240,200,0.75), transparent),
+        radial-gradient(1px 1px at 84% 34%, rgba(255,255,255,0.46), transparent);
+}
+
+.hero-espacio::after {
+    background: linear-gradient(90deg, rgba(127,226,255,0.04), transparent 28%, transparent 72%, rgba(234,199,127,0.045));
+}
+
+.hero-planeta {
+    top: 58vh;
+    width: min(1040px, 118vw);
+    height: min(1040px, 118vw);
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 34% 26%, rgba(255,255,255,0.28), transparent 12%),
+        radial-gradient(circle at 32% 28%, transparent 0 47%, rgba(0,0,0,0.56) 77%, rgba(0,0,0,0.88) 100%),
+        url("../js/textures/earth.jpg");
+    background-size: 178% 100%, 100% 100%, 205% 100%;
+    background-position: center, center, 0% 50%;
+    border: 1px solid rgba(167, 220, 255, 0.65);
+    box-shadow:
+        0 -18px 120px rgba(77, 164, 230, 0.35),
+        0 -6px 54px rgba(234, 199, 127, 0.18),
+        0 0 90px rgba(67, 134, 220, 0.20),
+        inset -52px -34px 80px rgba(0, 0, 0, 0.78),
+        inset 22px 10px 48px rgba(255, 255, 255, 0.08);
+    animation: tierraGira 62s linear infinite;
+}
+
+.hero-planeta::before {
+    content: "";
+    position: absolute;
+    inset: -1.7%;
+    border-radius: 50%;
+    border: 2px solid rgba(139, 218, 255, 0.52);
+    box-shadow:
+        0 0 32px rgba(127, 226, 255, 0.36),
+        inset 0 0 34px rgba(127, 226, 255, 0.14);
+}
+
+.hero-planeta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 38% 22%, rgba(255,255,255,0.22), transparent 22%),
+        radial-gradient(circle at 67% 68%, rgba(0,0,0,0.16), transparent 45%),
+        linear-gradient(115deg, rgba(255,255,255,0.05), transparent 42%);
+    mix-blend-mode: screen;
+}
+
+.orbita {
+    position: absolute;
+    left: 50%;
+    top: 70vh;
+    width: min(1280px, 145vw);
+    height: min(260px, 32vw);
+    transform: translateX(-50%) rotate(-6deg);
+    border: 1px solid rgba(234, 199, 127, 0.16);
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+    opacity: 0.75;
+}
+
+.orbita-2 {
+    top: 66vh;
+    width: min(1480px, 160vw);
+    transform: translateX(-50%) rotate(7deg);
+    border-color: rgba(127, 226, 255, 0.13);
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.hero-inner {
+    padding-top: 4rem;
+    transform: translateY(-4vh);
+}
+
+.hero-eyebrow {
+    text-shadow: 0 0 20px rgba(234, 199, 127, 0.18);
+}
+
+.hero-titulo {
+    letter-spacing: 0.18em;
+    text-shadow: 0 0 52px rgba(234, 199, 127, 0.18),
+                 0 18px 56px rgba(0, 0, 0, 0.58);
+}
+
+.hero-scroll {
+    bottom: 2.15rem;
+    gap: 0;
+    padding-bottom: 1rem;
+}
+
+.hero-scroll::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 34px;
+    margin-top: 0.72rem;
+    background: linear-gradient(180deg, var(--oro), transparent);
+    opacity: 0.8;
+    animation: pulsoLinea 1.8s ease-in-out infinite;
+}
+
+.card, .panel-oscuro, .tarjeta-stat, .marco-video, .table-responsive {
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035)) padding-box,
+        linear-gradient(145deg, rgba(255,255,255,0.32), rgba(127,226,255,0.08) 42%, rgba(234,199,127,0.18)) border-box;
+}
+
+.card-categoria::before,
+.panel-oscuro::before,
+.tarjeta-stat::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: linear-gradient(120deg, rgba(255,255,255,0.10), transparent 32%, rgba(127,226,255,0.045) 100%);
+    opacity: 0.7;
+}
+
+.panel-oscuro { position: relative; overflow: hidden; }
+
+.card-categoria {
+    min-height: 335px;
+}
+
+.card-categoria .icono {
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 32% 24%, rgba(255,255,255,0.16), transparent 42%),
+        rgba(234, 199, 127, 0.095);
+}
+
+.pagina-auth main {
+    position: relative;
+}
+
+.pagina-auth main::before {
+    content: "";
+    position: fixed;
+    inset: 70px 0 0;
+    z-index: -1;
+    background:
+        radial-gradient(600px 320px at 50% 22%, rgba(127,226,255,0.09), transparent 70%),
+        radial-gradient(820px 460px at 50% 100%, rgba(234,199,127,0.07), transparent 72%);
+}
+
+.pagina-auth .panel-oscuro {
+    box-shadow: 0 36px 100px -36px rgba(0,0,0,0.98),
+                0 0 70px -36px rgba(127,226,255,0.48);
+}
+
+.form-control, .form-select {
+    min-height: 46px;
+}
+
+.admin-menu {
+    background:
+        linear-gradient(180deg, rgba(9, 13, 26, 0.98), rgba(3, 5, 13, 0.98)),
+        radial-gradient(520px 300px at 0% 0%, rgba(127,226,255,0.10), transparent 70%);
+}
+
+.tabla-admin tbody tr:hover {
+    background: rgba(127, 226, 255, 0.055);
+}
+
+.barra-progreso {
+    min-width: 150px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.065);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.barra-progreso .progress-bar {
+    background: linear-gradient(90deg, var(--azul-tierra), var(--cian), var(--oro));
+    color: #06101c;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.estado-vacio {
+    display: grid;
+    gap: 0.65rem;
+    place-items: center;
+}
+
+.estado-vacio i {
+    font-size: 2rem;
+    color: var(--oro);
+    opacity: 0.9;
+}
+
+@keyframes tierraGira {
+    to { background-position: center, center, 205% 50%; }
+}
+
+@keyframes pulsoLinea {
+    0%, 100% { transform: scaleY(0.76); opacity: 0.42; }
+    50% { transform: scaleY(1); opacity: 0.95; }
+}
+
+@media (max-width: 991px) {
+    .hero-planeta {
+        top: 62vh;
+        width: min(880px, 132vw);
+        height: min(880px, 132vw);
+    }
+    .hero-titulo { letter-spacing: 0.12em; }
+}
+
+/* ================================================================
+   HOME 3D UPGRADE  ·  Tierra real y galeria orbital
+   ================================================================ */
+.hero {
+    min-height: calc(100vh - 64px);
+    isolation: isolate;
+}
+
+.hero-planeta {
+    display: none;
+}
+
+.hero-earth-shell {
+    position: absolute;
+    left: 50%;
+    bottom: -15vh;
+    width: min(980px, 86vw);
+    height: min(980px, 86vw);
+    transform: translateX(-50%);
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: drop-shadow(0 -22px 110px rgba(52, 158, 236, 0.34))
+            drop-shadow(0 0 54px rgba(127, 226, 255, 0.18));
+}
+
+.hero-earth-shell::before {
+    content: "";
+    position: absolute;
+    inset: -7%;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 45% 18%, rgba(255, 255, 255, 0.16), transparent 17%),
+        radial-gradient(circle at 50% 50%, rgba(85, 178, 245, 0.20), transparent 55%),
+        radial-gradient(circle at 50% 50%, transparent 53%, rgba(127, 226, 255, 0.24) 57%, transparent 64%);
+    opacity: 0.86;
+    animation: haloRespira 5.8s ease-in-out infinite;
+}
+
+.hero-earth-shell::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    width: 94%;
+    height: 12%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.48), transparent 68%);
+    filter: blur(20px);
+    opacity: 0.7;
+}
+
+.hero-inner {
+    max-width: 1180px;
+    padding-top: 1rem;
+    padding-bottom: 21rem;
+    transform: translateY(0);
+}
+
+.hero-eyebrow {
+    padding: 0.52rem 0.8rem;
+    border: 1px solid rgba(234, 199, 127, 0.22);
+    border-radius: 999px;
+    background: rgba(234, 199, 127, 0.045);
+    backdrop-filter: blur(12px);
+}
+
+.hero-titulo {
+    max-width: 1040px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow:
+        0 0 26px rgba(255, 240, 200, 0.14),
+        0 24px 60px rgba(0, 0, 0, 0.62);
+}
+
+.hero-sub {
+    max-width: 720px;
+    font-size: 1.08rem;
+}
+
+.hero-acciones .btn {
+    min-width: 184px;
+    box-shadow: 0 22px 54px -28px rgba(234, 199, 127, 0.9);
+}
+
+.hero-scroll {
+    bottom: 1.25rem;
+    opacity: 0.7;
+}
+
+.orbita {
+    top: auto;
+    bottom: 18vh;
+    width: min(1160px, 108vw);
+    height: min(320px, 30vw);
+    z-index: 1;
+}
+
+.orbita-2 {
+    top: auto;
+    bottom: 22vh;
+    width: min(1380px, 126vw);
+}
+
+.franja-stats {
+    background:
+        linear-gradient(180deg, rgba(7, 10, 19, 0.90), rgba(5, 7, 16, 0.80)),
+        radial-gradient(720px 240px at 50% 0%, rgba(127, 226, 255, 0.08), transparent 75%);
+}
+
+.stat {
+    position: relative;
+    padding: 1.4rem 1rem;
+    border-radius: 18px;
+    transition: transform 0.28s ease, background 0.28s ease;
+}
+
+.stat:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.card-categoria {
+    min-height: 380px;
+    padding: 3rem 2rem 2.2rem;
+    border-radius: 24px;
+    background:
+        radial-gradient(260px 160px at 50% 0%, rgba(127, 226, 255, 0.12), transparent 75%) padding-box,
+        linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.035)) padding-box,
+        linear-gradient(140deg, rgba(255,255,255,0.38), rgba(127,226,255,0.12), rgba(234,199,127,0.20)) border-box;
+}
+
+.card-categoria:hover {
+    transform: translateY(-14px) scale(1.012);
+    box-shadow:
+        0 44px 110px -42px rgba(0, 0, 0, 0.98),
+        0 0 90px -42px rgba(127, 226, 255, 0.52);
+}
+
+.card-categoria .icono {
+    width: 92px;
+    height: 92px;
+    color: #ffe5ac;
+    box-shadow:
+        inset 0 0 34px rgba(234, 199, 127, 0.18),
+        0 18px 42px -26px rgba(234, 199, 127, 0.86);
+}
+
+.card-categoria p {
+    font-size: 1rem;
+}
+
+.galeria-header {
+    max-width: 760px;
+    margin: 4.2rem auto 2rem;
+    text-align: center;
+}
+
+.galeria-header .sub-titulo {
+    margin: 0.35rem 0 0.7rem;
+}
+
+.galeria-3d {
+    margin-top: 0.5rem;
+}
+
+.planet-card {
+    position: relative;
+    height: 100%;
+    min-height: 430px;
+    overflow: hidden;
+    padding: 1.15rem 1.15rem 1.35rem;
+    border: 1px solid transparent;
+    border-radius: 26px;
+    background:
+        radial-gradient(320px 210px at 50% 2%, rgba(127, 226, 255, 0.12), transparent 72%) padding-box,
+        linear-gradient(180deg, rgba(255,255,255,0.078), rgba(255,255,255,0.032)) padding-box,
+        linear-gradient(145deg, rgba(255,255,255,0.32), rgba(127,226,255,0.10) 44%, rgba(234,199,127,0.18)) border-box;
+    box-shadow: 0 34px 88px -48px rgba(0,0,0,0.98);
+    backdrop-filter: blur(18px) saturate(135%);
+    transition: transform 0.42s cubic-bezier(0.22,1,0.36,1),
+                box-shadow 0.42s ease,
+                border-color 0.42s ease;
+}
+
+.planet-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(120deg, rgba(255,255,255,0.13), transparent 32%),
+        radial-gradient(260px 120px at 50% 27%, rgba(255,255,255,0.07), transparent 68%);
+    opacity: 0.75;
+}
+
+.planet-card:hover {
+    transform: translateY(-14px);
+    border-color: rgba(127, 226, 255, 0.28);
+    box-shadow:
+        0 48px 118px -50px rgba(0,0,0,1),
+        0 0 82px -42px rgba(127, 226, 255, 0.74);
+}
+
+.planet-card--mars {
+    background:
+        radial-gradient(320px 210px at 50% 2%, rgba(255, 126, 84, 0.16), transparent 72%) padding-box,
+        linear-gradient(180deg, rgba(255,255,255,0.078), rgba(255,255,255,0.032)) padding-box,
+        linear-gradient(145deg, rgba(255,255,255,0.30), rgba(255,126,84,0.14), rgba(234,199,127,0.18)) border-box;
+}
+
+.planet-card--jupiter {
+    background:
+        radial-gradient(320px 210px at 50% 2%, rgba(255, 211, 154, 0.17), transparent 72%) padding-box,
+        linear-gradient(180deg, rgba(255,255,255,0.078), rgba(255,255,255,0.032)) padding-box,
+        linear-gradient(145deg, rgba(255,255,255,0.30), rgba(255,211,154,0.16), rgba(127,226,255,0.10)) border-box;
+}
+
+.planet-card--venus {
+    background:
+        radial-gradient(320px 210px at 50% 2%, rgba(255, 214, 143, 0.18), transparent 72%) padding-box,
+        linear-gradient(180deg, rgba(255,255,255,0.078), rgba(255,255,255,0.032)) padding-box,
+        linear-gradient(145deg, rgba(255,255,255,0.30), rgba(255,214,143,0.18), rgba(234,199,127,0.12)) border-box;
+}
+
+.planet-viewer {
+    position: relative;
+    height: 210px;
+    margin-bottom: 0.75rem;
+    border-radius: 22px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 48%, rgba(127,226,255,0.13), transparent 42%),
+        radial-gradient(circle at 50% 120%, rgba(234,199,127,0.08), transparent 56%),
+        rgba(2, 4, 11, 0.5);
+}
+
+.planet-viewer::after {
+    content: "";
+    position: absolute;
+    left: 14%;
+    right: 14%;
+    bottom: 13%;
+    height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.52), transparent 70%);
+    filter: blur(10px);
+}
+
+.planet-chip {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 0.78rem;
+    border: 1px solid rgba(234, 199, 127, 0.22);
+    border-radius: 999px;
+    color: var(--oro-claro);
+    background: rgba(234, 199, 127, 0.065);
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+.planet-card h4 {
+    position: relative;
+    margin: 0.9rem 0 0.48rem;
+    color: #fff;
+    font-family: 'Sora', 'Inter', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.planet-card p {
+    position: relative;
+    min-height: 86px;
+    color: var(--texto-2);
+    font-size: 0.95rem;
+    line-height: 1.58;
+}
+
+.planet-card .btn {
+    position: relative;
+    width: 100%;
+}
+
+.audio-card {
+    border-radius: 24px;
+}
+
+@keyframes haloRespira {
+    0%, 100% { transform: scale(0.985); opacity: 0.64; }
+    50% { transform: scale(1.02); opacity: 0.94; }
+}
+
+@media (max-width: 991px) {
+    .hero-earth-shell {
+        bottom: -9vh;
+        width: min(760px, 116vw);
+        height: min(760px, 116vw);
+    }
+
+    .hero-inner {
+        padding-bottom: 17rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .hero-earth-shell {
+        bottom: -2vh;
+        width: 132vw;
+        height: 132vw;
+    }
+
+    .hero-inner {
+        padding-top: 2.5rem;
+        padding-bottom: 16rem;
+    }
+
+    .planet-card {
+        min-height: 405px;
+    }
+}
+
+/* ================================================================
+   FINAL UX FIX  ·  Tierra visible, previews ligeros y AR inmersivo
+   ================================================================ */
+.hero {
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    padding: clamp(3rem, 5vw, 5rem) 0;
+    background:
+        radial-gradient(760px 460px at 76% 45%, rgba(38, 139, 217, 0.18), transparent 68%),
+        radial-gradient(620px 380px at 28% 28%, rgba(234, 199, 127, 0.055), transparent 70%),
+        linear-gradient(180deg, rgba(2, 4, 11, 0.08), rgba(2, 4, 11, 0.90));
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.72fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+    text-align: left;
+    padding: 0 1rem;
+    transform: none;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-copy {
+    max-width: 800px;
+}
+
+.hero-copy .hero-eyebrow {
+    justify-content: flex-start;
+}
+
+.hero-titulo {
+    font-size: clamp(4rem, 8vw, 8.2rem);
+    letter-spacing: 0.13em;
+    margin: 1.3rem 0 1.2rem;
+}
+
+.hero-sub {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 680px;
+}
+
+.hero-acciones {
+    justify-content: flex-start;
+}
+
+.hero-visual {
+    position: relative;
+    min-height: clamp(360px, 42vw, 560px);
+    display: grid;
+    place-items: center;
+    transform: translateY(1rem);
+}
+
+.hero-earth-orbit {
+    position: absolute;
+    width: min(520px, 92vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid rgba(127, 226, 255, 0.18);
+    box-shadow:
+        0 0 80px rgba(45, 142, 216, 0.12),
+        inset 0 0 90px rgba(127, 226, 255, 0.035);
+}
+
+.hero-earth-caption {
+    position: absolute;
+    right: 0;
+    bottom: 2.2rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(234, 199, 127, 0.22);
+    border-radius: 16px;
+    background: rgba(6, 10, 20, 0.58);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 18px 44px -26px rgba(0,0,0,0.92);
+}
+
+.hero-earth-caption span,
+.planet-chip {
+    text-transform: uppercase;
+    letter-spacing: 1.7px;
+}
+
+.hero-earth-caption span {
+    display: block;
+    color: var(--texto-3);
+    font-size: 0.68rem;
+}
+
+.hero-earth-caption strong {
+    color: var(--oro-claro);
+    font-family: 'Sora', sans-serif;
+    font-size: 1.15rem;
+}
+
+.css-planet {
+    --planet-size: 128px;
+    position: relative;
+    width: var(--planet-size);
+    height: var(--planet-size);
+    border-radius: 50%;
+    isolation: isolate;
+    background:
+        radial-gradient(circle at 34% 24%, rgba(255,255,255,0.38), transparent 13%),
+        radial-gradient(circle at 28% 24%, transparent 0 44%, rgba(0,0,0,0.55) 73%, rgba(0,0,0,0.86) 100%),
+        var(--planet-texture);
+    background-size: 150% 100%, 100% 100%, 210% 100%;
+    background-position: center, center, 0% 50%;
+    box-shadow:
+        inset -24px -16px 40px rgba(0,0,0,0.72),
+        inset 12px 8px 24px rgba(255,255,255,0.08),
+        0 22px 44px -28px rgba(0,0,0,1),
+        0 0 34px -16px rgba(127,226,255,0.8);
+    animation: planetaTextura 34s linear infinite;
+    will-change: background-position;
+}
+
+.css-planet::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    z-index: -1;
+    border-radius: 50%;
+    border: 1px solid rgba(127,226,255,0.35);
+    box-shadow: 0 0 22px rgba(127,226,255,0.30);
+}
+
+.css-planet::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 36% 20%, rgba(255,255,255,0.18), transparent 22%),
+        linear-gradient(115deg, rgba(255,255,255,0.05), transparent 42%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+.css-earth {
+    --planet-size: clamp(320px, 32vw, 500px);
+    box-shadow:
+        inset -70px -42px 92px rgba(0,0,0,0.78),
+        inset 22px 10px 46px rgba(255,255,255,0.10),
+        0 36px 110px -50px rgba(0,0,0,1),
+        0 0 86px -26px rgba(55,165,245,0.9);
+    animation-duration: 58s;
+}
+
+.css-earth::before {
+    inset: -7px;
+    border-color: rgba(118, 211, 255, 0.62);
+    box-shadow:
+        0 0 34px rgba(118, 211, 255, 0.42),
+        inset 0 0 28px rgba(118, 211, 255, 0.12);
+}
+
+.orbita {
+    bottom: 16%;
+    opacity: 0.42;
+}
+
+.hero-scroll {
+    display: none;
+}
+
+.franja-stats {
+    padding: 2rem 0;
+}
+
+.seccion {
+    padding: clamp(4rem, 7vw, 6.5rem) 0;
+}
+
+#multimedia {
+    padding-top: clamp(4rem, 7vw, 6rem);
+}
+
+.galeria-header {
+    margin: 3.2rem auto 1.55rem;
+}
+
+.galeria-3d {
+    align-items: stretch;
+}
+
+.planet-card {
+    min-height: 372px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem 1.2rem;
+}
+
+.planet-viewer {
+    height: 150px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 1rem;
+}
+
+.planet-sphere {
+    --planet-size: 112px;
+}
+
+.planet-mars {
+    box-shadow:
+        inset -22px -14px 36px rgba(0,0,0,0.65),
+        0 22px 44px -28px rgba(0,0,0,1),
+        0 0 34px -18px rgba(255,121,78,0.75);
+}
+
+.planet-mars::before {
+    border-color: rgba(255, 135, 88, 0.33);
+    box-shadow: 0 0 22px rgba(255, 135, 88, 0.22);
+}
+
+.planet-jupiter {
+    --planet-size: 124px;
+    animation-duration: 44s;
+    box-shadow:
+        inset -24px -14px 42px rgba(0,0,0,0.62),
+        0 22px 44px -28px rgba(0,0,0,1),
+        0 0 34px -18px rgba(255,205,148,0.76);
+}
+
+.planet-jupiter::before {
+    border-color: rgba(255, 210, 154, 0.34);
+    box-shadow: 0 0 24px rgba(255, 210, 154, 0.22);
+}
+
+.planet-venus {
+    box-shadow:
+        inset -22px -14px 36px rgba(0,0,0,0.60),
+        0 22px 44px -28px rgba(0,0,0,1),
+        0 0 34px -18px rgba(255,218,146,0.78);
+}
+
+.planet-venus::before {
+    border-color: rgba(255, 218, 146, 0.36);
+    box-shadow: 0 0 22px rgba(255, 218, 146, 0.24);
+}
+
+.planet-card p {
+    min-height: 78px;
+}
+
+.planet-card .btn {
+    margin-top: auto;
+}
+
+.ar-stage {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid rgba(167, 220, 255, 0.28);
+    background:
+        radial-gradient(circle at 52% 44%, rgba(127,226,255,0.14), transparent 28%),
+        radial-gradient(circle at 22% 18%, rgba(234,199,127,0.10), transparent 24%),
+        radial-gradient(1px 1px at 12% 22%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 78% 18%, rgba(127,226,255,0.8), transparent),
+        radial-gradient(1px 1px at 66% 70%, rgba(255,255,255,0.55), transparent),
+        linear-gradient(180deg, #080c18, #03050d 78%);
+    box-shadow:
+        0 40px 110px -48px rgba(0,0,0,1),
+        0 0 80px -46px rgba(127,226,255,0.82);
+}
+
+.ar-stage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(120deg, rgba(255,255,255,0.10), transparent 28%),
+        radial-gradient(420px 220px at 50% 105%, rgba(45,142,216,0.18), transparent 72%);
+    z-index: 1;
+}
+
+.ar-stage model-viewer,
+model-viewer {
+    position: relative;
+    z-index: 2;
+    border: none;
+    border-radius: 24px;
+    background: transparent !important;
+    box-shadow: none;
+}
+
+.marco-video {
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@keyframes planetaTextura {
+    to { background-position: center, center, 210% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .css-planet {
+        animation: none !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.2rem;
+    }
+
+    .hero-copy .hero-eyebrow,
+    .hero-acciones {
+        justify-content: center;
+    }
+
+    .hero-sub {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-visual {
+        min-height: 360px;
+        order: -1;
+    }
+
+    .css-earth {
+        --planet-size: min(360px, 78vw);
+    }
+}
+
+@media (max-width: 575px) {
+    .hero {
+        padding-top: 2rem;
+    }
+
+    .hero-titulo {
+        font-size: clamp(2.9rem, 14vw, 4rem);
+        letter-spacing: 0.08em;
+    }
+
+    .planet-card {
+        min-height: 350px;
+    }
 }

@@ -22,7 +22,13 @@ public class AdminPuntuacionesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            req.setAttribute("puntuaciones", puntuacionDAO.listarTodas());
+            String planeta = req.getParameter("planeta");
+            req.setAttribute("planetas", puntuacionDAO.listarPlanetas());
+            req.setAttribute("planetaSeleccionado", planeta == null ? "" : planeta);
+            req.setAttribute("puntuaciones",
+                    planeta == null || planeta.trim().isEmpty()
+                            ? puntuacionDAO.listarTodas()
+                            : puntuacionDAO.rankingPorPlaneta(planeta));
         } catch (Exception e) {
             req.setAttribute("error", "No se pudo cargar las puntuaciones: " + e.getMessage());
         }

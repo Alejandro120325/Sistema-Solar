@@ -26,9 +26,6 @@
             <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
                 <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
                 <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
-                <button type="button" class="btn" id="acc-contraste" aria-label="Alto contraste" title="Alto contraste">
-                    <i class="fa fa-adjust" aria-hidden="true"></i>
-                </button>
             </div>
         </div>
 

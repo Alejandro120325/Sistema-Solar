@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="${ctx}/css/style.css?v=20260523">
   <title>Explorador del Sistema Solar | AAA WebGL</title>
 </head>
 <body>
@@ -216,13 +216,13 @@
 <!-- Ruta del contexto para que bitacora.js sepa a donde enviar las interacciones -->
 <script>window.CONTEXT_PATH = "${ctx}";</script>
 
-<script type="module" src="js/data.js"></script>
-<script type="module" src="js/audio.js"></script>
-<script type="module" src="js/intro.js"></script>
-<script type="module" src="js/motor3d.js"></script>
+<script type="module" src="${ctx}/js/data.js?v=20260523"></script>
+<script type="module" src="${ctx}/js/audio.js?v=20260523"></script>
+<script type="module" src="${ctx}/js/intro.js?v=20260523"></script>
+<script type="module" src="${ctx}/js/motor3d.js?v=20260523"></script>
 <!-- js/games.js se importa dinamicamente desde interaction.js (lazy load) -->
-<script type="module" src="js/interaction.js"></script>
+<script type="module" src="${ctx}/js/interaction.js?v=20260523"></script>
 <!-- Registro de interacciones del estudiante en la bitacora -->
-<script src="js/bitacora.js"></script>
+<script src="${ctx}/js/bitacora.js?v=20260523"></script>
 </body>
 </html>

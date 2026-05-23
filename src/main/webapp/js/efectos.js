@@ -11,7 +11,7 @@
     function initReveal() {
         var objetivos = document.querySelectorAll(
             '.seccion-encabezado, .card-categoria, .franja-stats .stat, ' +
-            '.galeria > div, .marco-video, .audio-card, #realidad-aumentada .col-lg-6'
+            '.galeria-3d > div, .planet-card, .marco-video, .audio-card, #realidad-aumentada .col-lg-6'
         );
         if (!objetivos.length || !('IntersectionObserver' in window)) return;
 

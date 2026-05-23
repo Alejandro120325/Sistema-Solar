@@ -13,13 +13,45 @@ import { planetDataConfig, planetEncyclopedia } from './data.js';
 // y dispara 'textures-loaded' cuando ya se puede entrar al sistema solar.
 const loadingProgressEl = document.getElementById('loading-progress');
 
+const loadState = window.SOLAR_EXPLORER_LOAD_STATE = window.SOLAR_EXPLORER_LOAD_STATE || {
+    pct: 0,
+    ready: false,
+    errors: []
+};
+
+const APP_CONTEXT = window.CONTEXT_PATH || '';
+
+function assetPath(path) {
+    const clean = String(path || '').replace(/^\/+/, '');
+    return `${APP_CONTEXT}/${clean}`;
+}
+
+function emitLoadProgress(pct, extra = {}) {
+    const safePct = Math.max(0, Math.min(100, Math.round(Number(pct) || 0)));
+    loadState.pct = safePct;
+    document.dispatchEvent(new CustomEvent('load-progress', {
+        detail: { pct: safePct, ...extra }
+    }));
+}
+
 const manager = new THREE.LoadingManager();
+manager.onStart = (url, itemsLoaded, itemsTotal) => {
+    loadState.ready = false;
+    emitLoadProgress(0, { url, itemsLoaded, itemsTotal });
+};
 manager.onProgress = (url, itemsLoaded, itemsTotal) => {
-    const pct = (itemsLoaded / itemsTotal) * 100;
+    const pct = itemsTotal > 0 ? (itemsLoaded / itemsTotal) * 100 : 0;
     if (loadingProgressEl) loadingProgressEl.style.width = `${pct}%`;
-    document.dispatchEvent(new CustomEvent('load-progress', { detail: { pct } }));
+    emitLoadProgress(pct, { url, itemsLoaded, itemsTotal });
+};
+manager.onError = (url) => {
+    loadState.errors.push(url);
+    console.error(`No se pudo cargar el asset del explorador: ${url}`);
+    document.dispatchEvent(new CustomEvent('load-error', { detail: { url } }));
 };
 manager.onLoad = () => {
+    loadState.ready = true;
+    loadState.pct = 100;
     if (loadingProgressEl) loadingProgressEl.style.width = '100%';
     document.dispatchEvent(new CustomEvent('textures-loaded'));
 };
@@ -95,7 +127,13 @@ const textureLoader = new THREE.TextureLoader(manager);
 
 // Helper: carga textura con anisotropía máxima y espacio de color sRGB (color maps)
 function loadColorTexture(path) {
-    const tex = textureLoader.load(path);
+    const url = assetPath(path);
+    const tex = textureLoader.load(
+        url,
+        undefined,
+        undefined,
+        (error) => console.error(`Error cargando textura ${url}`, error)
+    );
     tex.anisotropy = MAX_ANISO;
     tex.colorSpace = THREE.SRGBColorSpace;
     return tex;

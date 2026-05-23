@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
                     if (u.isAdmin()) {
                         resp.sendRedirect(req.getContextPath() + "/admin/dashboard");
                     } else {
-                        resp.sendRedirect(req.getContextPath() + "/explorador.jsp");
+                        resp.sendRedirect(req.getContextPath() + "/index.jsp?sesion=1");
                     }
                     return;
                 }

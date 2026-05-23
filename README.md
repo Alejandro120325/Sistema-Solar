@@ -1,84 +1,103 @@
 # Sistema Solar - Educacion de Calidad (ODS 4)
 
-Aplicacion web educativa sobre el Sistema Solar. Permite explorar el Sol y los
-planetas en un motor 3D interactivo, con realidad aumentada, multimedia,
-minijuegos y un sistema de usuarios con tres perfiles.
-
-Proyecto enmarcado en el **Objetivo de Desarrollo Sostenible 4: Educacion de Calidad**.
+Aplicacion web educativa sobre el Sistema Solar con experiencia visual oscura,
+modelos 3D, realidad aumentada, multimedia, minijuegos, ranking por planeta y
+panel administrativo.
 
 ## Tecnologias
 
-- **Frontend:** HTML5, CSS3, Bootstrap 5, JSP, JavaScript (Three.js para 3D)
-- **Backend:** Java (Servlets + JSP), Apache Tomcat 9
-- **Base de datos:** PostgreSQL
-- **Construccion:** Maven (empaquetado `.war`)
-- **Seguridad:** sesiones (`HttpSession`) y contrasenas cifradas con BCrypt
+- Frontend: HTML5, CSS3, Bootstrap 5, JSP y JavaScript
+- 3D: Three.js en el explorador
+- Backend: Java Servlets + JSP
+- Servidor: Apache Tomcat 9
+- Base de datos: PostgreSQL
+- Construccion: Maven (`.war`)
+- Sesiones: `HttpSession`
 
-## Perfiles de usuario
+## Perfiles
 
-| Perfil | Que puede hacer |
+| Perfil | Funcion |
 |---|---|
-| Invitado | Ver la pagina de inicio, la realidad aumentada, la multimedia y registrarse |
-| Estudiante | Todo lo anterior + explorar el Sistema Solar en 3D |
-| Administrador | Gestionar usuarios (crear, editar, bloquear, eliminar) y revisar la bitacora |
+| Invitado | Ver inicio, categorias, realidad aumentada, multimedia y registrarse |
+| Estudiante | Iniciar sesion, navegar el home y entrar al explorador 3D |
+| Administrador | Gestionar usuarios, bitacora y rankings por planeta |
 
-## Estructura del proyecto
+## Base de datos local
 
-```
-SISTEMA SOLAR/
-├── pom.xml                          Configuracion de Maven
-├── database/sistema_solar.sql       Script de la base de datos PostgreSQL
-└── src/main/
-    ├── java/com/sistemasolar/
-    │   ├── modelo/      Usuario, Bitacora
-    │   ├── dao/         ConexionBD, UsuarioDAO, BitacoraDAO
-    │   ├── controlador/ Servlets (login, registro, admin, etc.)
-    │   └── filtro/      Filtros de seguridad
-    ├── resources/db.properties      Datos de conexion a la BD
-    └── webapp/
-        ├── WEB-INF/web.xml + vistas/admin/   Paginas del panel admin
-        ├── css/  js/  img/          Estilos, motor 3D y assets
-        ├── index.jsp                Pagina de inicio
-        ├── login.jsp  registro.jsp  Autenticacion
-        └── explorador.jsp           Motor 3D del Sistema Solar
+Datos configurados en `src/main/resources/db.properties`:
+
+```properties
+db.url=jdbc:postgresql://localhost:5432/sistema_solar
+db.usuario=postgres
+db.clave=root
 ```
 
-## Como ejecutar (local)
+Crear la base:
 
-1. Instala **PostgreSQL** y crea la base de datos:
-   ```sql
-   CREATE DATABASE sistema_solar;
-   ```
-2. Ejecuta el script `database/sistema_solar.sql` sobre esa base de datos.
-3. Revisa `src/main/resources/db.properties` y ajusta usuario/clave de PostgreSQL.
-4. Abre el proyecto en **IntelliJ IDEA** (detecta `pom.xml` como proyecto Maven).
-5. Configura un servidor **Tomcat 9** y despliega el artefacto `war exploded`.
-6. Abre `http://localhost:8080/sistema-solar/`
+```sql
+-- Ejecutar conectado a la base postgres
+CREATE DATABASE sistema_solar;
+```
 
-## Administrador por defecto
+Luego conectarse a `sistema_solar` y ejecutar:
 
-La aplicacion crea el administrador automaticamente al arrancar:
+```text
+database/sistema_solar.sql
+```
 
-- **Correo:** `admin@sistemasolar.com`
-- **Clave:** `admin12345`
+Tambien existe un script separado para crear solo la base:
 
-## Generar el archivo .war
+```text
+database/crear_base_sistema_solar.sql
+```
 
-Con Maven: `mvn clean package` -> genera `target/sistema-solar.war`
+## Modelo de datos principal
+
+- `usuarios`: datos de login, rol y estado.
+- `planetas`: catalogo de planetas.
+- `puntuaciones_planeta`: relacion usuario-planeta con puntaje, progreso y fechas.
+- `bitacora`: registro de acciones del sistema.
+
+La relacion evita duplicados con `UNIQUE(usuario_id, planeta_id)` y permite:
+
+- ranking por planeta;
+- puntuacion de un alumno en cada planeta;
+- muchos usuarios por planeta;
+- varios planetas por usuario.
+
+## Ejecutar en IntelliJ IDEA
+
+1. Abrir la carpeta del proyecto.
+2. Cargar Maven desde `pom.xml`.
+3. Configurar Apache Tomcat 9.
+4. En Deployment usar `sistema-solar:war exploded`.
+5. Context path: `/sistema-solar`.
+6. Abrir `http://localhost:8080/sistema-solar/`.
+
+## Administrador de prueba
+
+El script SQL crea:
+
+- Correo: `admin@gmail.com`
+- Clave: `Admin123`
+
+El inicializador Java usa esas mismas credenciales si el admin aun no existe.
+
+## Generar WAR
+
+```bash
+mvn clean package
+```
+
+El archivo queda en:
+
+```text
+target/sistema-solar.war
+```
 
 ## Accesibilidad
 
-El sitio incluye dos elementos de accesibilidad:
-1. Enlace "Saltar al contenido principal" (visible al navegar con el teclado).
-2. Barra para ajustar el tamano del texto y activar el modo de alto contraste.
+El proyecto conserva dos elementos:
 
-## Notas
-
-- El video de la seccion Multimedia (`index.jsp`) usa un id de ejemplo:
-  reemplaza `TU_ID_DE_VIDEO` por el id de un video de YouTube real.
-- Las texturas de los planetas son imagenes de alta resolucion; si el `.war`
-  resulta muy pesado para subirlo al servidor, conviene optimizarlas.
-
-## Autor
-
-Alejandro Ojeda - Universidad Politecnica Salesiana
+1. Enlace "Saltar al contenido principal".
+2. Control A- / A+ para ajustar el tamano del texto.

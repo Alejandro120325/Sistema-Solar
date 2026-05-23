@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="${ctx}/css/sitio.css">
+    <link rel="stylesheet" href="${ctx}/css/orbital-final.css?v=20260523b">
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body data-bs-theme="dark">
@@ -38,17 +39,13 @@
             </ul>
 
             <div class="d-flex align-items-center nav-acciones">
-                <!-- ACCESIBILIDAD (elemento 2): tamano de texto y alto contraste -->
+                <!-- ACCESIBILIDAD (elemento 2): tamano de texto ajustable -->
                 <div class="barra-accesibilidad btn-group" role="group"
                      aria-label="Opciones de accesibilidad">
                     <button type="button" class="btn" id="acc-menos"
                             aria-label="Reducir tamano del texto" title="Reducir texto">A-</button>
                     <button type="button" class="btn" id="acc-mas"
                             aria-label="Aumentar tamano del texto" title="Aumentar texto">A+</button>
-                    <button type="button" class="btn" id="acc-contraste" aria-pressed="false"
-                            aria-label="Activar o desactivar alto contraste" title="Alto contraste">
-                        <i class="fa fa-adjust" aria-hidden="true"></i>
-                    </button>
                 </div>
 
                 <c:choose>
@@ -78,31 +75,43 @@
 </nav>
 
 <main id="contenido">
+    <c:if test="${param.sesion == '1'}">
+        <div class="container pt-4">
+            <div class="alert alert-success alerta-sesion" role="status">
+                Sesion iniciada correctamente. Puedes entrar al explorador cuando estes listo.
+            </div>
+        </div>
+    </c:if>
 
     <!-- ===================== HERO ===================== -->
     <section class="hero">
         <div class="hero-espacio" aria-hidden="true">
-            <div class="hero-planeta"></div>
+            <div class="orbita orbita-1"></div>
+            <div class="orbita orbita-2"></div>
         </div>
         <div class="container hero-inner">
-            <span class="hero-eyebrow">ODS 4 &middot; Educacion de Calidad</span>
-            <h1 class="hero-titulo">Sistema Solar</h1>
-            <p class="hero-sub">
-                Una plataforma educativa para explorar el universo con modelos 3D,
-                realidad aumentada y contenido multimedia, con la precision y la
-                elegancia de un observatorio profesional.
-            </p>
-            <div class="hero-acciones">
-                <a href="${ctx}/explorador.jsp" class="btn btn-oro btn-lg">
-                    <i class="fa fa-rocket" aria-hidden="true"></i> Explorar en 3D
-                </a>
-                <a href="${ctx}/registro.jsp" class="btn btn-contorno-oro btn-lg">Crear una cuenta</a>
+            <div class="hero-copy">
+                <span class="hero-eyebrow">ODS 4 &middot; Educacion de Calidad</span>
+                <h1 class="hero-titulo">Sistema Solar</h1>
+                <p class="hero-sub">
+                    Una plataforma educativa para explorar el universo con modelos 3D,
+                    realidad aumentada y contenido multimedia, con la precision y la
+                    elegancia de un observatorio profesional.
+                </p>
+                <div class="hero-acciones">
+                    <a href="${ctx}/explorador.jsp" class="btn btn-oro btn-lg">Explorar en 3D</a>
+                    <a href="${ctx}/registro.jsp" class="btn btn-contorno-oro btn-lg">Crear una cuenta</a>
+                </div>
+            </div>
+            <div class="hero-visual hero-orbital" aria-label="Planeta Tierra">
+                <div class="hero-earth-horizon" aria-hidden="true">
+                    <div class="hero-earth-glow"></div>
+                    <div class="hero-earth-planet">
+                        <span class="planet-texture" style="background-image: url('${ctx}/js/textures/earth.jpg')"></span>
+                    </div>
+                </div>
             </div>
         </div>
-        <a href="#franja" class="hero-scroll" aria-label="Desplazar hacia abajo">
-            <span>Descubre mas</span>
-            <i class="fa fa-angle-down" aria-hidden="true"></i>
-        </a>
     </section>
 
     <!-- ===================== FRANJA DE ESTADISTICAS ===================== -->
@@ -192,18 +201,22 @@
             </div>
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <model-viewer
-                            src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
-                            alt="Modelo 3D de un astronauta para realidad aumentada"
-                            ar
-                            ar-modes="webxr scene-viewer quick-look"
-                            camera-controls
-                            auto-rotate
-                            shadow-intensity="1">
-                        <button slot="ar-button" class="btn btn-oro">
-                            <i class="fa fa-mobile" aria-hidden="true"></i> Ver en mi espacio (AR)
-                        </button>
-                    </model-viewer>
+                    <div class="ar-stage">
+                        <model-viewer
+                                src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+                                alt="Modelo 3D de un astronauta para realidad aumentada"
+                                ar
+                                ar-modes="webxr scene-viewer quick-look"
+                                camera-controls
+                                auto-rotate
+                                shadow-intensity="1"
+                                exposure="1.1"
+                                environment-image="neutral">
+                            <button slot="ar-button" class="btn btn-oro">
+                                <i class="fa fa-mobile" aria-hidden="true"></i> Ver en mi espacio (AR)
+                            </button>
+                        </model-viewer>
+                    </div>
                 </div>
                 <div class="col-lg-6">
                     <h3 class="h3 texto-oro">Lleva el espacio a tu habitacion</h3>
@@ -243,19 +256,118 @@
                 </div>
             </div>
 
-            <h3 class="sub-titulo">Galeria de planetas</h3>
-            <div class="row g-3 galeria justify-content-center">
-                <div class="col-6 col-md-3">
-                    <img src="${ctx}/js/textures/earth.jpg" alt="Imagen de la superficie del planeta Tierra">
+            <div class="galeria-header">
+                <p class="kicker">Laboratorio orbital</p>
+                <h3 class="sub-titulo">Galeria 3D de planetas</h3>
+                <p class="text-secondary">
+                    Observa texturas, atmosfera e iluminacion en modelos giratorios antes de entrar al explorador.
+                </p>
+            </div>
+            <div class="row g-4 galeria-3d justify-content-center">
+                <div class="col-md-6 col-xl-3">
+                    <article class="planet-card planet-card--earth">
+                        <div class="planet-viewer">
+                            <div class="planet-sphere planet-earth" aria-hidden="true">
+                                <span class="planet-texture" style="background-image: url('${ctx}/js/textures/earth.jpg')"></span>
+                            </div>
+                        </div>
+                        <span class="planet-chip">Planeta azul</span>
+                        <h4>Tierra</h4>
+                        <p>Oceanos, continentes y atmosfera protectora para comprender nuestro hogar cosmico.</p>
+                        <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
+                    </article>
                 </div>
-                <div class="col-6 col-md-3">
-                    <img src="${ctx}/js/textures/mars.jpg" alt="Imagen de la superficie del planeta Marte">
+                <div class="col-md-6 col-xl-3">
+                    <article class="planet-card planet-card--mars">
+                        <div class="planet-viewer">
+                            <div class="planet-sphere planet-mars" aria-hidden="true">
+                                <span class="planet-texture" style="background-image: url('${ctx}/js/textures/mars.jpg')"></span>
+                            </div>
+                        </div>
+                        <span class="planet-chip">Mundo rocoso</span>
+                        <h4>Marte</h4>
+                        <p>Superficie rojiza, antiguos valles y volcanes gigantes para estudiar geologia planetaria.</p>
+                        <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
+                    </article>
                 </div>
-                <div class="col-6 col-md-3">
-                    <img src="${ctx}/js/textures/jupiter.jpg" alt="Imagen del planeta Jupiter">
+                <div class="col-md-6 col-xl-3">
+                    <article class="planet-card planet-card--jupiter">
+                        <div class="planet-viewer">
+                            <div class="planet-sphere planet-jupiter" aria-hidden="true">
+                                <span class="planet-texture" style="background-image: url('${ctx}/js/textures/jupiter.jpg')"></span>
+                            </div>
+                        </div>
+                        <span class="planet-chip">Gigante gaseoso</span>
+                        <h4>Jupiter</h4>
+                        <p>Bandas atmosfericas, tormentas colosales y la escala mas grande del Sistema Solar.</p>
+                        <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
+                    </article>
                 </div>
-                <div class="col-6 col-md-3">
-                    <img src="${ctx}/js/textures/saturn.jpg" alt="Imagen del planeta Saturno">
+                <div class="col-md-6 col-xl-3">
+                    <article class="planet-card planet-card--venus">
+                        <div class="planet-viewer">
+                            <div class="planet-sphere planet-venus" aria-hidden="true">
+                                <span class="planet-texture" style="background-image: url('${ctx}/js/textures/venus.jpg')"></span>
+                            </div>
+                        </div>
+                        <span class="planet-chip">Atmosfera densa</span>
+                        <h4>Venus</h4>
+                        <p>Nubes brillantes y efecto invernadero extremo para analizar climas planetarios.</p>
+                        <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
+                    </article>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <article class="planet-card planet-card--mercury">
+                        <div class="planet-viewer">
+                            <div class="planet-sphere planet-mercury" aria-hidden="true">
+                                <span class="planet-texture" style="background-image: url('${ctx}/js/textures/mercury.jpg')"></span>
+                            </div>
+                        </div>
+                        <span class="planet-chip">Interior rocoso</span>
+                        <h4>Mercurio</h4>
+                        <p>El planeta mas cercano al Sol, con crateres extremos y cambios termicos intensos.</p>
+                        <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
+                    </article>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <article class="planet-card planet-card--saturn">
+                        <div class="planet-viewer">
+                            <div class="planet-sphere planet-saturn" aria-hidden="true">
+                                <span class="planet-ring"></span>
+                                <span class="planet-texture" style="background-image: url('${ctx}/js/textures/saturn.jpg')"></span>
+                            </div>
+                        </div>
+                        <span class="planet-chip">Anillos visibles</span>
+                        <h4>Saturno</h4>
+                        <p>Un gigante gaseoso con anillos brillantes que ayudan a estudiar orbitas y particulas.</p>
+                        <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
+                    </article>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <article class="planet-card planet-card--uranus">
+                        <div class="planet-viewer">
+                            <div class="planet-sphere planet-uranus" aria-hidden="true">
+                                <span class="planet-texture" style="background-image: url('${ctx}/js/textures/uranus.jpg')"></span>
+                            </div>
+                        </div>
+                        <span class="planet-chip">Gigante helado</span>
+                        <h4>Urano</h4>
+                        <p>Un mundo azul verdoso con rotacion inclinada y atmosfera fria rica en metano.</p>
+                        <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
+                    </article>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <article class="planet-card planet-card--neptune">
+                        <div class="planet-viewer">
+                            <div class="planet-sphere planet-neptune" aria-hidden="true">
+                                <span class="planet-texture" style="background-image: url('${ctx}/js/textures/neptune.jpg')"></span>
+                            </div>
+                        </div>
+                        <span class="planet-chip">Azul profundo</span>
+                        <h4>Neptuno</h4>
+                        <p>Vientos veloces, color intenso y condiciones extremas en el limite del Sistema Solar.</p>
+                        <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
+                    </article>
                 </div>
             </div>
 

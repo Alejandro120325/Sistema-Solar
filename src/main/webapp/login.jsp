@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="${ctx}/css/sitio.css">
 </head>
-<body data-bs-theme="dark">
+<body data-bs-theme="dark" class="pagina-auth">
 
 <!-- ACCESIBILIDAD: enlace para saltar al contenido -->
 <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
@@ -24,9 +24,6 @@
         <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
             <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
             <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
-            <button type="button" class="btn" id="acc-contraste" aria-label="Alto contraste" title="Alto contraste">
-                <i class="fa fa-adjust" aria-hidden="true"></i>
-            </button>
         </div>
     </div>
 </nav>

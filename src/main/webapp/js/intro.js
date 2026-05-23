@@ -6,6 +6,12 @@
 import gsap from 'gsap';
 import { audio } from './audio.js';
 
+const loadState = window.SOLAR_EXPLORER_LOAD_STATE = window.SOLAR_EXPLORER_LOAD_STATE || {
+    pct: 0,
+    ready: false,
+    errors: []
+};
+
 // =========================================================
 // BLOQUEO DE ORIENTACIÓN (solo móviles en portrait)
 // La visibilidad la decide el CSS @media; aquí sólo añadimos
@@ -92,6 +98,26 @@ document.addEventListener('DOMContentLoaded', () => {
             { scale: 1.06, duration: 0.25, yoyo: true, repeat: 1, ease: 'sine.inOut' }
         );
     });
+
+    function recoverMissedLoadState() {
+        if (!loadState.ready || texturesReady) return;
+        texturesReady = true;
+        intro.classList.add('is-ready');
+        startBtn.disabled = false;
+        startBtn.setAttribute('aria-label', 'Comenzar exploracion');
+        if (startMain) startMain.textContent = 'COMENZAR';
+        if (startSub)  startSub.textContent  = 'EXPLORADOR 3D';
+    }
+
+    document.addEventListener('load-error', (e) => {
+        console.error('Error durante la carga del explorador:', e.detail?.url || e.detail);
+    });
+
+    if (loadState.ready) {
+        recoverMissedLoadState();
+    } else if (startSub && loadState.pct > 0) {
+        startSub.textContent = `${Math.round(loadState.pct)}%`;
+    }
 
     // ============================================================
     // GSAP TIMELINE — secuencia cinematográfica más rápida

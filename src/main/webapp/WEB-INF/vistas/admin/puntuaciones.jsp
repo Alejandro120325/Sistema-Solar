@@ -23,15 +23,12 @@
     <div class="admin-contenido" id="contenido">
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
             <div>
-                <h1 class="h3 texto-oro mb-0">Puntuaciones de Minijuegos</h1>
-                <span class="text-secondary">Resultados que obtienen los alumnos al jugar en cada planeta</span>
+                <h1 class="h3 texto-oro mb-0">Ranking por Planeta</h1>
+                <span class="text-secondary">Consulta alumnos, planetas y puntuaciones sin duplicados</span>
             </div>
             <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
                 <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
                 <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
-                <button type="button" class="btn" id="acc-contraste" aria-label="Alto contraste" title="Alto contraste">
-                    <i class="fa fa-adjust" aria-hidden="true"></i>
-                </button>
             </div>
         </div>
 
@@ -39,28 +36,64 @@
             <div class="alert alert-danger" role="alert">${error}</div>
         </c:if>
 
+        <div class="card panel-oscuro p-3 p-md-4 mb-4">
+            <form method="get" action="${ctx}/admin/puntuaciones" class="row g-3 align-items-end">
+                <div class="col-md-8">
+                    <label for="planeta" class="form-label">Filtrar ranking por planeta</label>
+                    <select class="form-select" id="planeta" name="planeta">
+                        <option value="">Todos los planetas</option>
+                        <c:forEach var="pl" items="${planetas}">
+                            <c:choose>
+                                <c:when test="${planetaSeleccionado == pl.codigo}">
+                                    <option value="${pl.codigo}" selected>${pl.nombre}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="${pl.codigo}">${pl.nombre}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="col-md-4 d-flex gap-2">
+                    <button class="btn btn-oro flex-fill" type="submit">Consultar</button>
+                    <a class="btn btn-contorno-oro" href="${ctx}/admin/puntuaciones">Limpiar</a>
+                </div>
+            </form>
+        </div>
+
         <div class="table-responsive">
             <table class="table tabla-admin align-middle">
                 <thead>
                     <tr>
-                        <th scope="col">Fecha y hora</th>
+                        <th scope="col">Actualizado</th>
                         <th scope="col">Alumno</th>
                         <th scope="col">Planeta</th>
                         <th scope="col">Puntaje obtenido</th>
+                        <th scope="col">Progreso</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach var="p" items="${puntuaciones}">
                         <tr>
                             <td><fmt:formatDate value="${p.fechaHora}" pattern="dd/MM/yyyy HH:mm:ss"/></td>
-                            <td>${empty p.email ? '(desconocido)' : p.email}</td>
-                            <td><span class="badge bg-info text-dark">${p.planeta}</span></td>
+                            <td>
+                                <strong>${empty p.usuarioNombre ? '(desconocido)' : p.usuarioNombre}</strong><br>
+                                <span class="text-secondary small">${p.email}</span>
+                            </td>
+                            <td><span class="badge bg-info text-dark">${p.planetaNombre}</span></td>
                             <td><strong class="texto-oro">${p.puntaje} de ${p.puntajeMaximo}</strong> puntos</td>
+                            <td>
+                                <div class="progress barra-progreso" role="progressbar" aria-label="Progreso del alumno"
+                                     aria-valuenow="${p.progreso}" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: ${p.progreso}%">${p.progreso}%</div>
+                                </div>
+                            </td>
                         </tr>
                     </c:forEach>
                     <c:if test="${empty puntuaciones}">
-                        <tr><td colspan="4" class="text-center text-secondary py-4">
-                            Todavia no hay puntuaciones registradas.
+                        <tr><td colspan="5" class="text-center text-secondary py-5 estado-vacio">
+                            <i class="fa fa-line-chart" aria-hidden="true"></i>
+                            <span>Todavia no hay puntuaciones registradas para esta consulta.</span>
                         </td></tr>
                     </c:if>
                 </tbody>

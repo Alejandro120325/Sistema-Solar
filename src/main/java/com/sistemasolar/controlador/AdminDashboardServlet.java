@@ -1,6 +1,7 @@
 package com.sistemasolar.controlador;
 
 import com.sistemasolar.dao.BitacoraDAO;
+import com.sistemasolar.dao.PuntuacionDAO;
 import com.sistemasolar.dao.UsuarioDAO;
 
 import javax.servlet.ServletException;
@@ -19,6 +20,7 @@ public class AdminDashboardServlet extends HttpServlet {
 
     private final UsuarioDAO usuarioDAO = new UsuarioDAO();
     private final BitacoraDAO bitacoraDAO = new BitacoraDAO();
+    private final PuntuacionDAO puntuacionDAO = new PuntuacionDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -28,6 +30,7 @@ public class AdminDashboardServlet extends HttpServlet {
             req.setAttribute("totalEstudiantes", usuarioDAO.contar("rol", "ESTUDIANTE"));
             req.setAttribute("totalBloqueados",  usuarioDAO.contar("estado", "BLOQUEADO"));
             req.setAttribute("totalBitacora",    bitacoraDAO.contar());
+            req.setAttribute("totalPuntuaciones", puntuacionDAO.contar());
         } catch (Exception e) {
             req.setAttribute("error", "No se pudo cargar el resumen: " + e.getMessage());
         }

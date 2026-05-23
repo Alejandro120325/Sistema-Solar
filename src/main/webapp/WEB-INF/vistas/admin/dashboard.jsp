@@ -28,9 +28,6 @@
             <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
                 <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
                 <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
-                <button type="button" class="btn" id="acc-contraste" aria-label="Alto contraste" title="Alto contraste">
-                    <i class="fa fa-adjust" aria-hidden="true"></i>
-                </button>
             </div>
         </div>
 
@@ -60,8 +57,8 @@
             </div>
             <div class="col-6 col-lg-3">
                 <div class="tarjeta-stat">
-                    <div class="numero" data-contador="${totalBitacora}">0</div>
-                    <div class="text-secondary"><i class="fa fa-list-alt" aria-hidden="true"></i> Eventos en bitacora</div>
+                    <div class="numero" data-contador="${totalPuntuaciones}">0</div>
+                    <div class="text-secondary"><i class="fa fa-trophy" aria-hidden="true"></i> Puntuaciones</div>
                 </div>
             </div>
         </div>
@@ -86,6 +83,16 @@
                         interacciones de los estudiantes con el explorador.
                     </p>
                     <a href="${ctx}/admin/bitacora" class="btn btn-oro mt-auto align-self-start">Ir a Bitacora</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card panel-oscuro p-4 h-100">
+                    <h2 class="h5 texto-oro"><i class="fa fa-trophy" aria-hidden="true"></i> Rankings por Planeta</h2>
+                    <p class="text-secondary">
+                        Revisa los puntajes por planeta, filtra rankings y consulta el avance
+                        de cada estudiante en los minijuegos.
+                    </p>
+                    <a href="${ctx}/admin/puntuaciones" class="btn btn-oro mt-auto align-self-start">Ver Rankings</a>
                 </div>
             </div>
         </div>
