@@ -24,11 +24,11 @@
 
 -- =================  TABLAS  =====================================
 
-DROP TABLE IF EXISTS puntuaciones_planeta;
-DROP TABLE IF EXISTS puntuaciones;
-DROP TABLE IF EXISTS bitacora;
-DROP TABLE IF EXISTS planetas;
-DROP TABLE IF EXISTS usuarios;
+DROP TABLE IF EXISTS puntuaciones_planeta CASCADE;
+DROP TABLE IF EXISTS puntuaciones CASCADE;
+DROP TABLE IF EXISTS bitacora CASCADE;
+DROP TABLE IF EXISTS planetas CASCADE;
+DROP TABLE IF EXISTS usuarios CASCADE;
 
 -- ----- Tabla de usuarios (perfiles ADMIN y ESTUDIANTE) -----------
 CREATE TABLE usuarios (
@@ -71,6 +71,19 @@ CREATE TABLE puntuaciones_planeta (
     CONSTRAINT chk_puntaje_valido CHECK (puntaje >= 0 AND puntaje_maximo > 0),
     CONSTRAINT uq_puntuacion_usuario_planeta UNIQUE (usuario_id, planeta_id)
 );
+
+CREATE OR REPLACE FUNCTION actualizar_fecha_puntuacion()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.fecha_actualizacion = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_actualizar_fecha_puntuacion
+BEFORE UPDATE ON puntuaciones_planeta
+FOR EACH ROW
+EXECUTE FUNCTION actualizar_fecha_puntuacion();
 
 -- ----- Tabla de bitacora (registro de eventos) -------------------
 CREATE TABLE bitacora (

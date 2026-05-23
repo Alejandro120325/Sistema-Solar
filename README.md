@@ -28,8 +28,8 @@ Datos configurados en `src/main/resources/db.properties`:
 
 ```properties
 db.url=jdbc:postgresql://localhost:5432/sistema_solar
-db.usuario=postgres
-db.clave=root
+db.user=postgres
+db.password=root
 ```
 
 Crear la base:

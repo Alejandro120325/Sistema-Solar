@@ -43,6 +43,20 @@ CREATE TABLE IF NOT EXISTS puntuaciones_planeta (
     CONSTRAINT uq_puntuacion_usuario_planeta UNIQUE (usuario_id, planeta_id)
 );
 
+CREATE OR REPLACE FUNCTION actualizar_fecha_puntuacion()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.fecha_actualizacion = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trg_actualizar_fecha_puntuacion ON puntuaciones_planeta;
+CREATE TRIGGER trg_actualizar_fecha_puntuacion
+BEFORE UPDATE ON puntuaciones_planeta
+FOR EACH ROW
+EXECUTE FUNCTION actualizar_fecha_puntuacion();
+
 -- Migrar datos antiguos si existe la tabla puntuaciones.
 DO $$
 BEGIN
