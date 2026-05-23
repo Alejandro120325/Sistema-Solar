@@ -495,8 +495,11 @@ body::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hero-earth-planet .planet-texture,
     .planet-sphere .planet-texture {
         animation: none !important;
+    }
+
+    .hero-earth-planet .planet-texture {
+        animation: orbitalTextureDrift 60s linear infinite !important;
     }
 }
