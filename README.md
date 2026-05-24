@@ -1,103 +1,158 @@
-# Sistema Solar - Educacion de Calidad (ODS 4)
+# Sistema Solar - Educación de Calidad (ODS 4)
 
-Aplicacion web educativa sobre el Sistema Solar con experiencia visual oscura,
-modelos 3D, realidad aumentada, multimedia, minijuegos, ranking por planeta y
-panel administrativo.
+Aplicación web educativa e interactiva sobre el Sistema Solar, desarrollada como proyecto práctico del primer bimestre para la asignatura de Programación y Plataformas Web.
 
-## Tecnologias
+El sistema está orientado al **Objetivo de Desarrollo Sostenible 4: Educación de Calidad**, ya que busca fortalecer el aprendizaje mediante una experiencia visual, moderna e inmersiva, integrando contenido multimedia, modelos 3D, realidad aumentada, audio, interacción por perfiles, rankings y administración de usuarios.
 
-- Frontend: HTML5, CSS3, Bootstrap 5, JSP y JavaScript
-- 3D: Three.js en el explorador
-- Backend: Java Servlets + JSP
-- Servidor: Apache Tomcat 9
-- Base de datos: PostgreSQL
-- Construccion: Maven (`.war`)
-- Sesiones: `HttpSession`
+---
 
-## Perfiles
+## Descripción General
 
-| Perfil | Funcion |
+**Sistema Solar** es una plataforma web educativa que permite a los usuarios aprender sobre los planetas del Sistema Solar mediante una interfaz oscura de estilo espacial, animaciones visuales, recursos multimedia y módulos interactivos.
+
+El proyecto cuenta con:
+
+- Página de inicio con diseño espacial.
+- Registro e inicio de sesión de usuarios.
+- Manejo de sesiones con `HttpSession`.
+- Perfil de estudiante.
+- Perfil de administrador.
+- Explorador 3D del Sistema Solar.
+- Realidad aumentada.
+- Videos, imágenes y audio.
+- Galería de planetas.
+- Ranking y puntuaciones por planeta.
+- Bitácora de acciones.
+- Gestión de usuarios.
+- Bloqueo de usuarios.
+- Base de datos PostgreSQL.
+- Despliegue mediante archivo `.war` en Apache Tomcat 9.
+
+---
+
+## Objetivo del Proyecto
+
+Desarrollar una aplicación web educativa relacionada con el **ODS 4: Educación de Calidad**, utilizando tecnologías web como **HTML5, CSS3, Bootstrap, JSP, Java Servlets, Apache Tomcat 9 y PostgreSQL**, incorporando recursos interactivos como modelos 3D, realidad aumentada, multimedia y perfiles de usuario.
+
+---
+
+## Tecnologías Utilizadas
+
+| Categoría | Tecnología |
 |---|---|
-| Invitado | Ver inicio, categorias, realidad aumentada, multimedia y registrarse |
-| Estudiante | Iniciar sesion, navegar el home y entrar al explorador 3D |
-| Administrador | Gestionar usuarios, bitacora y rankings por planeta |
+| Frontend | HTML5, CSS3, Bootstrap 5, JavaScript, JSP |
+| Backend | Java Servlets, JSP |
+| Servidor Web | Apache Tomcat 9 |
+| Base de Datos | PostgreSQL |
+| Interactividad 3D | Three.js |
+| Sesiones | HttpSession |
+| Construcción | Maven |
+| Empaquetado | WAR |
+| Control de versiones | GitHub |
+| Diagramación | Draw.io |
+| Arquitectura | Modelo C4 |
+| Accesibilidad | Lighthouse / WAVE / axe DevTools |
+| Validación CSS | W3C CSS Validator |
 
-## Base de datos local
+---
 
-Datos configurados en `src/main/resources/db.properties`:
+## Características Principales
 
-```properties
-db.url=jdbc:postgresql://localhost:5432/sistema_solar
-db.user=postgres
-db.password=root
-```
+- Interfaz visual moderna con temática espacial.
+- Diseño oscuro elegante y responsivo.
+- Planeta Tierra visible en la portada.
+- Animaciones fluidas en escritorio y dispositivos móviles.
+- Galería de planetas con vista previa visual.
+- Explorador 3D del Sistema Solar.
+- Módulo de realidad aumentada.
+- Sección multimedia con recursos educativos.
+- Audio ambiental.
+- Registro de usuarios.
+- Login con validación de credenciales.
+- Sesiones por perfil.
+- Perfil administrador y perfil estudiante.
+- Bitácora de acciones del sistema.
+- Ranking por planeta.
+- Puntuaciones por usuario y planeta.
+- Bloqueo de usuarios.
+- Validaciones de formulario.
+- Configuración externa de base de datos para despliegue en Tomcat.
 
-Crear la base:
+---
 
-```sql
--- Ejecutar conectado a la base postgres
-CREATE DATABASE sistema_solar;
-```
+## Perfiles del Sistema
 
-Luego conectarse a `sistema_solar` y ejecutar:
+| Perfil | Funcionalidades |
+|---|---|
+| Invitado | Puede ver la página de inicio, categorías, multimedia, realidad aumentada y acceder al registro o login. |
+| Estudiante | Puede iniciar sesión, explorar el sistema, usar el explorador 3D, interactuar con planetas, acceder a multimedia y generar registros en la bitácora. |
+| Administrador | Puede iniciar sesión, gestionar usuarios, consultar usuarios, bloquear usuarios, revisar bitácora y consultar rankings o puntuaciones. |
+
+---
+
+## Funcionalidades del Perfil Estudiante
+
+El perfil estudiante permite al usuario interactuar con el contenido educativo del sistema.
+
+Funciones principales:
+
+- Registrarse en el sistema.
+- Iniciar sesión.
+- Acceder a la página principal.
+- Entrar al explorador 3D.
+- Interactuar con los planetas.
+- Revisar contenido multimedia.
+- Utilizar el módulo de realidad aumentada.
+- Escuchar audio ambiental.
+- Generar registros de interacción en la bitácora.
+- Consultar o generar puntuaciones por planeta, según la interacción realizada.
+
+---
+
+## Funcionalidades del Perfil Administrador
+
+El perfil administrador permite supervisar y gestionar el sistema.
+
+Funciones principales:
+
+- Iniciar sesión como administrador.
+- Consultar usuarios registrados.
+- Crear nuevos usuarios, si aplica.
+- Actualizar información de usuarios.
+- Bloquear usuarios.
+- Impedir el acceso a usuarios bloqueados.
+- Revisar la bitácora del sistema.
+- Consultar registros de estudiantes.
+- Ver acciones realizadas por usuarios.
+- Revisar puntuaciones y rankings por planeta.
+
+---
+
+## Estructura General del Proyecto
 
 ```text
-database/sistema_solar.sql
-```
-
-Tambien existe un script separado para crear solo la base:
-
-```text
-database/crear_base_sistema_solar.sql
-```
-
-## Modelo de datos principal
-
-- `usuarios`: datos de login, rol y estado.
-- `planetas`: catalogo de planetas.
-- `puntuaciones_planeta`: relacion usuario-planeta con puntaje, progreso y fechas.
-- `bitacora`: registro de acciones del sistema.
-
-La relacion evita duplicados con `UNIQUE(usuario_id, planeta_id)` y permite:
-
-- ranking por planeta;
-- puntuacion de un alumno en cada planeta;
-- muchos usuarios por planeta;
-- varios planetas por usuario.
-
-## Ejecutar en IntelliJ IDEA
-
-1. Abrir la carpeta del proyecto.
-2. Cargar Maven desde `pom.xml`.
-3. Configurar Apache Tomcat 9.
-4. En Deployment usar `sistema-solar:war exploded`.
-5. Context path: `/sistema-solar`.
-6. Abrir `http://localhost:8080/sistema-solar/`.
-
-## Administrador de prueba
-
-El script SQL crea:
-
-- Correo: `admin@gmail.com`
-- Clave: `Admin123`
-
-El inicializador Java usa esas mismas credenciales si el admin aun no existe.
-
-## Generar WAR
-
-```bash
-mvn clean package
-```
-
-El archivo queda en:
-
-```text
-target/sistema-solar.war
-```
-
-## Accesibilidad
-
-El proyecto conserva dos elementos:
-
-1. Enlace "Saltar al contenido principal".
-2. Control A- / A+ para ajustar el tamano del texto.
+SISTEMA SOLAR/
+├── database/
+│   ├── migrations/
+│   ├── crear_base_sistema_solar.sql
+│   └── sistema_solar.sql
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── ...
+│       ├── resources/
+│       │   └── db.properties
+│       └── webapp/
+│           ├── css/
+│           ├── js/
+│           ├── images/
+│           ├── WEB-INF/
+│           ├── index.jsp
+│           ├── login.jsp
+│           ├── registrar.jsp
+│           ├── explorador.jsp
+│           └── ...
+├── target/
+│   └── sistema-solar.war
+├── pom.xml
+└── README.md
