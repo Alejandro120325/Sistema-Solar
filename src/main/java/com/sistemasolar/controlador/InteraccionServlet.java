@@ -31,14 +31,32 @@ public class InteraccionServlet extends HttpServlet {
         }
 
         Usuario u = (Usuario) sesion.getAttribute("usuario");
+        String accion = normalizarAccion(req.getParameter("accion"));
         String detalle = req.getParameter("detalle");
         if (detalle == null || detalle.trim().isEmpty()) {
-            detalle = "Interaccion en el explorador del Sistema Solar";
+            detalle = "Interaccion en el sistema";
         }
 
-        bitacoraDAO.registrar(u.getId(), u.getEmail(), "INTERACCION",
+        bitacoraDAO.registrar(u.getId(), u.getEmail(), accion,
                 detalle, req.getRemoteAddr());
 
         resp.setStatus(HttpServletResponse.SC_NO_CONTENT); // 204: registrado, sin cuerpo
+    }
+
+    private String normalizarAccion(String accion) {
+        if (accion == null || accion.trim().isEmpty()) {
+            return "INTERACCION";
+        }
+
+        String valor = accion.trim().toUpperCase();
+        switch (valor) {
+            case "INGRESO_EXPLORADOR":
+            case "INGRESO_REALIDAD_AUMENTADA":
+            case "INGRESO_MULTIMEDIA":
+            case "INTERACCION":
+                return valor;
+            default:
+                return "INTERACCION";
+        }
     }
 }

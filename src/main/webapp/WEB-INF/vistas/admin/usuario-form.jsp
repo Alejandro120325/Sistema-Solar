@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <c:set var="activo" scope="request" value="usuarios"/>
@@ -20,7 +20,7 @@
 <div class="admin-layout">
     <jsp:include page="_menu.jsp"/>
 
-    <div class="admin-contenido" id="contenido">
+    <main class="admin-contenido" id="contenido">
         <h1 class="h3 texto-oro mb-4">
             <c:choose>
                 <c:when test="${esNuevo}"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo Usuario</c:when>
@@ -96,10 +96,11 @@
                 <a href="${ctx}/admin/usuarios" class="btn btn-contorno-oro">Cancelar</a>
             </form>
         </div>
-    </div>
+    </main>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="${ctx}/js/accesibilidad.js"></script>
 </body>
 </html>
+

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 /**
  * Gestion de usuarios para el administrador: listar, crear, actualizar,
@@ -20,6 +21,8 @@ public class AdminUsuariosServlet extends HttpServlet {
 
     private static final String VISTA_LISTA = "/WEB-INF/vistas/admin/usuarios.jsp";
     private static final String VISTA_FORM  = "/WEB-INF/vistas/admin/usuario-form.jsp";
+    private static final Pattern EMAIL =
+            Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
 
     private final UsuarioDAO usuarioDAO = new UsuarioDAO();
     private final BitacoraDAO bitacoraDAO = new BitacoraDAO();
@@ -98,6 +101,15 @@ public class AdminUsuariosServlet extends HttpServlet {
             if (nombre.isEmpty() || email.isEmpty() || rol == null || estado == null) {
                 throw new IllegalArgumentException("Completa todos los campos obligatorios.");
             }
+            if (!EMAIL.matcher(email).matches()) {
+                throw new IllegalArgumentException("Ingresa un correo electronico valido.");
+            }
+            if (!"ADMIN".equals(rol) && !"ESTUDIANTE".equals(rol)) {
+                throw new IllegalArgumentException("Rol no valido.");
+            }
+            if (!"ACTIVO".equals(estado) && !"BLOQUEADO".equals(estado)) {
+                throw new IllegalArgumentException("Estado no valido.");
+            }
 
             if (esNuevo) {
                 if (clave == null || clave.length() < 8) {
@@ -117,6 +129,9 @@ public class AdminUsuariosServlet extends HttpServlet {
                         "Admin creo el usuario: " + email + " (" + rol + ")");
             } else {
                 int id = Integer.parseInt(idParam.trim());
+                if (usuarioDAO.emailExisteParaOtro(email, id)) {
+                    throw new IllegalArgumentException("Ya existe otro usuario con ese correo.");
+                }
                 Usuario u = new Usuario();
                 u.setId(id);
                 u.setNombreCompleto(nombre);

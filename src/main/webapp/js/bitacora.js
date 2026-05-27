@@ -22,9 +22,10 @@
         game: "Jugo el minijuego de"
     };
 
-    function registrar(detalle) {
+    function registrar(accion, detalle) {
         try {
             var datos = new URLSearchParams();
+            datos.set("accion", accion || "INTERACCION");
             datos.set("detalle", detalle);
             fetch(ctx + "/interaccion", {
                 method: "POST",
@@ -36,15 +37,35 @@
         }
     }
 
+    window.registrarBitacora = registrar;
+
     function planetaActual() {
         var sel = document.querySelector('input[name="planet"]:checked');
         return sel ? (NOMBRES[sel.id] || sel.id) : "el Sistema Solar";
     }
 
+    document.addEventListener("click", function (e) {
+        var item = e.target.closest ? e.target.closest("[data-bitacora-accion]") : null;
+        if (item) {
+            registrar(item.dataset.bitacoraAccion, item.dataset.bitacoraDetalle || item.textContent.trim());
+        }
+    });
+
+    document.addEventListener("play", function (e) {
+        var item = e.target;
+        if (item && item.dataset && item.dataset.bitacoraAccion) {
+            registrar(item.dataset.bitacoraAccion, item.dataset.bitacoraDetalle || "Reproduccion multimedia");
+        }
+    }, true);
+
+    if (!document.getElementById("planet-menu")) {
+        return;
+    }
+
     // El estudiante selecciona un planeta en el menu lateral
     document.addEventListener("change", function (e) {
         if (e.target && e.target.matches('input[name="planet"]')) {
-            registrar("Selecciono " + (NOMBRES[e.target.id] || e.target.id));
+            registrar("INTERACCION", "Selecciono " + (NOMBRES[e.target.id] || e.target.id));
         }
     });
 
@@ -53,10 +74,10 @@
         var btn = e.target.closest ? e.target.closest(".scifi-btn[data-action]") : null;
         if (btn) {
             var accion = ACCIONES[btn.dataset.action] || "Interactuo con";
-            registrar(accion + " " + planetaActual());
+            registrar("INTERACCION", accion + " " + planetaActual());
         }
     });
 
     // Marca de ingreso al explorador
-    registrar("Ingreso al explorador del Sistema Solar");
+    registrar("INGRESO_EXPLORADOR", "Ingreso al explorador del Sistema Solar");
 })();

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
@@ -20,7 +20,7 @@
 <div class="admin-layout">
     <jsp:include page="_menu.jsp"/>
 
-    <div class="admin-contenido" id="contenido">
+    <main class="admin-contenido" id="contenido">
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
             <div>
                 <h1 class="h3 texto-oro mb-0">Bitacora del Sistema</h1>
@@ -65,7 +65,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </main>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -73,3 +73,4 @@
 <script src="${ctx}/js/efectos.js"></script>
 </body>
 </html>
+

@@ -1,4 +1,4 @@
-/* Final orbital layout.
+﻿/* Final orbital layout.
    This file is loaded after sitio.css to guarantee visible planets on Tomcat. */
 
 body {
@@ -166,7 +166,6 @@ body::after {
     box-shadow:
         0 0 24px rgba(125, 212, 255, 0.22),
         inset 0 0 26px rgba(125, 212, 255, 0.08);
-    pointer-events: none;
 }
 
 .hero-earth-planet::after {
@@ -179,7 +178,6 @@ body::after {
         radial-gradient(circle at 38% 18%, rgba(255, 255, 255, 0.24), transparent 20%),
         radial-gradient(circle at 68% 66%, rgba(0, 0, 0, 0.24), transparent 45%),
         linear-gradient(118deg, rgba(255, 255, 255, 0.08), transparent 34%, rgba(0, 0, 0, 0.54) 88%);
-    pointer-events: none;
 }
 
 /* ===================== SPACING AND SECTION BALANCE ===================== */
@@ -322,7 +320,6 @@ body::after {
     border-radius: 50%;
     border: 1px solid rgba(125, 212, 255, 0.35);
     box-shadow: 0 0 22px rgba(125, 212, 255, 0.24);
-    pointer-events: none;
 }
 
 .planet-sphere::after {
@@ -334,7 +331,6 @@ body::after {
     background:
         radial-gradient(circle at 34% 22%, rgba(255, 255, 255, 0.36), transparent 15%),
         linear-gradient(116deg, rgba(255, 255, 255, 0.08), transparent 34%, rgba(0, 0, 0, 0.58) 86%);
-    pointer-events: none;
 }
 
 .planet-earth { --planet-size: 132px; }

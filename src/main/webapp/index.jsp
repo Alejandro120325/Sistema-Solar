@@ -34,8 +34,12 @@
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item"><a class="nav-link" href="#contenido">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="#categorias">Categorias</a></li>
-                <li class="nav-item"><a class="nav-link" href="#realidad-aumentada">Realidad Aumentada</a></li>
-                <li class="nav-item"><a class="nav-link" href="#multimedia">Multimedia</a></li>
+                <li class="nav-item"><a class="nav-link" href="#realidad-aumentada"
+                                        data-bitacora-accion="INGRESO_REALIDAD_AUMENTADA"
+                                        data-bitacora-detalle="Ingreso a la seccion de realidad aumentada">Realidad Aumentada</a></li>
+                <li class="nav-item"><a class="nav-link" href="#multimedia"
+                                        data-bitacora-accion="INGRESO_MULTIMEDIA"
+                                        data-bitacora-detalle="Ingreso a la seccion multimedia educativa">Multimedia</a></li>
             </ul>
 
             <div class="d-flex align-items-center nav-acciones">
@@ -173,7 +177,9 @@
                         <h3>Realidad Aumentada</h3>
                         <p>Observa modelos 3D del espacio en tu propio entorno usando
                            la camara de tu celular.</p>
-                        <a href="#realidad-aumentada" class="btn btn-contorno-oro">Ver en AR</a>
+                        <a href="#realidad-aumentada" class="btn btn-contorno-oro"
+                           data-bitacora-accion="INGRESO_REALIDAD_AUMENTADA"
+                           data-bitacora-detalle="Ingreso a realidad aumentada desde categorias">Ver en AR</a>
                     </article>
                 </div>
 
@@ -184,7 +190,9 @@
                         <h3>Multimedia Educativa</h3>
                         <p>Aprende con video, una galeria de imagenes de los planetas
                            y audio ambiental espacial.</p>
-                        <a href="#multimedia" class="btn btn-contorno-oro">Ver recursos</a>
+                        <a href="#multimedia" class="btn btn-contorno-oro"
+                           data-bitacora-accion="INGRESO_MULTIMEDIA"
+                           data-bitacora-detalle="Ingreso a multimedia educativa desde categorias">Ver recursos</a>
                     </article>
                 </div>
 
@@ -212,7 +220,9 @@
                                 shadow-intensity="1"
                                 exposure="1.1"
                                 environment-image="neutral">
-                            <button slot="ar-button" class="btn btn-oro">
+                            <button slot="ar-button" class="btn btn-oro"
+                                    data-bitacora-accion="INGRESO_REALIDAD_AUMENTADA"
+                                    data-bitacora-detalle="Uso del modelo de realidad aumentada">
                                 <i class="fa fa-mobile" aria-hidden="true"></i> Ver en mi espacio (AR)
                             </button>
                         </model-viewer>
@@ -247,7 +257,9 @@
                 <div class="col-lg-9">
                     <div class="marco-video">
                         <div class="ratio ratio-16x9">
-                            <video controls preload="metadata" poster="${ctx}/js/textures/stars.jpg">
+                            <video controls preload="metadata" poster="${ctx}/js/textures/stars.jpg"
+                                   data-bitacora-accion="INGRESO_MULTIMEDIA"
+                                   data-bitacora-detalle="Reproduccion del video educativo">
                                 <source src="${ctx}/videos/intro-bg.mp4" type="video/mp4">
                                 Tu navegador no soporta la reproduccion de video.
                             </video>
@@ -409,8 +421,12 @@
                 <ul class="pie-links">
                     <li><a href="#contenido">Inicio</a></li>
                     <li><a href="#categorias">Categorias</a></li>
-                    <li><a href="#realidad-aumentada">Realidad Aumentada</a></li>
-                    <li><a href="#multimedia">Multimedia</a></li>
+                    <li><a href="#realidad-aumentada"
+                           data-bitacora-accion="INGRESO_REALIDAD_AUMENTADA"
+                           data-bitacora-detalle="Ingreso a realidad aumentada desde footer">Realidad Aumentada</a></li>
+                    <li><a href="#multimedia"
+                           data-bitacora-accion="INGRESO_MULTIMEDIA"
+                           data-bitacora-detalle="Ingreso a multimedia desde footer">Multimedia</a></li>
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -437,7 +453,9 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>window.CONTEXT_PATH = "${ctx}";</script>
 <script src="${ctx}/js/accesibilidad.js"></script>
 <script src="${ctx}/js/efectos.js"></script>
+<script src="${ctx}/js/bitacora.js?v=20260526"></script>
 </body>
 </html>

@@ -29,6 +29,19 @@ public class UsuarioDAO {
         }
     }
 
+    /** Indica si el correo pertenece a otro usuario distinto al indicado. */
+    public boolean emailExisteParaOtro(String email, int idUsuario) throws SQLException {
+        String sql = "SELECT 1 FROM usuarios WHERE LOWER(email) = LOWER(?) AND id <> ?";
+        try (Connection con = ConexionBD.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, email);
+            ps.setInt(2, idUsuario);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        }
+    }
+
     /**
      * Inserta un usuario nuevo. La clave se guarda tal cual (texto plano).
      * @return el id generado, o -1 si fallo.
