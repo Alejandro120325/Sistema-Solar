@@ -408,7 +408,7 @@
 <footer class="pie-sitio">
     <div class="container">
         <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-3 col-md-6">
                 <p class="pie-marca"><i class="fa fa-sun-o" aria-hidden="true"></i> SISTEMA SOLAR</p>
                 <p class="small mb-0">
                     Plataforma web educativa para descubrir el universo mediante modelos 3D,
@@ -429,7 +429,7 @@
                            data-bitacora-detalle="Ingreso a multimedia desde footer">Multimedia</a></li>
                 </ul>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-2 col-md-6">
                 <p class="pie-titulo">Accesos</p>
                 <ul class="pie-links">
                     <li><a href="${ctx}/explorador.jsp">Explorador 3D</a></li>
@@ -437,11 +437,34 @@
                     <li><a href="${ctx}/registro.jsp">Registrarse</a></li>
                 </ul>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-2 col-md-6">
                 <p class="pie-titulo">Proyecto</p>
                 <ul class="pie-links">
                     <li><i class="fa fa-graduation-cap" aria-hidden="true"></i> ODS 4 - Educacion de Calidad</li>
                     <li><i class="fa fa-university" aria-hidden="true"></i> Universidad Politecnica Salesiana</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <p class="pie-titulo">Perfiles</p>
+                <ul class="pie-links pie-social">
+                    <li>
+                        <a href="https://www.linkedin.com/in/jairo-alejandro-ojeda-herrera-9466543a6/"
+                           target="_blank" rel="noopener noreferrer">
+                            <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Alejandro120325"
+                           target="_blank" rel="noopener noreferrer">
+                            <i class="fa fa-github" aria-hidden="true"></i> GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/alejo_ojeda1203/"
+                           target="_blank" rel="noopener noreferrer">
+                            <i class="fa fa-instagram" aria-hidden="true"></i> Instagram
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

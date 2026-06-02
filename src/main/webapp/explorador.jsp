@@ -219,9 +219,8 @@
 <script type="module" src="${ctx}/js/data.js?v=20260523"></script>
 <script type="module" src="${ctx}/js/audio.js?v=20260523"></script>
 <script type="module" src="${ctx}/js/intro.js?v=20260523"></script>
-<script type="module" src="${ctx}/js/motor3d.js?v=20260523"></script>
 <!-- js/games.js se importa dinamicamente desde interaction.js (lazy load) -->
-<script type="module" src="${ctx}/js/interaction.js?v=20260523"></script>
+<script type="module" src="${ctx}/js/interaction.js?v=20260601"></script>
 <!-- Registro de interacciones del estudiante en la bitacora -->
 <script src="${ctx}/js/bitacora.js?v=20260523"></script>
 </body>

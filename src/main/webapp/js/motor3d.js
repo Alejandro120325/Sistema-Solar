@@ -227,17 +227,37 @@ function makeAtmosphereMesh(radius, atmConfig) {
 // Cada planeta tiene un <div> que sigue su posición 3D.
 // Se almacenan en `labels` para hacer fade por distancia en el loop.
 // =========================================================
-const labels = []; // { id, element, mesh }
+const labels = []; // { id, element, mesh, object }
+const labelsById = new Map();
 
-function makeLabel(text, parentMesh, yOffset, extraClass = '') {
+function makeLabel(id, text, parentMesh, yOffset, extraClass = '') {
+    const key = String(id || '').trim();
+    if (labelsById.has(key)) {
+        return labelsById.get(key).object;
+    }
+
     const div = document.createElement('div');
     div.className = `planet-label ${extraClass}`.trim();
     div.textContent = text;
+    div.dataset.planetLabel = key;
     const obj = new CSS2DObject(div);
     obj.position.set(0, yOffset, 0);
     parentMesh.add(obj);
-    labels.push({ element: div, mesh: parentMesh });
+
+    const entry = { id: key, element: div, mesh: parentMesh, object: obj };
+    labels.push(entry);
+    labelsById.set(key, entry);
+    parentMesh.userData.labelObject = obj;
     return obj;
+}
+
+function setPlanetLabelsVisibility(activeId = null) {
+    const selected = activeId ? String(activeId) : null;
+    for (const label of labels) {
+        const visible = !selected || label.id === selected;
+        label.object.visible = visible;
+        label.element.style.display = visible ? '' : 'none';
+    }
 }
 
 // =========================================================
@@ -258,7 +278,7 @@ const sunCoronaOuter = makeAtmosphereMesh(28, { color: 0xff8a2a, intensity: 0.8,
 sun.add(sunCoronaOuter);
 
 // Etiqueta flotante del Sol
-makeLabel('SOL', sun, 28 * 1.6, 'planet-label--sun');
+makeLabel('sun', 'SOL', sun, 28 * 1.6, 'planet-label--sun');
 
 // =========================================================
 // PLANETAS
@@ -300,7 +320,7 @@ for (const [id, data] of Object.entries(planetDataConfig)) {
     }
 
     // Etiqueta flotante con el nombre del planeta en español
-    makeLabel(data.descriptionTitle, mesh, data.radius * 1.5 + 2);
+    makeLabel(id, data.descriptionTitle, mesh, data.radius * 1.5 + 2);
 
     // Anillos de Saturno con material PBR para mejor look
     if (data.hasRings) {
@@ -513,6 +533,7 @@ export function zoomToPlanet(planetId, mode = 'overview') {
 
     isZoomed = true;
     currentPlanetId = planetId;
+    setPlanetLabelsVisibility(planetId);
     controls.enabled = false;
 
     // Actualizar nombre del HUD
@@ -611,6 +632,7 @@ export function returnToOverview() {
         x: homeTargetPos.x, y: homeTargetPos.y, z: homeTargetPos.z,
         duration: 2, ease: 'power3.inOut',
         onComplete: () => {
+            setPlanetLabelsVisibility(null);
             controls.enabled = true;
             isZoomed = false;
         }
@@ -744,6 +766,7 @@ export function exitStructureView({ silent = false } = {}) {
 export function zoomToSun(mode = 'overview') {
     isZoomed = true;
     currentPlanetId = 'sun';
+    setPlanetLabelsVisibility('sun');
     controls.enabled = false;
 
     const detailsPlanetName = document.getElementById('details-planet-name');

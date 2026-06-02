@@ -7,7 +7,7 @@ import {
     enterStructureView,
     exitStructureView,
     zoomToSun
-} from './motor3d.js';
+} from './motor3d.js?v=20260601';
 import { planetDataConfig, planetEncyclopedia } from './data.js';
 import { audio } from './audio.js';
 

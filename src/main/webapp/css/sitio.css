@@ -584,6 +584,12 @@ model-viewer {
 .pie-links li { margin-bottom: 0.6rem; font-weight: 300; }
 .pie-links a { color: var(--texto-2); font-size: 0.92rem; font-weight: 300; transition: color 0.22s ease, padding 0.22s ease; }
 .pie-links a:hover { color: var(--oro); padding-left: 5px; }
+.pie-social i {
+    width: 1.1rem;
+    margin-right: 0.45rem;
+    color: var(--oro);
+    text-align: center;
+}
 .pie-bottom {
     margin-top: 2.8rem;
     padding-top: 1.5rem;
@@ -825,6 +831,63 @@ body::before {
 .navbar.barra-sitio {
     background: rgba(3, 5, 13, 0.76);
     box-shadow: 0 14px 44px rgba(0, 0, 0, 0.34);
+    min-height: 72px;
+    padding: 0;
+}
+
+.barra-sitio > .container {
+    min-height: 72px;
+    align-items: center;
+    gap: clamp(1rem, 2.4vw, 1.8rem);
+}
+
+@media (min-width: 992px) {
+    .barra-sitio > .container {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .barra-sitio .navbar-collapse {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: clamp(1rem, 2vw, 1.6rem);
+    }
+
+    .barra-sitio .navbar-nav {
+        justify-content: center;
+        align-items: center;
+        gap: 0.35rem;
+    }
+}
+
+.navbar-marca {
+    min-height: 44px;
+}
+
+.nav-acciones {
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.barra-sitio .btn-sm,
+.barra-accesibilidad .btn {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.barra-sitio .btn-sm {
+    border-radius: 10px;
+}
+
+.navbar-text {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
 }
 
 .barra-sitio .nav-link {
@@ -1671,6 +1734,97 @@ body::before {
 
 .planet-sphere {
     --planet-size: 112px;
+    --planet-spin-speed: 4.2s;
+    position: relative;
+    width: var(--planet-size);
+    height: var(--planet-size);
+    border-radius: 50%;
+    isolation: isolate;
+    filter: drop-shadow(0 24px 26px rgba(0,0,0,0.62));
+    transform: perspective(700px) rotateY(0deg);
+    transform-style: preserve-3d;
+    transition: transform 0.36s cubic-bezier(0.22,1,0.36,1),
+                filter 0.36s ease;
+}
+
+.planet-sphere .planet-texture {
+    position: absolute;
+    inset: -1px;
+    z-index: 2;
+    border-radius: 50%;
+    background-size: 260% 100%;
+    background-position: 0% center;
+    background-repeat: repeat-x;
+    box-shadow:
+        inset -30px -16px 42px rgba(0,0,0,0.76),
+        inset 15px 8px 24px rgba(255,255,255,0.14),
+        0 0 34px -16px rgba(127,226,255,0.74);
+    animation: none;
+    will-change: background-position;
+}
+
+.planet-card:hover .planet-sphere,
+.planet-viewer:hover .planet-sphere {
+    transform: perspective(700px) rotateY(-16deg) rotateX(3deg);
+    filter: drop-shadow(0 28px 30px rgba(0,0,0,0.66));
+}
+
+.planet-card:hover .planet-sphere .planet-texture,
+.planet-viewer:hover .planet-sphere .planet-texture {
+    animation: planetGalleryTextureSpin var(--planet-spin-speed) linear infinite;
+}
+
+.planet-sphere::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: 3;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 33% 23%, rgba(255,255,255,0.34), transparent 16%),
+        linear-gradient(100deg, rgba(255,255,255,0.12), transparent 34%, rgba(0,0,0,0.30) 72%, rgba(0,0,0,0.62) 100%),
+        radial-gradient(circle at 32% 30%, transparent 0 45%, rgba(0,0,0,0.38) 72%, rgba(0,0,0,0.82) 100%);
+    box-shadow:
+        inset 12px 0 18px rgba(255,255,255,0.06),
+        inset -28px 0 34px rgba(0,0,0,0.34),
+        0 0 24px rgba(127,226,255,0.24);
+}
+
+.planet-sphere::after {
+    content: "";
+    position: absolute;
+    left: 18%;
+    right: 18%;
+    bottom: -18px;
+    height: 18px;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.62), transparent 72%);
+    filter: blur(8px);
+}
+
+.planet-earth { --planet-spin-speed: 4.3s; }
+.planet-mars { --planet-spin-speed: 4s; }
+.planet-jupiter { --planet-spin-speed: 5.7s; }
+.planet-venus { --planet-spin-speed: 4.8s; }
+.planet-mercury { --planet-spin-speed: 3.7s; }
+.planet-saturn { --planet-spin-speed: 5.8s; }
+.planet-uranus { --planet-spin-speed: 4.7s; }
+.planet-neptune { --planet-spin-speed: 5.1s; }
+
+.planet-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 158%;
+    height: 42%;
+    border-radius: 50%;
+    border: 7px solid rgba(244, 218, 158, 0.72);
+    transform: translate(-50%, -50%) rotate(-13deg) skewX(-12deg);
+    box-shadow:
+        0 0 24px rgba(234,199,127,0.34),
+        inset 0 0 16px rgba(255,255,255,0.18);
 }
 
 .planet-mars {
@@ -1725,12 +1879,8 @@ body::before {
     border-radius: 24px;
     border: 1px solid rgba(167, 220, 255, 0.28);
     background:
-        radial-gradient(circle at 52% 44%, rgba(127,226,255,0.14), transparent 28%),
-        radial-gradient(circle at 22% 18%, rgba(234,199,127,0.10), transparent 24%),
-        radial-gradient(1px 1px at 12% 22%, rgba(255,255,255,0.9), transparent),
-        radial-gradient(1px 1px at 78% 18%, rgba(127,226,255,0.8), transparent),
-        radial-gradient(1px 1px at 66% 70%, rgba(255,255,255,0.55), transparent),
-        linear-gradient(180deg, #080c18, #03050d 78%);
+        linear-gradient(180deg, rgba(1,3,10,0.02), rgba(1,3,10,0.10) 78%),
+        url("../img/espacio.jpg") center / cover no-repeat;
     box-shadow:
         0 40px 110px -48px rgba(0,0,0,1),
         0 0 80px -46px rgba(127,226,255,0.82);
@@ -1741,9 +1891,10 @@ body::before {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(120deg, rgba(255,255,255,0.10), transparent 28%),
-        radial-gradient(420px 220px at 50% 105%, rgba(45,142,216,0.18), transparent 72%);
+        linear-gradient(120deg, rgba(255,255,255,0.08), transparent 24%),
+        radial-gradient(520px 250px at 50% 105%, rgba(45,142,216,0.12), transparent 72%);
     z-index: 1;
+    pointer-events: none;
 }
 
 .ar-stage model-viewer,
@@ -1766,9 +1917,20 @@ model-viewer {
     to { background-position: center, center, 210% 50%; }
 }
 
+@keyframes planetGalleryTextureSpin {
+    from { background-position: 0% center; }
+    to { background-position: 260% center; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .css-planet {
+    .css-planet,
+    .planet-sphere .planet-texture {
         animation: none !important;
+    }
+
+    .planet-card:hover .planet-sphere,
+    .planet-viewer:hover .planet-sphere {
+        transform: none !important;
     }
 }
 
