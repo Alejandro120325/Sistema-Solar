@@ -3,8 +3,8 @@ package com.sistemasolar.modelo;
 import java.sql.Timestamp;
 
 /**
- * Representa un evento registrado en la bitacora del sistema:
- * registros de usuarios nuevos, inicios de sesion e interacciones
+ * Representa un evento registrado en la bitácora del sistema:
+ * registros de usuarios nuevos, inicios de sesión e interacciones
  * de los estudiantes con el explorador del Sistema Solar.
  */
 public class Bitacora {

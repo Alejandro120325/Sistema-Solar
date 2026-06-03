@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 /**
  * Procesa el registro de nuevos usuarios (perfil ESTUDIANTE).
- * Reglas: correo valido y contrasena de minimo 8 caracteres.
+ * Reglas: correo válido y contraseña de mínimo 8 caracteres.
  */
 @WebServlet("/registrar")
 public class RegistroServlet extends HttpServlet {
@@ -47,11 +47,11 @@ public class RegistroServlet extends HttpServlet {
             if (nombre.isEmpty() || email.isEmpty() || clave.isEmpty()) {
                 error = "Todos los campos son obligatorios.";
             } else if (!EMAIL.matcher(email).matches()) {
-                error = "Ingresa un correo electronico valido.";
+                error = "Ingresa un correo electrónico válido.";
             } else if (clave.length() < 8) {
-                error = "La contrasena debe tener al menos 8 caracteres.";
+                error = "La contraseña debe tener al menos 8 caracteres.";
             } else if (!clave.equals(clave2)) {
-                error = "Las contrasenas no coinciden.";
+                error = "Las contraseñas no coinciden.";
             } else if (usuarioDAO.emailExiste(email)) {
                 error = "Ya existe una cuenta registrada con ese correo.";
             }
@@ -72,14 +72,14 @@ public class RegistroServlet extends HttpServlet {
             u.setEstado("ACTIVO");
             int id = usuarioDAO.registrar(u);
 
-            // Se registra en la bitacora el nuevo usuario.
+            // Se registra en la bitácora el nuevo usuario.
             bitacoraDAO.registrar(id, email, "REGISTRO",
                     "Nuevo estudiante registrado: " + nombre, req.getRemoteAddr());
 
             resp.sendRedirect(req.getContextPath() + "/login.jsp?registrado=1");
 
         } catch (Exception e) {
-            req.setAttribute("error", "Ocurrio un error al registrar: " + e.getMessage());
+            req.setAttribute("error", "Ocurrió un error al registrar: " + e.getMessage());
             req.setAttribute("nombre", nombre);
             req.setAttribute("email", email);
             req.getRequestDispatcher("/registro.jsp").forward(req, resp);

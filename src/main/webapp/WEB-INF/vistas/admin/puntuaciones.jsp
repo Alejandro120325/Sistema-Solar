@@ -23,12 +23,45 @@
     <main class="admin-contenido" id="contenido">
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
             <div>
-                <h1 class="h3 texto-oro mb-0">Ranking por Planeta</h1>
+                <h1 class="h3 texto-oro mb-0">Ranking por planeta</h1>
                 <span class="text-secondary">Consulta alumnos, planetas y puntuaciones sin duplicados</span>
             </div>
-            <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
-                <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
-                <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
+            <div class="admin-header-actions">
+                <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
+                    <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
+                    <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
+                </div>
+                <div class="theme-selector" data-theme-selector>
+                    <button type="button" class="theme-toggle"
+                            aria-haspopup="true" aria-expanded="false"
+                            aria-label="Seleccionar tema visual">
+                        <span class="theme-swatch theme-swatch-current" data-theme-current-swatch></span>
+                        <span class="theme-toggle-text" data-theme-current-label>Original</span>
+                        <i class="fa fa-chevron-down theme-arrow" aria-hidden="true"></i>
+                    </button>
+                    <div class="theme-menu" role="menu" hidden>
+                        <button type="button" role="menuitemradio" data-theme-option="original">
+                            <span class="theme-swatch theme-swatch-original"></span>
+                            <span>Original</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="green">
+                            <span class="theme-swatch theme-swatch-green"></span>
+                            <span>Verde</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="cyan">
+                            <span class="theme-swatch theme-swatch-cyan"></span>
+                            <span>Cyan</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="purple">
+                            <span class="theme-swatch theme-swatch-purple"></span>
+                            <span>Morado</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="gold">
+                            <span class="theme-swatch theme-swatch-gold"></span>
+                            <span>Dorado</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -93,7 +126,7 @@
                     <c:if test="${empty puntuaciones}">
                         <tr><td colspan="5" class="text-center text-secondary py-5 estado-vacio">
                             <i class="fa fa-line-chart" aria-hidden="true"></i>
-                            <span>Todavia no hay puntuaciones registradas para esta consulta.</span>
+                            <span>Todavía no hay puntuaciones registradas para esta consulta.</span>
                         </td></tr>
                     </c:if>
                 </tbody>
@@ -103,7 +136,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="${ctx}/js/accesibilidad.js"></script>
+<script src="${ctx}/js/accesibilidad.js?v=20260603"></script>
 <script src="${ctx}/js/efectos.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 /* ================================================================
    bitacora.js
-   Envia al servidor las interacciones del estudiante dentro del
-   explorador 3D para que queden registradas en la bitacora del
+   Envía al servidor las interacciones del estudiante dentro del
+   explorador 3D para que queden registradas en la bitácora del
    administrador. No modifica el motor 3D: solo escucha eventos.
    ================================================================ */
 (function () {
@@ -11,15 +11,15 @@
 
     var NOMBRES = {
         sun: "el Sol", mercury: "Mercurio", venus: "Venus", earth: "la Tierra",
-        mars: "Marte", jupiter: "Jupiter", saturn: "Saturno", uranus: "Urano",
-        neptune: "Neptuno", pluto: "Pluton"
+        mars: "Marte", jupiter: "Júpiter", saturn: "Saturno", uranus: "Urano",
+        neptune: "Neptuno", pluto: "Plutón"
     };
 
     var ACCIONES = {
-        visit: "Visito en 3D",
-        encyclopedia: "Leyo la enciclopedia de",
-        structure: "Exploro la estructura de",
-        game: "Jugo el minijuego de"
+        visit: "Visitó en 3D",
+        encyclopedia: "Leyó la enciclopedia de",
+        structure: "Exploró la estructura de",
+        game: "Jugó el minijuego de"
     };
 
     function registrar(accion, detalle) {
@@ -54,7 +54,7 @@
     document.addEventListener("play", function (e) {
         var item = e.target;
         if (item && item.dataset && item.dataset.bitacoraAccion) {
-            registrar(item.dataset.bitacoraAccion, item.dataset.bitacoraDetalle || "Reproduccion multimedia");
+            registrar(item.dataset.bitacoraAccion, item.dataset.bitacoraDetalle || "Reproducción multimedia");
         }
     }, true);
 
@@ -62,22 +62,22 @@
         return;
     }
 
-    // El estudiante selecciona un planeta en el menu lateral
+    // El estudiante selecciona un planeta en el menú lateral
     document.addEventListener("change", function (e) {
         if (e.target && e.target.matches('input[name="planet"]')) {
-            registrar("INTERACCION", "Selecciono " + (NOMBRES[e.target.id] || e.target.id));
+            registrar("INTERACCION", "Seleccionó " + (NOMBRES[e.target.id] || e.target.id));
         }
     });
 
-    // El estudiante abre una accion del panel (visita, enciclopedia, etc.)
+    // El estudiante abre una acción del panel (visita, enciclopedia, etc.)
     document.addEventListener("click", function (e) {
         var btn = e.target.closest ? e.target.closest(".scifi-btn[data-action]") : null;
         if (btn) {
-            var accion = ACCIONES[btn.dataset.action] || "Interactuo con";
+            var accion = ACCIONES[btn.dataset.action] || "Interactuó con";
             registrar("INTERACCION", accion + " " + planetaActual());
         }
     });
 
     // Marca de ingreso al explorador
-    registrar("INGRESO_EXPLORADOR", "Ingreso al explorador del Sistema Solar");
+    registrar("INGRESO_EXPLORADOR", "Ingresó al explorador del Sistema Solar");
 })();

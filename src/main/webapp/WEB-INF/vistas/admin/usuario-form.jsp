@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${esNuevo ? 'Nuevo' : 'Editar'} Usuario | Sistema Solar</title>
+    <title>${esNuevo ? 'Nuevo' : 'Editar'} usuario | Sistema Solar</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="${ctx}/css/sitio.css">
@@ -23,8 +23,8 @@
     <main class="admin-contenido" id="contenido">
         <h1 class="h3 texto-oro mb-4">
             <c:choose>
-                <c:when test="${esNuevo}"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo Usuario</c:when>
-                <c:otherwise><i class="fa fa-pencil" aria-hidden="true"></i> Editar Usuario</c:otherwise>
+                <c:when test="${esNuevo}"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo usuario</c:when>
+                <c:otherwise><i class="fa fa-pencil" aria-hidden="true"></i> Editar usuario</c:otherwise>
             </c:choose>
         </h1>
 
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">Correo electronico</label>
+                    <label for="email" class="form-label">Correo electrónico</label>
                     <input type="email" class="form-control" id="email" name="email"
                            value="${usuario.email}" required>
                 </div>
@@ -74,18 +74,18 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="clave" class="form-label">Contrasena</label>
+                    <label for="clave" class="form-label">Contraseña</label>
                     <div class="campo-clave">
                         <input type="password" class="form-control" id="clave" name="clave"
                                minlength="8" ${esNuevo ? 'required' : ''}>
-                        <button type="button" class="toggle-clave" aria-label="Mostrar contrasena">
+                        <button type="button" class="toggle-clave" aria-label="Mostrar contraseña">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </button>
                     </div>
                     <div class="form-text">
                         <c:choose>
-                            <c:when test="${esNuevo}">Minimo 8 caracteres.</c:when>
-                            <c:otherwise>Dejala vacia para mantener la contrasena actual. Minimo 8 caracteres si la cambias.</c:otherwise>
+                            <c:when test="${esNuevo}">Mínimo 8 caracteres.</c:when>
+                            <c:otherwise>Déjala vacía para mantener la contraseña actual. Mínimo 8 caracteres si la cambias.</c:otherwise>
                         </c:choose>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="${ctx}/js/accesibilidad.js"></script>
+<script src="${ctx}/js/accesibilidad.js?v=20260603"></script>
 </body>
 </html>
 

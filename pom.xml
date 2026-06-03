@@ -53,8 +53,8 @@
     </dependencies>
 
     <build>
-        <!-- El .war final se llamara sistema-solar.war -->
-        <finalName>sistema-solar</finalName>
+        <!-- El .war final se llamara educosmos-4.war -->
+        <finalName>educosmos-4</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

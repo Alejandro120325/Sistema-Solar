@@ -40,8 +40,8 @@ let _planetaActual = null;
 
 const NOMBRES_PLANETA = {
     sun: 'Sol', mercury: 'Mercurio', venus: 'Venus', earth: 'Tierra',
-    mars: 'Marte', jupiter: 'Jupiter', saturn: 'Saturno', uranus: 'Urano',
-    neptune: 'Neptuno', pluto: 'Pluton'
+    mars: 'Marte', jupiter: 'Júpiter', saturn: 'Saturno', uranus: 'Urano',
+    neptune: 'Neptuno', pluto: 'Plutón'
 };
 
 function reportarPuntuacion(puntaje, maximo) {
@@ -61,7 +61,7 @@ function reportarPuntuacion(puntaje, maximo) {
     } catch (e) { /* si falla, el juego no se interrumpe */ }
 }
 
-// Extrae el patron "X/Y" del mensaje final y lo registra como puntuacion
+// Extrae el patrón "X/Y" del mensaje final y lo registra como puntuación
 function reportarDesdeMensaje(msg) {
     const m = String(msg).match(/(\d+)\s*\/\s*(\d+)/);
     if (m) reportarPuntuacion(parseInt(m[1], 10), parseInt(m[2], 10));

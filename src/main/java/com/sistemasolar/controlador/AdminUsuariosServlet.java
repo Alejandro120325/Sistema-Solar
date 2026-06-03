@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 
 /**
- * Gestion de usuarios para el administrador: listar, crear, actualizar,
- * bloquear/activar y eliminar. Cada accion queda en la bitacora.
+ * Gestión de usuarios para el administrador: listar, crear, actualizar,
+ * bloquear/activar y eliminar. Cada acción queda en la bitácora.
  */
 @WebServlet("/admin/usuarios")
 public class AdminUsuariosServlet extends HttpServlet {
@@ -66,7 +66,7 @@ public class AdminUsuariosServlet extends HttpServlet {
                 return;
             }
 
-            // Sin accion: se muestra la lista de usuarios.
+            // Sin acción: se muestra la lista de usuarios.
             req.setAttribute("usuarios", usuarioDAO.listarTodos());
             req.getRequestDispatcher(VISTA_LISTA).forward(req, resp);
 
@@ -102,18 +102,18 @@ public class AdminUsuariosServlet extends HttpServlet {
                 throw new IllegalArgumentException("Completa todos los campos obligatorios.");
             }
             if (!EMAIL.matcher(email).matches()) {
-                throw new IllegalArgumentException("Ingresa un correo electronico valido.");
+                throw new IllegalArgumentException("Ingresa un correo electrónico válido.");
             }
             if (!"ADMIN".equals(rol) && !"ESTUDIANTE".equals(rol)) {
-                throw new IllegalArgumentException("Rol no valido.");
+                throw new IllegalArgumentException("Rol no válido.");
             }
             if (!"ACTIVO".equals(estado) && !"BLOQUEADO".equals(estado)) {
-                throw new IllegalArgumentException("Estado no valido.");
+                throw new IllegalArgumentException("Estado no válido.");
             }
 
             if (esNuevo) {
                 if (clave == null || clave.length() < 8) {
-                    throw new IllegalArgumentException("La contrasena debe tener al menos 8 caracteres.");
+                    throw new IllegalArgumentException("La contraseña debe tener al menos 8 caracteres.");
                 }
                 if (usuarioDAO.emailExiste(email)) {
                     throw new IllegalArgumentException("Ya existe un usuario con ese correo.");
@@ -126,7 +126,7 @@ public class AdminUsuariosServlet extends HttpServlet {
                 u.setEstado(estado);
                 usuarioDAO.registrar(u);
                 registrarAccion(req, "CREACION_USUARIO",
-                        "Admin creo el usuario: " + email + " (" + rol + ")");
+                        "Admin creó el usuario: " + email + " (" + rol + ")");
             } else {
                 int id = Integer.parseInt(idParam.trim());
                 if (usuarioDAO.emailExisteParaOtro(email, id)) {
@@ -140,15 +140,15 @@ public class AdminUsuariosServlet extends HttpServlet {
                 u.setEstado(estado);
                 usuarioDAO.actualizar(u);
 
-                // La contrasena solo se cambia si el admin escribio una nueva.
+                // La contraseña solo se cambia si el admin escribió una nueva.
                 if (clave != null && !clave.isEmpty()) {
                     if (clave.length() < 8) {
-                        throw new IllegalArgumentException("La nueva contrasena debe tener al menos 8 caracteres.");
+                        throw new IllegalArgumentException("La nueva contraseña debe tener al menos 8 caracteres.");
                     }
                     usuarioDAO.actualizarClave(id, clave);
                 }
                 registrarAccion(req, "ACTUALIZACION_USUARIO",
-                        "Admin actualizo el usuario: " + email);
+                        "Admin actualizó el usuario: " + email);
             }
 
             resp.sendRedirect(req.getContextPath() + "/admin/usuarios");
@@ -169,7 +169,7 @@ public class AdminUsuariosServlet extends HttpServlet {
         }
     }
 
-    /** Registra en la bitacora una accion realizada por el administrador. */
+    /** Registra en la bitácora una acción realizada por el administrador. */
     private void registrarAccion(HttpServletRequest req, String accion, String detalle) {
         Usuario admin = (Usuario) req.getSession().getAttribute("usuario");
         Integer adminId = admin != null ? admin.getId() : null;

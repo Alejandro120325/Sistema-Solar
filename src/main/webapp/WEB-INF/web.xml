@@ -5,14 +5,14 @@
                              http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <display-name>Sistema Solar - Educacion de Calidad</display-name>
+    <display-name>Sistema Solar - Educación de Calidad</display-name>
 
-    <!-- Pagina de inicio del sitio -->
+    <!-- Página de inicio del sitio -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <!-- La sesion expira a los 30 minutos de inactividad -->
+    <!-- La sesión expira a los 30 minutos de inactividad -->
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>

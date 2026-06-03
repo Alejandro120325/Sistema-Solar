@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * Recibe (por fetch desde los minijuegos del explorador 3D) el puntaje
  * que obtuvo el alumno y lo guarda en la tabla "puntuaciones_planeta".
- * Tambien deja constancia del resultado en la bitacora.
+ * También deja constancia del resultado en la bitácora.
  */
 @WebServlet("/puntuacion")
 public class PuntuacionServlet extends HttpServlet {
@@ -69,7 +69,7 @@ public class PuntuacionServlet extends HttpServlet {
         // 1) Se guarda en la tabla de puntuaciones
         puntuacionDAO.registrar(new Puntuacion(u.getId(), u.getEmail(), codigoPlaneta, puntaje, maximo));
 
-        // 2) Tambien se registra en la bitacora como interaccion del estudiante
+        // 2) También se registra en la bitácora como interacción del estudiante
         bitacoraDAO.registrar(u.getId(), u.getEmail(), "MINIJUEGO",
                 "Minijuego de " + planeta + ": " + puntaje + " de " + maximo + " puntos",
                 req.getRemoteAddr());

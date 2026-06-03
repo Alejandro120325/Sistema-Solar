@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesion | Sistema Solar</title>
+    <title>Iniciar Sesión | Sistema Solar</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="${ctx}/css/sitio.css">
@@ -17,13 +17,46 @@
 <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
 
 <nav class="navbar barra-sitio">
-    <div class="container">
+    <div class="container auth-nav-inner">
         <a class="navbar-brand navbar-marca" href="${ctx}/index.jsp">
-            <i class="fa fa-sun-o" aria-hidden="true"></i> SISTEMA SOLAR
+            <i class="fa fa-sun-o" aria-hidden="true"></i> EduCosmos 4
         </a>
-        <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
-            <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
-            <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
+        <div class="auth-header-actions">
+            <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
+                <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
+                <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
+            </div>
+            <div class="theme-selector" data-theme-selector>
+                <button type="button" class="theme-toggle"
+                        aria-haspopup="true" aria-expanded="false"
+                        aria-label="Seleccionar tema visual">
+                    <span class="theme-swatch theme-swatch-current" data-theme-current-swatch></span>
+                    <span class="theme-toggle-text" data-theme-current-label>Original</span>
+                    <i class="fa fa-chevron-down theme-arrow" aria-hidden="true"></i>
+                </button>
+                <div class="theme-menu" role="menu" hidden>
+                    <button type="button" role="menuitemradio" data-theme-option="original">
+                        <span class="theme-swatch theme-swatch-original"></span>
+                        <span>Original</span>
+                    </button>
+                    <button type="button" role="menuitemradio" data-theme-option="green">
+                        <span class="theme-swatch theme-swatch-green"></span>
+                        <span>Verde</span>
+                    </button>
+                    <button type="button" role="menuitemradio" data-theme-option="cyan">
+                        <span class="theme-swatch theme-swatch-cyan"></span>
+                        <span>Cyan</span>
+                    </button>
+                    <button type="button" role="menuitemradio" data-theme-option="purple">
+                        <span class="theme-swatch theme-swatch-purple"></span>
+                        <span>Morado</span>
+                    </button>
+                    <button type="button" role="menuitemradio" data-theme-option="gold">
+                        <span class="theme-swatch theme-swatch-gold"></span>
+                        <span>Dorado</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
@@ -32,24 +65,24 @@
       style="min-height: calc(100vh - 70px);">
     <div class="card panel-oscuro p-4 p-md-5" style="max-width: 440px; width: 100%;">
         <div class="text-center mb-4">
-            <h1 class="h3 texto-oro">Iniciar Sesion</h1>
+            <h1 class="h3 texto-oro">Iniciar Sesión</h1>
             <p class="text-secondary mb-0">Accede a tu cuenta de Explorador Solar</p>
         </div>
 
         <!-- Mensajes -->
         <c:if test="${param.registrado == '1'}">
             <div class="alert alert-success" role="alert">
-                Cuenta creada con exito. Ya puedes iniciar sesion.
+                Cuenta creada con éxito. Ya puedes iniciar sesión.
             </div>
         </c:if>
         <c:if test="${param.requerido == '1'}">
             <div class="alert alert-warning" role="alert">
-                Debes iniciar sesion para acceder a esa pagina.
+                Debes iniciar sesión para acceder a esa página.
             </div>
         </c:if>
         <c:if test="${param.bloqueado == '1'}">
             <div class="alert alert-danger" role="alert">
-                Tu cuenta esta bloqueada. Contacta con el administrador.
+                Tu cuenta está bloqueada. Contacta con el administrador.
             </div>
         </c:if>
         <c:if test="${not empty error}">
@@ -58,15 +91,15 @@
 
         <form action="${ctx}/login" method="post">
             <div class="mb-3">
-                <label for="email" class="form-label">Correo electronico</label>
+                <label for="email" class="form-label">Correo electrónico</label>
                 <input type="email" class="form-control" id="email" name="email"
                        value="${email}" placeholder="ejemplo@correo.com" required autofocus>
             </div>
             <div class="mb-4">
-                <label for="clave" class="form-label">Contrasena</label>
+                <label for="clave" class="form-label">Contraseña</label>
                 <div class="campo-clave">
                     <input type="password" class="form-control" id="clave" name="clave" required>
-                    <button type="button" class="toggle-clave" aria-label="Mostrar contrasena">
+                    <button type="button" class="toggle-clave" aria-label="Mostrar contraseña">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -77,8 +110,8 @@
         </form>
 
         <p class="text-center text-secondary mb-0">
-            No tienes cuenta?
-            <a href="${ctx}/registro.jsp" class="texto-oro">Registrate aqui</a>
+            ¿No tienes cuenta?
+            <a href="${ctx}/registro.jsp" class="texto-oro">Regístrate aquí</a>
         </p>
         <p class="text-center mt-2 mb-0">
             <a href="${ctx}/index.jsp" class="text-secondary small">Volver al inicio</a>
@@ -87,6 +120,6 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="${ctx}/js/accesibilidad.js"></script>
+<script src="${ctx}/js/accesibilidad.js?v=20260603"></script>
 </body>
 </html>

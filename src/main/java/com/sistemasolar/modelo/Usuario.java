@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 /**
  * Representa a un usuario del sistema (perfil ADMIN o ESTUDIANTE).
- * El "invitado" no se guarda en base de datos: es quien navega sin sesion.
+ * El "invitado" no se guarda en base de datos: es quien navega sin sesión.
  */
 public class Usuario {
 

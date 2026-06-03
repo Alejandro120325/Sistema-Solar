@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * Acceso a datos de la tabla "usuarios".
- * Nota: en este proyecto academico las contrasenas se guardan en texto
+ * Nota: en este proyecto académico las contraseñas se guardan en texto
  * plano para poder revisarlas directamente en la base de datos local.
  */
 public class UsuarioDAO {
@@ -117,7 +117,7 @@ public class UsuarioDAO {
         return lista;
     }
 
-    /** Actualiza nombre, email, rol y estado. NO toca la contrasena. */
+    /** Actualiza nombre, email, rol y estado. NO toca la contraseña. */
     public boolean actualizar(Usuario u) throws SQLException {
         String sql = "UPDATE usuarios SET nombre_completo = ?, email = ?, rol = ?, estado = ? "
                    + "WHERE id = ?";
@@ -132,7 +132,7 @@ public class UsuarioDAO {
         }
     }
 
-    /** Cambia solo la contrasena del usuario (texto plano). */
+    /** Cambia solo la contraseña del usuario (texto plano). */
     public boolean actualizarClave(int id, String clavePlana) throws SQLException {
         String sql = "UPDATE usuarios SET clave = ? WHERE id = ?";
         try (Connection con = ConexionBD.getConexion();

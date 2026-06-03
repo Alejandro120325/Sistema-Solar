@@ -19,7 +19,7 @@ import java.util.List;
 public class PuntuacionDAO {
 
     /**
-     * Guarda o actualiza la puntuacion de un alumno en un planeta.
+     * Guarda o actualiza la puntuación de un alumno en un planeta.
      * La llave unica usuario_id + planeta_id evita duplicados.
      */
     public void registrar(Puntuacion p) {
@@ -51,7 +51,7 @@ public class PuntuacionDAO {
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            System.err.println("No se pudo registrar la puntuacion: " + e.getMessage());
+            System.err.println("No se pudo registrar la puntuación: " + e.getMessage());
         }
     }
 
@@ -89,7 +89,7 @@ public class PuntuacionDAO {
         return consultarLista(sql);
     }
 
-    /** Ranking de un planeta ordenado por puntuacion descendente. */
+    /** Ranking de un planeta ordenado por puntuación descendente. */
     public List<Puntuacion> rankingPorPlaneta(String codigoPlaneta) throws SQLException {
         String sql =
             "SELECT pp.*, p.codigo AS planeta_codigo, p.nombre AS planeta_nombre, " +

@@ -8,7 +8,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 /**
- * Se ejecuta automaticamente cuando arranca la aplicacion en Tomcat.
+ * Se ejecuta automáticamente cuando arranca la aplicación en Tomcat.
  * Si todavia no existe un administrador, lo crea con credenciales por
  * defecto para que siempre se pueda entrar al panel.
  *
@@ -49,6 +49,6 @@ public class InicializadorApp implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        // Sin acciones al detener la aplicacion.
+        // Sin acciones al detener la aplicación.
     }
 }

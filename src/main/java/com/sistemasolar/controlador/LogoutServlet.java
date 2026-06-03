@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Cierra la sesion del usuario y lo devuelve a la pagina de inicio.
+ * Cierra la sesión del usuario y lo devuelve a la página de inicio.
  */
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
@@ -25,7 +25,7 @@ public class LogoutServlet extends HttpServlet {
             Usuario u = (Usuario) sesion.getAttribute("usuario");
             if (u != null) {
                 bitacoraDAO.registrar(u.getId(), u.getEmail(), "CIERRE_SESION",
-                        "El usuario cerro sesion", req.getRemoteAddr());
+                        "El usuario cerró sesión", req.getRemoteAddr());
             }
             sesion.invalidate();
         }

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class BitacoraDAO {
 
-    /** Guarda un evento en la bitacora. */
+    /** Guarda un evento en la bitácora. */
     public void registrar(Bitacora b) {
         String sql = "INSERT INTO bitacora (usuario_id, email, accion, detalle, ip) "
                    + "VALUES (?, ?, ?, ?, ?)";
@@ -35,8 +35,8 @@ public class BitacoraDAO {
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            // La bitacora no debe romper la app: si falla, solo se informa.
-            System.err.println("No se pudo registrar en bitacora: " + e.getMessage());
+            // La bitácora no debe romper la app: si falla, solo se informa.
+            System.err.println("No se pudo registrar en bitácora: " + e.getMessage());
         }
     }
 

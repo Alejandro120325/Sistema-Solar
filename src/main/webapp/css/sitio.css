@@ -1,7 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ================================================================
-   sitio.css  Â·  Sistema Solar  Â·  Tema "Observatorio" High-End
+   sitio.css  -  Sistema Solar  -  Tema "Observatorio" High-End
    Estetica: obsidiana profunda + oro champagne + azul nebulosa.
    ================================================================ */
 
@@ -19,6 +19,10 @@
     --oro-hondo: #c39f5e;
     --nebula:    #6c80bd;
     --cian:      #8ec9d6;
+    --accent-primary: #e4c07f;
+    --accent-secondary: #f6e3bb;
+    --theme-glow: rgba(228, 192, 127, 0.42);
+    --theme-bg-glow: radial-gradient(circle at 50% 14%, rgba(228, 192, 127, 0.13), transparent 48%);
 
     --texto:     #eef0f8;
     --texto-2:   #aab0c8;
@@ -46,6 +50,84 @@ body {
     overflow-x: hidden;
 }
 
+body.theme-green {
+    --obsidiana: #03110d;
+    --carbon: #071812;
+    --vidrio: rgba(52, 245, 163, 0.12);
+    --vidrio-2: rgba(185, 255, 217, 0.14);
+    --linea: rgba(52, 245, 163, 0.2);
+    --linea-2: rgba(52, 245, 163, 0.42);
+    --oro: #34f5a3;
+    --oro-claro: #b9ffd9;
+    --oro-hondo: #17b875;
+    --nebula: #1e7f65;
+    --cian: #78ffd0;
+    --accent-primary: #34f5a3;
+    --accent-secondary: #b9ffd9;
+    --theme-glow: rgba(52, 245, 163, 0.54);
+    --theme-bg-glow: radial-gradient(circle at 50% 16%, rgba(52,245,163,0.22), transparent 48%);
+    --grad-oro: linear-gradient(135deg, #b9ffd9 0%, #34f5a3 58%, #17b875 100%);
+}
+
+body.theme-cyan {
+    --obsidiana: #03101a;
+    --carbon: #071725;
+    --vidrio: rgba(34, 211, 238, 0.12);
+    --vidrio-2: rgba(165, 243, 252, 0.14);
+    --linea: rgba(34, 211, 238, 0.2);
+    --linea-2: rgba(34, 211, 238, 0.42);
+    --oro: #22d3ee;
+    --oro-claro: #a5f3fc;
+    --oro-hondo: #168aa0;
+    --nebula: #246d9f;
+    --cian: #9be3ff;
+    --accent-primary: #22d3ee;
+    --accent-secondary: #a5f3fc;
+    --theme-glow: rgba(34, 211, 238, 0.54);
+    --theme-bg-glow: radial-gradient(circle at 50% 16%, rgba(34,211,238,0.22), transparent 48%);
+    --grad-oro: linear-gradient(135deg, #d8fbff 0%, #22d3ee 58%, #168aa0 100%);
+}
+
+body.theme-purple,
+body.theme-nebula {
+    --obsidiana: #030513;
+    --carbon: #080a1a;
+    --vidrio: rgba(167, 139, 250, 0.12);
+    --vidrio-2: rgba(221, 214, 254, 0.14);
+    --linea: rgba(167, 139, 250, 0.22);
+    --linea-2: rgba(167, 139, 250, 0.46);
+    --oro: #a78bfa;
+    --oro-claro: #ddd6fe;
+    --oro-hondo: #7c3aed;
+    --nebula: #a78bfa;
+    --cian: #c4b5fd;
+    --accent-primary: #a78bfa;
+    --accent-secondary: #ddd6fe;
+    --theme-glow: rgba(167, 139, 250, 0.58);
+    --theme-bg-glow: radial-gradient(circle at 50% 16%, rgba(167,139,250,0.26), transparent 48%);
+    --grad-oro: linear-gradient(135deg, #eee9ff 0%, #a78bfa 58%, #7c3aed 100%);
+}
+
+body.theme-gold,
+body.theme-magenta {
+    --obsidiana: #080706;
+    --carbon: #15100a;
+    --vidrio: rgba(245, 201, 107, 0.12);
+    --vidrio-2: rgba(255, 232, 163, 0.14);
+    --linea: rgba(245, 201, 107, 0.22);
+    --linea-2: rgba(245, 201, 107, 0.46);
+    --oro: #f5c96b;
+    --oro-claro: #ffe8a3;
+    --oro-hondo: #c38a26;
+    --nebula: #8a5d1b;
+    --cian: #ffe2a3;
+    --accent-primary: #f5c96b;
+    --accent-secondary: #ffe8a3;
+    --theme-glow: rgba(245, 201, 107, 0.52);
+    --theme-bg-glow: radial-gradient(circle at 50% 16%, rgba(245,201,107,0.2), transparent 48%);
+    --grad-oro: linear-gradient(135deg, #fff2bf 0%, #f5c96b 58%, #c38a26 100%);
+}
+
 /* Nebulosa de fondo: muy sutil, profunda */
 body::after {
     content: "";
@@ -53,9 +135,48 @@ body::after {
     inset: 0;
     z-index: -2;
     background:
+        var(--theme-bg-glow),
         radial-gradient(900px 620px at 8% -10%, rgba(108, 128, 189, 0.14), transparent 60%),
         radial-gradient(760px 560px at 100% 0%, rgba(228, 192, 127, 0.07), transparent 58%),
         radial-gradient(1100px 760px at 50% 120%, rgba(40, 64, 120, 0.16), transparent 64%);
+}
+
+body.theme-green::after {
+    background:
+        var(--theme-bg-glow),
+        radial-gradient(850px 600px at 10% -8%, rgba(52, 245, 163, 0.2), transparent 62%),
+        radial-gradient(760px 520px at 100% 8%, rgba(120, 255, 208, 0.13), transparent 60%),
+        radial-gradient(960px 720px at 48% 115%, rgba(52, 245, 163, 0.1), transparent 66%),
+        linear-gradient(135deg, rgba(3, 17, 13, 0.82), rgba(5, 20, 17, 0.58));
+}
+
+body.theme-cyan::after {
+    background:
+        var(--theme-bg-glow),
+        radial-gradient(850px 600px at 10% -8%, rgba(34, 211, 238, 0.21), transparent 62%),
+        radial-gradient(760px 520px at 100% 8%, rgba(165, 243, 252, 0.14), transparent 60%),
+        radial-gradient(960px 720px at 48% 115%, rgba(36, 109, 159, 0.18), transparent 66%),
+        linear-gradient(135deg, rgba(3, 16, 26, 0.82), rgba(5, 21, 34, 0.58));
+}
+
+body.theme-purple::after,
+body.theme-nebula::after {
+    background:
+        var(--theme-bg-glow),
+        radial-gradient(900px 620px at 12% -8%, rgba(167, 139, 250, 0.26), transparent 62%),
+        radial-gradient(760px 520px at 100% 8%, rgba(196, 181, 253, 0.16), transparent 60%),
+        radial-gradient(960px 720px at 48% 115%, rgba(124, 58, 237, 0.16), transparent 66%),
+        linear-gradient(135deg, rgba(6, 8, 26, 0.82), rgba(18, 10, 34, 0.62));
+}
+
+body.theme-gold::after,
+body.theme-magenta::after {
+    background:
+        var(--theme-bg-glow),
+        radial-gradient(850px 600px at 10% -8%, rgba(245, 201, 107, 0.2), transparent 62%),
+        radial-gradient(760px 520px at 100% 8%, rgba(255, 232, 163, 0.13), transparent 60%),
+        radial-gradient(960px 720px at 48% 115%, rgba(195, 138, 38, 0.18), transparent 66%),
+        linear-gradient(135deg, rgba(8, 7, 6, 0.82), rgba(22, 14, 5, 0.6));
 }
 
 /* Polvo estelar fino con deriva muy lenta */
@@ -74,6 +195,16 @@ body::before {
     opacity: 0.7;
     animation: deriva 200s linear infinite;
 }
+
+body.theme-green::before,
+body.theme-cyan::before,
+body.theme-purple::before,
+body.theme-gold::before,
+body.theme-magenta::before,
+body.theme-nebula::before {
+    opacity: 0.82;
+    background-size: 360px 360px;
+}
 @keyframes deriva { to { transform: translate3d(-200px, -160px, 0); } }
 
 ::selection { background: rgba(228, 192, 127, 0.3); color: #fff; }
@@ -81,7 +212,7 @@ body::before {
 ::-webkit-scrollbar { width: 11px; }
 ::-webkit-scrollbar-track { background: #07080f; }
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(var(--oro-hondo), #7a6238);
+    background: linear-gradient(var(--oro), var(--oro-hondo));
     border-radius: 10px;
     border: 3px solid #07080f;
 }
@@ -121,6 +252,13 @@ a { text-decoration: none; }
     backdrop-filter: blur(22px) saturate(150%);
     -webkit-backdrop-filter: blur(22px) saturate(150%);
     padding: 0.7rem 0;
+    overflow: visible;
+}
+
+.barra-sitio > .container,
+.barra-sitio .navbar-collapse,
+.nav-acciones {
+    overflow: visible;
 }
 .navbar-marca {
     font-weight: 600;
@@ -141,7 +279,7 @@ a { text-decoration: none; }
     background: radial-gradient(circle at 36% 32%, #fdeecb, var(--oro) 64%, var(--oro-hondo));
     color: #1c1404;
     font-size: 1rem;
-    box-shadow: 0 0 18px rgba(228, 192, 127, 0.4);
+    box-shadow: 0 0 22px var(--theme-glow);
 }
 .barra-sitio .nav-link {
     color: var(--texto-2) !important;
@@ -155,9 +293,14 @@ a { text-decoration: none; }
 .barra-sitio .nav-link:hover,
 .barra-sitio .nav-link:focus { color: var(--oro-claro) !important; background: var(--vidrio); }
 .navbar-toggler { border-color: var(--linea-2); padding: 0.35rem 0.6rem; }
-.navbar-toggler:focus { box-shadow: 0 0 0 3px rgba(228, 192, 127, 0.35); }
+.navbar-toggler:focus { box-shadow: 0 0 0 3px var(--theme-glow); }
 .navbar-text { font-size: 0.9rem; font-weight: 500; }
-.nav-acciones { gap: 0.55rem; }
+.nav-acciones {
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    overflow: visible;
+}
 
 /* ================================================================
    BOTONES
@@ -177,7 +320,7 @@ a { text-decoration: none; }
     background: var(--grad-oro);
     border: none;
     color: #241c08;
-    box-shadow: 0 12px 30px -14px rgba(228, 192, 127, 0.65);
+    box-shadow: 0 12px 30px -14px var(--theme-glow);
 }
 .btn-oro::after {
     content: "";
@@ -192,7 +335,7 @@ a { text-decoration: none; }
 .btn-oro:hover, .btn-oro:focus {
     color: #241c08;
     transform: translateY(-3px);
-    box-shadow: 0 18px 40px -14px rgba(228, 192, 127, 0.85);
+    box-shadow: 0 18px 42px -14px var(--theme-glow);
 }
 .btn-contorno-oro {
     background: rgba(255, 255, 255, 0.035);
@@ -209,20 +352,193 @@ a { text-decoration: none; }
 .btn-lg { padding: 0.9rem 2rem; font-size: 0.98rem; }
 .btn-sm { padding: 0.36rem 0.9rem; font-size: 0.83rem; }
 
+.barra-accesibilidad {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: auto;
+    max-width: max-content;
+    min-width: 0;
+    flex: 0 0 auto;
+    align-self: center;
+    justify-self: end;
+}
 .barra-accesibilidad .btn {
-    padding: 0.24rem 0.62rem;
+    width: 42px;
+    min-width: 42px;
+    max-width: 42px;
+    height: 36px;
+    min-height: 36px;
+    padding: 0;
     border: 1px solid var(--linea-2);
     color: var(--oro-claro);
     background: rgba(255, 255, 255, 0.035);
     font-weight: 600;
     font-size: 0.83rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+    line-height: 1;
 }
 .barra-accesibilidad .btn:first-child { border-radius: 9px 0 0 9px; }
 .barra-accesibilidad .btn:last-child  { border-radius: 0 9px 9px 0; }
 .barra-accesibilidad .btn:hover { background: var(--oro); color: #1c1404; }
 
+.theme-selector {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+    max-width: max-content;
+    flex: 0 0 auto;
+    z-index: 9999;
+    isolation: isolate;
+}
+
+.theme-toggle {
+    min-width: 132px;
+    height: 36px;
+    padding: 0 0.75rem;
+    border: 1px solid rgba(228, 192, 127, 0.42);
+    border-radius: 11px;
+    color: #fff6db;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.018)),
+        rgba(7, 10, 22, 0.72);
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.76rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.48rem;
+    flex: 0 0 auto;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    box-shadow: 0 12px 26px -22px var(--oro);
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+    background:
+        linear-gradient(135deg, var(--vidrio-2), rgba(255,255,255,0.035)),
+        rgba(9, 12, 24, 0.84);
+    border-color: var(--oro);
+    color: var(--oro-claro);
+    transform: translateY(-1px);
+    box-shadow: 0 16px 34px -22px var(--oro),
+                0 0 0 1px var(--linea-2);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--oro);
+    outline-offset: 3px;
+}
+
+.theme-arrow {
+    font-size: 0.68rem;
+    opacity: 0.86;
+    transition: transform 0.22s ease;
+}
+
+.theme-selector.is-open .theme-arrow {
+    transform: rotate(180deg);
+}
+
+.theme-swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    display: inline-block;
+    flex: 0 0 18px;
+    border: 1px solid rgba(255,255,255,0.34);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08),
+                0 0 18px -10px currentColor;
+}
+
+.theme-swatch-original { background: linear-gradient(135deg, #f6e3bb, #c39f5e 62%, #1b1620); color: #e4c07f; }
+.theme-swatch-green { background: linear-gradient(135deg, #b7ffd9, #38f2a4 60%, #113c2d); color: #38f2a4; }
+.theme-swatch-cyan { background: linear-gradient(135deg, #a5f3fc, #22d3ee 60%, #123d52); color: #22d3ee; }
+.theme-swatch-purple { background: linear-gradient(135deg, #ddd6fe, #a78bfa 60%, #281b54); color: #a78bfa; }
+.theme-swatch-gold,
+.theme-swatch-magenta { background: linear-gradient(135deg, #fff4bd, #facc15 58%, #92400e); color: #facc15; }
+
+.theme-menu {
+    position: absolute;
+    top: calc(100% + 0.55rem);
+    right: 0;
+    width: 176px;
+    padding: 0.42rem;
+    border: 1px solid rgba(228, 192, 127, 0.36);
+    border-radius: 14px;
+    background:
+        radial-gradient(160px 120px at 18% 0%, rgba(127,226,255,0.1), transparent 70%),
+        rgba(5, 8, 18, 0.97);
+    box-shadow: 0 22px 54px -24px rgba(0,0,0,0.96),
+                0 0 34px -22px var(--oro);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    z-index: 10000;
+}
+
+.theme-menu[hidden] {
+    display: none !important;
+}
+
+.theme-menu.is-open {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.theme-menu button {
+    width: 100%;
+    min-height: 38px;
+    border: 0;
+    border-radius: 10px;
+    padding: 0.45rem 0.55rem;
+    color: var(--texto);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.35px;
+    text-align: left;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-menu button:hover,
+.theme-menu button:focus {
+    color: var(--oro-claro);
+    background: var(--vidrio-2);
+    transform: translateX(2px);
+}
+
+.theme-menu button.is-active {
+    color: var(--oro-claro);
+    background: var(--vidrio-2);
+    box-shadow: inset 0 0 0 1px var(--linea-2),
+                0 0 18px -12px var(--oro);
+}
+
 /* ================================================================
-   HERO  Â·  Horizonte planetario cinematografico
+   HERO  -  Horizonte planetario cinematografico
    ================================================================ */
 .hero {
     position: relative;
@@ -251,7 +567,7 @@ a { text-decoration: none; }
         0 -5px 50px rgba(108, 128, 189, 0.22),
         inset 0 14px 80px rgba(228, 192, 127, 0.08);
 }
-/* ViÃ±eta cinematografica sutil */
+/* Vineta cinematografica sutil */
 .hero::after {
     content: "";
     position: absolute;
@@ -291,7 +607,7 @@ a { text-decoration: none; }
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 4px 60px rgba(228, 192, 127, 0.22);
+    text-shadow: 0 4px 70px var(--theme-glow);
 }
 .hero-sub {
     max-width: 588px;
@@ -388,7 +704,7 @@ a { text-decoration: none; }
 }
 
 /* ================================================================
-   TARJETAS  Â·  Cristal con borde de gradiente (reflejo de luz)
+   TARJETAS  -  Cristal con borde de gradiente (reflejo de luz)
    ================================================================ */
 .card, .panel-oscuro, .tarjeta-stat {
     border: 1px solid transparent;
@@ -420,7 +736,7 @@ a { text-decoration: none; }
 .card-categoria:hover {
     transform: translateY(-12px);
     box-shadow: 0 40px 80px -30px rgba(0,0,0,0.95),
-                0 0 60px -24px rgba(228, 192, 127, 0.4);
+                0 0 68px -24px var(--theme-glow);
 }
 .card-num {
     position: absolute;
@@ -440,9 +756,10 @@ a { text-decoration: none; }
     font-size: 2.2rem;
     color: var(--oro);
     border-radius: 22px;
-    background: rgba(228, 192, 127, 0.1);
-    border: 1px solid rgba(228, 192, 127, 0.24);
-    box-shadow: inset 0 0 28px rgba(228, 192, 127, 0.14);
+    background: var(--vidrio-2);
+    border: 1px solid var(--linea-2);
+    box-shadow: inset 0 0 30px var(--vidrio),
+                0 0 28px -18px var(--theme-glow);
     transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
 }
 .card-categoria:hover .icono { transform: scale(1.08) translateY(-2px); }
@@ -496,8 +813,9 @@ model-viewer {
     display: grid; place-items: center;
     font-size: 1.8rem; color: var(--oro);
     border-radius: 50%;
-    background: rgba(228, 192, 127, 0.1);
-    border: 1px solid rgba(228, 192, 127, 0.24);
+    background: var(--vidrio-2);
+    border: 1px solid var(--linea-2);
+    box-shadow: 0 0 28px -18px var(--theme-glow);
 }
 
 /* ================================================================
@@ -517,11 +835,11 @@ model-viewer {
     background: rgba(255, 255, 255, 0.06);
     border-color: var(--oro);
     color: var(--texto);
-    box-shadow: 0 0 0 3px rgba(228, 192, 127, 0.18);
+    box-shadow: 0 0 0 3px var(--vidrio-2);
 }
 .form-select option { background: #0c0e1e; color: var(--texto); }
 
-/* Campo de contrasena con boton para mostrar / ocultar */
+/* Campo de contraseña con botón para mostrar / ocultar */
 .campo-clave { position: relative; }
 .campo-clave .form-control { padding-right: 2.9rem; }
 .toggle-clave {
@@ -628,7 +946,7 @@ model-viewer {
 .admin-menu a.activo {
     color: #241c08;
     background: var(--grad-oro);
-    box-shadow: 0 12px 26px -12px rgba(228, 192, 127, 0.7);
+    box-shadow: 0 12px 28px -12px var(--theme-glow);
 }
 .admin-contenido { flex: 1; padding: 2.7rem; min-width: 0; }
 
@@ -870,8 +1188,7 @@ body::before {
     justify-content: flex-end;
 }
 
-.barra-sitio .btn-sm,
-.barra-accesibilidad .btn {
+.barra-sitio .btn-sm {
     min-height: 38px;
     display: inline-flex;
     align-items: center;
@@ -1102,6 +1419,47 @@ body::before {
 .pagina-auth main {
     position: relative;
     z-index: 1;
+}
+
+.pagina-auth .auth-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.pagina-auth .auth-header-actions {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.55rem;
+    width: auto;
+    max-width: max-content;
+    flex: 0 0 auto;
+    justify-self: end;
+}
+
+.admin-header-actions {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.55rem;
+    width: auto;
+    max-width: max-content;
+    flex: 0 0 auto;
+}
+
+.pagina-auth .barra-accesibilidad {
+    width: auto;
+    max-width: max-content;
+    flex: 0 0 auto;
+}
+
+.pagina-auth .barra-accesibilidad .btn {
+    width: 42px;
+    min-width: 42px;
+    max-width: 42px;
+    flex: 0 0 42px;
 }
 
 .pagina-auth main::before {
@@ -1962,6 +2320,24 @@ model-viewer {
 }
 
 @media (max-width: 575px) {
+    .pagina-auth .auth-nav-inner {
+        gap: 0.7rem;
+    }
+
+    .pagina-auth .auth-header-actions {
+        gap: 0.4rem;
+    }
+
+    .pagina-auth .theme-toggle-text {
+        display: none;
+    }
+
+    .pagina-auth .theme-toggle {
+        width: 42px;
+        min-width: 42px;
+        padding: 0;
+    }
+
     .hero {
         padding-top: 2rem;
     }

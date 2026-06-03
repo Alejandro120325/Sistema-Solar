@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitacora | Sistema Solar</title>
+    <title>Bitácora | Sistema Solar</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="${ctx}/css/sitio.css">
@@ -23,12 +23,45 @@
     <main class="admin-contenido" id="contenido">
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
             <div>
-                <h1 class="h3 texto-oro mb-0">Bitacora del Sistema</h1>
-                <span class="text-secondary">Registros, inicios de sesion e interacciones de estudiantes</span>
+                <h1 class="h3 texto-oro mb-0">Bitácora del sistema</h1>
+                <span class="text-secondary">Registros, inicios de sesión e interacciones de estudiantes</span>
             </div>
-            <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
-                <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
-                <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
+            <div class="admin-header-actions">
+                <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
+                    <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
+                    <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
+                </div>
+                <div class="theme-selector" data-theme-selector>
+                    <button type="button" class="theme-toggle"
+                            aria-haspopup="true" aria-expanded="false"
+                            aria-label="Seleccionar tema visual">
+                        <span class="theme-swatch theme-swatch-current" data-theme-current-swatch></span>
+                        <span class="theme-toggle-text" data-theme-current-label>Original</span>
+                        <i class="fa fa-chevron-down theme-arrow" aria-hidden="true"></i>
+                    </button>
+                    <div class="theme-menu" role="menu" hidden>
+                        <button type="button" role="menuitemradio" data-theme-option="original">
+                            <span class="theme-swatch theme-swatch-original"></span>
+                            <span>Original</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="green">
+                            <span class="theme-swatch theme-swatch-green"></span>
+                            <span>Verde</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="cyan">
+                            <span class="theme-swatch theme-swatch-cyan"></span>
+                            <span>Cyan</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="purple">
+                            <span class="theme-swatch theme-swatch-purple"></span>
+                            <span>Morado</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="gold">
+                            <span class="theme-swatch theme-swatch-gold"></span>
+                            <span>Dorado</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -42,7 +75,7 @@
                     <tr>
                         <th scope="col">Fecha y hora</th>
                         <th scope="col">Usuario</th>
-                        <th scope="col">Accion</th>
+                        <th scope="col">Acción</th>
                         <th scope="col">Detalle</th>
                         <th scope="col">IP</th>
                     </tr>
@@ -59,7 +92,7 @@
                     </c:forEach>
                     <c:if test="${empty eventos}">
                         <tr><td colspan="5" class="text-center text-secondary py-4">
-                            La bitacora esta vacia.
+                            La bitácora está vacía.
                         </td></tr>
                     </c:if>
                 </tbody>
@@ -69,7 +102,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="${ctx}/js/accesibilidad.js"></script>
+<script src="${ctx}/js/accesibilidad.js?v=20260603"></script>
 <script src="${ctx}/js/efectos.js"></script>
 </body>
 </html>

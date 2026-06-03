@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Solar | Educacion de Calidad - ODS 4</title>
+    <title>Sistema Solar | Educación de Calidad - ODS 4</title>
     <meta name="description" content="Plataforma educativa interactiva del Sistema Solar: modelos 3D, realidad aumentada y multimedia.">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
@@ -19,37 +19,68 @@
 <!-- ACCESIBILIDAD (elemento 1): enlace para saltar al contenido -->
 <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
 
-<!-- ===================== BARRA DE NAVEGACION ===================== -->
+<!-- ===================== BARRA DE NAVEGACIÓN ===================== -->
 <nav class="navbar navbar-expand-lg barra-sitio sticky-top">
     <div class="container">
         <a class="navbar-brand navbar-marca" href="${ctx}/index.jsp">
-            <i class="fa fa-sun-o" aria-hidden="true"></i> SISTEMA SOLAR
+            <i class="fa fa-sun-o" aria-hidden="true"></i> EduCosmos 4
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
-                aria-expanded="false" aria-label="Abrir menu de navegacion">
+                aria-expanded="false" aria-label="Abrir menú de navegación">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="menuPrincipal">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item"><a class="nav-link" href="#contenido">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#categorias">Categorias</a></li>
+                <li class="nav-item"><a class="nav-link" href="#categorias">Categorías</a></li>
                 <li class="nav-item"><a class="nav-link" href="#realidad-aumentada"
                                         data-bitacora-accion="INGRESO_REALIDAD_AUMENTADA"
-                                        data-bitacora-detalle="Ingreso a la seccion de realidad aumentada">Realidad Aumentada</a></li>
+                                        data-bitacora-detalle="Ingreso a la sección de realidad aumentada">Realidad Aumentada</a></li>
                 <li class="nav-item"><a class="nav-link" href="#multimedia"
                                         data-bitacora-accion="INGRESO_MULTIMEDIA"
-                                        data-bitacora-detalle="Ingreso a la seccion multimedia educativa">Multimedia</a></li>
+                                        data-bitacora-detalle="Ingreso a la sección multimedia educativa">Multimedia</a></li>
             </ul>
 
             <div class="d-flex align-items-center nav-acciones">
-                <!-- ACCESIBILIDAD (elemento 2): tamano de texto ajustable -->
+                <!-- ACCESIBILIDAD (elemento 2): tamaño de texto ajustable -->
                 <div class="barra-accesibilidad btn-group" role="group"
                      aria-label="Opciones de accesibilidad">
                     <button type="button" class="btn" id="acc-menos"
-                            aria-label="Reducir tamano del texto" title="Reducir texto">A-</button>
+                            aria-label="Reducir tamaño del texto" title="Reducir texto">A-</button>
                     <button type="button" class="btn" id="acc-mas"
-                            aria-label="Aumentar tamano del texto" title="Aumentar texto">A+</button>
+                            aria-label="Aumentar tamaño del texto" title="Aumentar texto">A+</button>
+                </div>
+                <div class="theme-selector" data-theme-selector>
+                    <button type="button" class="theme-toggle"
+                            aria-haspopup="true" aria-expanded="false"
+                            aria-label="Seleccionar tema visual">
+                        <span class="theme-swatch theme-swatch-current" data-theme-current-swatch></span>
+                        <span class="theme-toggle-text" data-theme-current-label>Original</span>
+                        <i class="fa fa-chevron-down theme-arrow" aria-hidden="true"></i>
+                    </button>
+                    <div class="theme-menu" role="menu" hidden>
+                        <button type="button" role="menuitemradio" data-theme-option="original">
+                            <span class="theme-swatch theme-swatch-original"></span>
+                            <span>Original</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="green">
+                            <span class="theme-swatch theme-swatch-green"></span>
+                            <span>Verde</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="cyan">
+                            <span class="theme-swatch theme-swatch-cyan"></span>
+                            <span>Cyan</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="purple">
+                            <span class="theme-swatch theme-swatch-purple"></span>
+                            <span>Morado</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="gold">
+                            <span class="theme-swatch theme-swatch-gold"></span>
+                            <span>Dorado</span>
+                        </button>
+                    </div>
                 </div>
 
                 <c:choose>
@@ -82,7 +113,7 @@
     <c:if test="${param.sesion == '1'}">
         <div class="container pt-4">
             <div class="alert alert-success alerta-sesion" role="status">
-                Sesion iniciada correctamente. Puedes entrar al explorador cuando estes listo.
+                Sesión iniciada correctamente. Puedes entrar al explorador cuando estés listo.
             </div>
         </div>
     </c:if>
@@ -95,11 +126,11 @@
         </div>
         <div class="container hero-inner">
             <div class="hero-copy">
-                <span class="hero-eyebrow">ODS 4 &middot; Educacion de Calidad</span>
+                <span class="hero-eyebrow">ODS 4 &middot; Educación de Calidad</span>
                 <h1 class="hero-titulo">Sistema Solar</h1>
                 <p class="hero-sub">
                     Una plataforma educativa para explorar el universo con modelos 3D,
-                    realidad aumentada y contenido multimedia, con la precision y la
+                    realidad aumentada y contenido multimedia, con la precisión y la
                     elegancia de un observatorio profesional.
                 </p>
                 <div class="hero-acciones">
@@ -131,13 +162,13 @@
                 <div class="col-6 col-lg-3">
                     <div class="stat">
                         <span class="stat-num" data-contador="3">0</span>
-                        <span class="stat-lbl">Categorias educativas</span>
+                        <span class="stat-lbl">Categorías educativas</span>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3">
                     <div class="stat">
                         <span class="stat-num" data-contador="11">0</span>
-                        <span class="stat-lbl">Texturas en alta resolucion</span>
+                        <span class="stat-lbl">Texturas en alta resolución</span>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3">
@@ -150,12 +181,12 @@
         </div>
     </section>
 
-    <!-- ===================== CATEGORIAS ===================== -->
+    <!-- ===================== CATEGORÍAS ===================== -->
     <section id="categorias" class="seccion">
         <div class="container">
             <div class="seccion-encabezado">
                 <p class="kicker">Explora el conocimiento</p>
-                <h2 class="seccion-titulo">Nuestras Categorias</h2>
+                <h2 class="seccion-titulo">Nuestras Categorías</h2>
             </div>
             <div class="row g-4 justify-content-center">
 
@@ -163,7 +194,7 @@
                     <article class="card card-categoria h-100">
                         <span class="card-num">01</span>
                         <div class="icono"><i class="fa fa-globe" aria-hidden="true"></i></div>
-                        <h3>Exploracion 3D</h3>
+                        <h3>Exploración 3D</h3>
                         <p>Recorre el Sol y los planetas en un motor 3D interactivo, con
                            enciclopedia, estructura interna y minijuegos.</p>
                         <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Ingresar</a>
@@ -176,10 +207,10 @@
                         <div class="icono"><i class="fa fa-cube" aria-hidden="true"></i></div>
                         <h3>Realidad Aumentada</h3>
                         <p>Observa modelos 3D del espacio en tu propio entorno usando
-                           la camara de tu celular.</p>
+                           la cámara de tu celular.</p>
                         <a href="#realidad-aumentada" class="btn btn-contorno-oro"
                            data-bitacora-accion="INGRESO_REALIDAD_AUMENTADA"
-                           data-bitacora-detalle="Ingreso a realidad aumentada desde categorias">Ver en AR</a>
+                           data-bitacora-detalle="Ingreso a realidad aumentada desde categorías">Ver en AR</a>
                     </article>
                 </div>
 
@@ -188,11 +219,11 @@
                         <span class="card-num">03</span>
                         <div class="icono"><i class="fa fa-film" aria-hidden="true"></i></div>
                         <h3>Multimedia Educativa</h3>
-                        <p>Aprende con video, una galeria de imagenes de los planetas
+                        <p>Aprende con video, una galería de imágenes de los planetas
                            y audio ambiental espacial.</p>
                         <a href="#multimedia" class="btn btn-contorno-oro"
                            data-bitacora-accion="INGRESO_MULTIMEDIA"
-                           data-bitacora-detalle="Ingreso a multimedia educativa desde categorias">Ver recursos</a>
+                           data-bitacora-detalle="Ingreso a multimedia educativa desde categorías">Ver recursos</a>
                     </article>
                 </div>
 
@@ -204,7 +235,7 @@
     <section id="realidad-aumentada" class="seccion seccion--alt">
         <div class="container">
             <div class="seccion-encabezado">
-                <p class="kicker">Tecnologia inmersiva</p>
+                <p class="kicker">Tecnología inmersiva</p>
                 <h2 class="seccion-titulo">Realidad Aumentada</h2>
             </div>
             <div class="row align-items-center g-5">
@@ -229,15 +260,15 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h3 class="h3 texto-oro">Lleva el espacio a tu habitacion</h3>
+                    <h3 class="h3 texto-oro">Lleva el espacio a tu habitación</h3>
                     <p class="text-secondary">
                         Gira el modelo 3D con el mouse o el dedo. Desde un celular,
-                        toca el boton <strong>"Ver en mi espacio (AR)"</strong> para
-                        proyectar el modelo en el mundo real con la camara.
+                        toca el botón <strong>"Ver en mi espacio (AR)"</strong> para
+                        proyectar el modelo en el mundo real con la cámara.
                     </p>
                     <ul class="ar-lista">
                         <li><i class="fa fa-check-circle" aria-hidden="true"></i> Compatible con Android (Scene Viewer) e iOS (Quick Look).</li>
-                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> No necesita instalar ninguna aplicacion.</li>
+                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> No necesita instalar ninguna aplicación.</li>
                         <li><i class="fa fa-check-circle" aria-hidden="true"></i> Funciona directamente desde el navegador web.</li>
                     </ul>
                 </div>
@@ -259,9 +290,9 @@
                         <div class="ratio ratio-16x9">
                             <video controls preload="metadata" poster="${ctx}/js/textures/stars.jpg"
                                    data-bitacora-accion="INGRESO_MULTIMEDIA"
-                                   data-bitacora-detalle="Reproduccion del video educativo">
+                                   data-bitacora-detalle="Reproducción del video educativo">
                                 <source src="${ctx}/videos/intro-bg.mp4" type="video/mp4">
-                                Tu navegador no soporta la reproduccion de video.
+                                Tu navegador no soporta la reproducción de video.
                             </video>
                         </div>
                     </div>
@@ -270,9 +301,9 @@
 
             <div class="galeria-header">
                 <p class="kicker">Laboratorio orbital</p>
-                <h3 class="sub-titulo">Galeria 3D de planetas</h3>
+                <h3 class="sub-titulo">Galería 3D de planetas</h3>
                 <p class="text-secondary">
-                    Observa texturas, atmosfera e iluminacion en modelos giratorios antes de entrar al explorador.
+                    Observa texturas, atmósfera e iluminación en modelos giratorios antes de entrar al explorador.
                 </p>
             </div>
             <div class="row g-4 galeria-3d justify-content-center">
@@ -285,7 +316,7 @@
                         </div>
                         <span class="planet-chip">Planeta azul</span>
                         <h4>Tierra</h4>
-                        <p>Oceanos, continentes y atmosfera protectora para comprender nuestro hogar cosmico.</p>
+                        <p>Océanos, continentes y atmósfera protectora para comprender nuestro hogar cósmico.</p>
                         <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
                     </article>
                 </div>
@@ -298,7 +329,7 @@
                         </div>
                         <span class="planet-chip">Mundo rocoso</span>
                         <h4>Marte</h4>
-                        <p>Superficie rojiza, antiguos valles y volcanes gigantes para estudiar geologia planetaria.</p>
+                        <p>Superficie rojiza, antiguos valles y volcanes gigantes para estudiar geología planetaria.</p>
                         <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
                     </article>
                 </div>
@@ -310,8 +341,8 @@
                             </div>
                         </div>
                         <span class="planet-chip">Gigante gaseoso</span>
-                        <h4>Jupiter</h4>
-                        <p>Bandas atmosfericas, tormentas colosales y la escala mas grande del Sistema Solar.</p>
+                        <h4>Júpiter</h4>
+                        <p>Bandas atmosféricas, tormentas colosales y la escala más grande del Sistema Solar.</p>
                         <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
                     </article>
                 </div>
@@ -322,7 +353,7 @@
                                 <span class="planet-texture" style="background-image: url('${ctx}/js/textures/venus.jpg')"></span>
                             </div>
                         </div>
-                        <span class="planet-chip">Atmosfera densa</span>
+                        <span class="planet-chip">Atmásfera densa</span>
                         <h4>Venus</h4>
                         <p>Nubes brillantes y efecto invernadero extremo para analizar climas planetarios.</p>
                         <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
@@ -337,7 +368,7 @@
                         </div>
                         <span class="planet-chip">Interior rocoso</span>
                         <h4>Mercurio</h4>
-                        <p>El planeta mas cercano al Sol, con crateres extremos y cambios termicos intensos.</p>
+                        <p>El planeta más cercano al Sol, con cráteres extremos y cambios térmicos intensos.</p>
                         <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
                     </article>
                 </div>
@@ -351,7 +382,7 @@
                         </div>
                         <span class="planet-chip">Anillos visibles</span>
                         <h4>Saturno</h4>
-                        <p>Un gigante gaseoso con anillos brillantes que ayudan a estudiar orbitas y particulas.</p>
+                        <p>Un gigante gaseoso con anillos brillantes que ayudan a estudiar órbitas y partículas.</p>
                         <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
                     </article>
                 </div>
@@ -364,7 +395,7 @@
                         </div>
                         <span class="planet-chip">Gigante helado</span>
                         <h4>Urano</h4>
-                        <p>Un mundo azul verdoso con rotacion inclinada y atmosfera fria rica en metano.</p>
+                        <p>Un mundo azul verdoso con rotación inclinada y atmósfera fría rica en metano.</p>
                         <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
                     </article>
                 </div>
@@ -377,7 +408,7 @@
                         </div>
                         <span class="planet-chip">Azul profundo</span>
                         <h4>Neptuno</h4>
-                        <p>Vientos veloces, color intenso y condiciones extremas en el limite del Sistema Solar.</p>
+                        <p>Vientos veloces, color intenso y condiciones extremas en el límite del Sistema Solar.</p>
                         <a href="${ctx}/explorador.jsp" class="btn btn-contorno-oro">Explorar</a>
                     </article>
                 </div>
@@ -389,8 +420,8 @@
                         <div class="icono-audio"><i class="fa fa-headphones" aria-hidden="true"></i></div>
                         <h3 class="h5 texto-oro">Audio ambiental espacial</h3>
                         <p class="text-secondary mb-3">
-                            El explorador 3D incluye musica ambiental y efectos de sonido
-                            generados en tiempo real. Actívalos con el boton de audio dentro
+                            El explorador 3D incluye música ambiental y efectos de sonido
+                            generados en tiempo real. Actívalos con el botón de audio dentro
                             del explorador.
                         </p>
                         <a href="${ctx}/explorador.jsp" class="btn btn-oro">
@@ -404,7 +435,7 @@
 
 </main>
 
-<!-- ===================== PIE DE PAGINA ===================== -->
+<!-- ===================== PIE DE PÁGINA ===================== -->
 <footer class="pie-sitio">
     <div class="container">
         <div class="row g-4">
@@ -412,15 +443,15 @@
                 <p class="pie-marca"><i class="fa fa-sun-o" aria-hidden="true"></i> SISTEMA SOLAR</p>
                 <p class="small mb-0">
                     Plataforma web educativa para descubrir el universo mediante modelos 3D,
-                    realidad aumentada y contenido multimedia. Un proyecto por una educacion
+                    realidad aumentada y contenido multimedia. Un proyecto por una educación
                     de calidad para todos.
                 </p>
             </div>
             <div class="col-lg-2 col-md-6">
-                <p class="pie-titulo">Navegacion</p>
+                <p class="pie-titulo">Navegación</p>
                 <ul class="pie-links">
                     <li><a href="#contenido">Inicio</a></li>
-                    <li><a href="#categorias">Categorias</a></li>
+                    <li><a href="#categorias">Categorías</a></li>
                     <li><a href="#realidad-aumentada"
                            data-bitacora-accion="INGRESO_REALIDAD_AUMENTADA"
                            data-bitacora-detalle="Ingreso a realidad aumentada desde footer">Realidad Aumentada</a></li>
@@ -433,15 +464,15 @@
                 <p class="pie-titulo">Accesos</p>
                 <ul class="pie-links">
                     <li><a href="${ctx}/explorador.jsp">Explorador 3D</a></li>
-                    <li><a href="${ctx}/login.jsp">Iniciar sesion</a></li>
+                    <li><a href="${ctx}/login.jsp">Iniciar sesión</a></li>
                     <li><a href="${ctx}/registro.jsp">Registrarse</a></li>
                 </ul>
             </div>
             <div class="col-lg-2 col-md-6">
                 <p class="pie-titulo">Proyecto</p>
                 <ul class="pie-links">
-                    <li><i class="fa fa-graduation-cap" aria-hidden="true"></i> ODS 4 - Educacion de Calidad</li>
-                    <li><i class="fa fa-university" aria-hidden="true"></i> Universidad Politecnica Salesiana</li>
+                    <li><i class="fa fa-graduation-cap" aria-hidden="true"></i> ODS 4 - Educación de Calidad</li>
+                    <li><i class="fa fa-university" aria-hidden="true"></i> Universidad Politécnica Salesiana</li>
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -477,7 +508,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>window.CONTEXT_PATH = "${ctx}";</script>
-<script src="${ctx}/js/accesibilidad.js"></script>
+<script src="${ctx}/js/accesibilidad.js?v=20260603"></script>
 <script src="${ctx}/js/efectos.js"></script>
 <script src="${ctx}/js/bitacora.js?v=20260526"></script>
 </body>

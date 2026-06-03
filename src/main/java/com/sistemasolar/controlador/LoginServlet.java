@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Procesa el inicio de sesion. Usa HttpSession para mantener al usuario
+ * Procesa el inicio de sesión. Usa HttpSession para mantener al usuario
  * autenticado. Los usuarios BLOQUEADOS no pueden ingresar.
  */
 @WebServlet("/login")
@@ -40,18 +40,18 @@ public class LoginServlet extends HttpServlet {
 
         try {
             if (email.isEmpty() || clave.isEmpty()) {
-                error = "Ingresa tu correo y contrasena.";
+                error = "Ingresa tu correo y contraseña.";
             } else {
                 Usuario u = usuarioDAO.validarCredenciales(email, clave);
 
                 if (u == null) {
-                    error = "Correo o contrasena incorrectos.";
+                    error = "Correo o contraseña incorrectos.";
                 } else if (u.isBloqueado()) {
-                    error = "Tu cuenta esta bloqueada. Contacta con el administrador.";
+                    error = "Tu cuenta está bloqueada. Contacta con el administrador.";
                     bitacoraDAO.registrar(u.getId(), email, "ACCESO_DENEGADO",
                             "Intento de ingreso de cuenta bloqueada", req.getRemoteAddr());
                 } else {
-                    // Login correcto: se crea la sesion.
+                    // Login correcto: se crea la sesión.
                     HttpSession sesion = req.getSession(true);
                     sesion.setAttribute("usuario", u);
 

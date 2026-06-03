@@ -7,7 +7,7 @@ Tecnologias principales: JSP, Java, HTML5, CSS3, Bootstrap, JavaScript, Apache T
 El proyecto se empaqueta como:
 
 ```text
-target/sistema-solar.war
+target/educosmos-4.war
 ```
 
 ## 1. Configuracion de base de datos
@@ -167,7 +167,7 @@ $env:JAVA_HOME='C:\Users\aleja\.jdks\ms-21.0.7'
 El WAR se genera en:
 
 ```text
-target/sistema-solar.war
+target/educosmos-4.war
 ```
 
 ### 3.4 Ejecutar en Tomcat local
@@ -175,7 +175,7 @@ target/sistema-solar.war
 Copiar el archivo:
 
 ```text
-target/sistema-solar.war
+target/educosmos-4.war
 ```
 
 a la carpeta:
@@ -187,7 +187,7 @@ TOMCAT_HOME/webapps/
 Luego iniciar Tomcat y acceder a:
 
 ```text
-http://localhost:8080/sistema-solar
+http://localhost:8080/educosmos-4
 ```
 
 ## 4. Despliegue en VM 172.17.42.138
@@ -260,7 +260,7 @@ Si no usas archivo externo, cambia `src/main/resources/db.properties` antes de g
 Copiar:
 
 ```text
-target/sistema-solar.war
+target/educosmos-4.war
 ```
 
 a:
@@ -272,8 +272,8 @@ $TOMCAT_HOME/webapps/
 Antes de copiar una version nueva, detener Tomcat y borrar la version anterior:
 
 ```text
-webapps/sistema-solar
-webapps/sistema-solar.war
+webapps/educosmos-4
+webapps/educosmos-4.war
 ```
 
 Reiniciar Tomcat:
@@ -292,7 +292,7 @@ sudo systemctl restart tomcat
 Acceder desde el navegador:
 
 ```text
-http://172.17.42.138:8080/sistema-solar
+http://172.17.42.138:8080/educosmos-4
 ```
 
 Si Tomcat usa otro puerto, reemplazar `8080` por el puerto real.
@@ -321,7 +321,7 @@ db.password=1234
 
 Opcion recomendada en el servidor web:
 
-1. Subir `sistema-solar.war` al Tomcat del servidor `172.17.42.107:8085`.
+1. Subir `educosmos-4.war` al Tomcat del servidor `172.17.42.107:8085`.
 2. Configurar archivo externo en Tomcat:
 
 ```text
@@ -341,7 +341,7 @@ db.password=1234
 5. Acceder a:
 
 ```text
-http://172.17.42.107:8085/sistema-solar
+http://172.17.42.107:8085/educosmos-4
 ```
 
 ## 6. Validacion despues del despliegue
@@ -357,7 +357,7 @@ Revisar lo siguiente:
 - El bloqueo de usuarios funciona.
 - El explorador 3D carga correctamente.
 - La realidad aumentada y multimedia cargan correctamente.
-- Las texturas y archivos estaticos se sirven desde el contexto `/sistema-solar/`.
+- Las texturas y archivos estaticos se sirven desde el contexto `/educosmos-4/`.
 
 ## 7. Comandos rapidos
 
@@ -382,17 +382,17 @@ psql -U postgres -d sistema_solar -f database/sistema_solar.sql
 URL local:
 
 ```text
-http://localhost:8080/sistema-solar
+http://localhost:8080/educosmos-4
 ```
 
 URL VM:
 
 ```text
-http://172.17.42.138:8080/sistema-solar
+http://172.17.42.138:8080/educosmos-4
 ```
 
 URL servidor docente:
 
 ```text
-http://172.17.42.107:8085/sistema-solar
+http://172.17.42.107:8085/educosmos-4
 ```

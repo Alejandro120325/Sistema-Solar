@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Pagina principal del panel de administrador: muestra un resumen
+ * Página principal del panel de administrador: muestra un resumen
  * con la cantidad de usuarios, estudiantes, bloqueados y eventos.
  */
 @WebServlet("/admin/dashboard")

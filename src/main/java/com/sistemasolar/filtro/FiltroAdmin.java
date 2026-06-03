@@ -15,7 +15,7 @@ import java.io.IOException;
 
 /**
  * Protege TODO el panel de administrador (/admin/*).
- * Solo entra un usuario con sesion iniciada y rol ADMIN.
+ * Solo entra un usuario con sesión iniciada y rol ADMIN.
  */
 @WebFilter("/admin/*")
 public class FiltroAdmin implements Filter {

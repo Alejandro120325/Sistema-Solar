@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         texturesReady = true;
         intro.classList.add('is-ready');
         startBtn.disabled = false;
-        startBtn.setAttribute('aria-label', 'Comenzar exploracion');
+        startBtn.setAttribute('aria-label', 'Comenzar exploración');
         if (startMain) startMain.textContent = 'COMENZAR';
         if (startSub)  startSub.textContent  = 'EXPLORADOR 3D';
     }

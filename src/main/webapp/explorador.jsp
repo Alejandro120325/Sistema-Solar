@@ -13,7 +13,7 @@
 <body>
 
 <!-- ============================================================
-     BLOQUEO DE ORIENTACION - solo moviles en modo portrait
+     BLOQUEO DE ORIENTACIÓN - solo móviles en modo portrait
      ============================================================ -->
 <div id="orientation-lock" class="orientation-lock" role="dialog" aria-modal="true">
   <div class="orientation-lock__card">
@@ -24,15 +24,15 @@
     </div>
     <h2 class="orientation-lock__title">GIRA TU DISPOSITIVO</h2>
     <p class="orientation-lock__msg">
-      Esta experiencia esta optimizada para <strong>modo horizontal</strong>.
-      Por favor, gira tu telefono para iniciar la exploracion del Sistema Solar.
+      Esta experiencia está optimizada para <strong>modo horizontal</strong>.
+      Por favor, gira tu teléfono para iniciar la exploración del Sistema Solar.
     </p>
   </div>
 </div>
 
 <canvas id="webgl-canvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
 
-<!-- PANTALLA DE INTRODUCCION -->
+<!-- PANTALLA DE INTRODUCCIÓN -->
 <div id="intro-screen" class="intro-screen">
   <div class="intro-screen__backdrop"></div>
   <div class="intro-content">
@@ -40,8 +40,8 @@
     <p class="intro-subtitle">EXPLORADOR INTERACTIVO 3D &middot; MODELO ONLINE</p>
 
     <div class="intro-description">
-      <p>El <strong>Sistema Solar</strong> es nuestro hogar cosmico: un sistema planetario formado por el <strong>Sol</strong> y los ocho planetas que orbitan a su alrededor, junto a planetas enanos, lunas, asteroides y cometas. Todo se mantiene unido por la gravedad del Sol, una estrella amarilla que concentra el <strong>99.86%</strong> de la masa total del sistema.</p>
-      <p>Explora cada planeta en 3D, descubre su <em>estructura interna</em>, lee su <em>enciclopedia</em> y pon a prueba lo aprendido con <em>minijuegos tematicos</em>.</p>
+      <p>El <strong>Sistema Solar</strong> es nuestro hogar cósmico: un sistema planetario formado por el <strong>Sol</strong> y los ocho planetas que orbitan a su alrededor, junto a planetas enanos, lunas, asteroides y cometas. Todo se mantiene unido por la gravedad del Sol, una estrella amarilla que concentra el <strong>99.86%</strong> de la masa total del sistema.</p>
+      <p>Explora cada planeta en 3D, descubre su <em>estructura interna</em>, lee su <em>enciclopedia</em> y pon a prueba lo aprendido con <em>minijuegos temáticos</em>.</p>
     </div>
 
     <button class="intro-start" id="intro-start" type="button" disabled aria-label="Cargando">
@@ -55,17 +55,17 @@
 
     <div class="intro-hint">
       <i class="fa fa-mouse-pointer"></i>
-      <span>Haz clic en los planetas o usa el menu lateral</span>
+      <span>Haz clic en los planetas o usa el menú lateral</span>
     </div>
   </div>
 </div>
 
-<!-- Boton de audio (musica + SFX) -->
-<button id="audio-toggle" class="audio-toggle is-muted" type="button" aria-label="Activar audio" title="Musica y sonidos">
+<!-- Botón de audio (música + SFX) -->
+<button id="audio-toggle" class="audio-toggle is-muted" type="button" aria-label="Activar audio" title="Música y sonidos">
   <i class="fa fa-volume-off"></i>
 </button>
 
-<!-- Barra de cuenta: usuario con sesion iniciada -->
+<!-- Barra de cuenta: usuario con sesión iniciada -->
 <nav class="top-nav" id="top-nav" aria-label="Cuenta">
   <div class="nav-user">
     <i class="fa fa-user-circle fa-user" aria-hidden="true"></i>
@@ -81,7 +81,7 @@
   <input class='planet9' id='pluto' type='radio' name='planet'>
   <label class='menu pluto' for='pluto'>
     <div class='preview'></div>
-    <div class='info'><h2><div class='pip'></div>Pluton</h2><h3>39,5 UA</h3></div>
+    <div class='info'><h2><div class='pip'></div>Plutón</h2><h3>39,5 UA</h3></div>
   </label>
 
   <input class='planet8' id='neptune' type='radio' name='planet'>
@@ -105,7 +105,7 @@
   <input class='planet5' id='jupiter' type='radio' name='planet'>
   <label class='jupiter menu' for='jupiter'>
     <div class='preview'></div>
-    <div class='info'><h2><div class='pip'></div>Jupiter</h2>  <h3>5,2 UA</h3></div>
+    <div class='info'><h2><div class='pip'></div>Júpiter</h2>  <h3>5,2 UA</h3></div>
   </label>
 
   <input class='planet4' id='mars' type='radio' name='planet'>
@@ -213,15 +213,15 @@
   }
 </script>
 
-<!-- Ruta del contexto para que bitacora.js sepa a donde enviar las interacciones -->
+<!-- Ruta del contexto para que bitácora.js sepa a dónde enviar las interacciones -->
 <script>window.CONTEXT_PATH = "${ctx}";</script>
 
 <script type="module" src="${ctx}/js/data.js?v=20260523"></script>
 <script type="module" src="${ctx}/js/audio.js?v=20260523"></script>
 <script type="module" src="${ctx}/js/intro.js?v=20260523"></script>
-<!-- js/games.js se importa dinamicamente desde interaction.js (lazy load) -->
+<!-- js/games.js se importa dinámicamente desde interaction.js (lazy load) -->
 <script type="module" src="${ctx}/js/interaction.js?v=20260601"></script>
-<!-- Registro de interacciones del estudiante en la bitacora -->
+<!-- Registro de interacciones del estudiante en la bitácora -->
 <script src="${ctx}/js/bitacora.js?v=20260523"></script>
 </body>
 </html>

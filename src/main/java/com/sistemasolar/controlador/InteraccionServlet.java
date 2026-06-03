@@ -12,8 +12,8 @@ import java.io.IOException;
 
 /**
  * Recibe (por fetch desde el explorador 3D) las interacciones del
- * estudiante y las guarda en la bitacora. Asi el administrador puede
- * revisar que hizo cada estudiante dentro del sistema.
+ * estudiante y las guarda en la bitácora. Así el administrador puede
+ * revisar qué hizo cada estudiante dentro del sistema.
  */
 @WebServlet("/interaccion")
 public class InteraccionServlet extends HttpServlet {
@@ -34,7 +34,7 @@ public class InteraccionServlet extends HttpServlet {
         String accion = normalizarAccion(req.getParameter("accion"));
         String detalle = req.getParameter("detalle");
         if (detalle == null || detalle.trim().isEmpty()) {
-            detalle = "Interaccion en el sistema";
+            detalle = "Interacción en el sistema";
         }
 
         bitacoraDAO.registrar(u.getId(), u.getEmail(), accion,

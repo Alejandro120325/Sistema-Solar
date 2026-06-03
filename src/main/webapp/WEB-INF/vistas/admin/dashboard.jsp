@@ -22,12 +22,45 @@
     <main class="admin-contenido" id="contenido">
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
             <div>
-                <h1 class="h3 texto-oro mb-0">Panel de Administrador</h1>
+                <h1 class="h3 texto-oro mb-0">Panel de administrador</h1>
                 <span class="text-secondary">Bienvenido, ${sessionScope.usuario.nombreCompleto}</span>
             </div>
-            <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
-                <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
-                <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
+            <div class="admin-header-actions">
+                <div class="barra-accesibilidad btn-group" role="group" aria-label="Opciones de accesibilidad">
+                    <button type="button" class="btn" id="acc-menos" aria-label="Reducir texto" title="Reducir texto">A-</button>
+                    <button type="button" class="btn" id="acc-mas" aria-label="Aumentar texto" title="Aumentar texto">A+</button>
+                </div>
+                <div class="theme-selector" data-theme-selector>
+                    <button type="button" class="theme-toggle"
+                            aria-haspopup="true" aria-expanded="false"
+                            aria-label="Seleccionar tema visual">
+                        <span class="theme-swatch theme-swatch-current" data-theme-current-swatch></span>
+                        <span class="theme-toggle-text" data-theme-current-label>Original</span>
+                        <i class="fa fa-chevron-down theme-arrow" aria-hidden="true"></i>
+                    </button>
+                    <div class="theme-menu" role="menu" hidden>
+                        <button type="button" role="menuitemradio" data-theme-option="original">
+                            <span class="theme-swatch theme-swatch-original"></span>
+                            <span>Original</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="green">
+                            <span class="theme-swatch theme-swatch-green"></span>
+                            <span>Verde</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="cyan">
+                            <span class="theme-swatch theme-swatch-cyan"></span>
+                            <span>Cyan</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="purple">
+                            <span class="theme-swatch theme-swatch-purple"></span>
+                            <span>Morado</span>
+                        </button>
+                        <button type="button" role="menuitemradio" data-theme-option="gold">
+                            <span class="theme-swatch theme-swatch-gold"></span>
+                            <span>Dorado</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -63,31 +96,31 @@
             </div>
         </div>
 
-        <!-- Accesos rapidos -->
+        <!-- Accesos rápidos -->
         <div class="row g-4">
             <div class="col-md-6">
                 <div class="card panel-oscuro p-4 h-100">
-                    <h2 class="h5 texto-oro"><i class="fa fa-users" aria-hidden="true"></i> Gestion de Usuarios</h2>
+                    <h2 class="h5 texto-oro"><i class="fa fa-users" aria-hidden="true"></i> Gestión de usuarios</h2>
                     <p class="text-secondary">
-                        Consulta todos los usuarios, registra nuevos, actualiza su informacion
+                        Consulta todos los usuarios, registra nuevos, actualiza su información
                         y bloquea o activa cuentas.
                     </p>
-                    <a href="${ctx}/admin/usuarios" class="btn btn-oro mt-auto align-self-start">Ir a Usuarios</a>
+                    <a href="${ctx}/admin/usuarios" class="btn btn-oro mt-auto align-self-start">Ir a usuarios</a>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="card panel-oscuro p-4 h-100">
-                    <h2 class="h5 texto-oro"><i class="fa fa-list-alt" aria-hidden="true"></i> Bitacora del Sistema</h2>
+                    <h2 class="h5 texto-oro"><i class="fa fa-list-alt" aria-hidden="true"></i> Bitácora del sistema</h2>
                     <p class="text-secondary">
-                        Revisa el registro de usuarios nuevos, inicios de sesion y las
+                        Revisa el registro de usuarios nuevos, inicios de sesión y las
                         interacciones de los estudiantes con el explorador.
                     </p>
-                    <a href="${ctx}/admin/bitacora" class="btn btn-oro mt-auto align-self-start">Ir a Bitacora</a>
+                    <a href="${ctx}/admin/bitacora" class="btn btn-oro mt-auto align-self-start">Ir a bitácora</a>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="card panel-oscuro p-4 h-100">
-                    <h2 class="h5 texto-oro"><i class="fa fa-trophy" aria-hidden="true"></i> Rankings por Planeta</h2>
+                    <h2 class="h5 texto-oro"><i class="fa fa-trophy" aria-hidden="true"></i> Rankings por planeta</h2>
                     <p class="text-secondary">
                         Revisa los puntajes por planeta, filtra rankings y consulta el avance
                         de cada estudiante en los minijuegos.
@@ -100,7 +133,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="${ctx}/js/accesibilidad.js"></script>
+<script src="${ctx}/js/accesibilidad.js?v=20260603"></script>
 <script src="${ctx}/js/efectos.js"></script>
 </body>
 </html>

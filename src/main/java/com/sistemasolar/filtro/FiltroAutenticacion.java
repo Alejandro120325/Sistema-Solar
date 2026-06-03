@@ -15,7 +15,7 @@ import java.io.IOException;
 
 /**
  * Protege el explorador 3D y el registro de interacciones.
- * Solo entran usuarios con sesion iniciada y que no esten bloqueados.
+ * Solo entran usuarios con sesión iniciada y que no estén bloqueados.
  */
 @WebFilter(urlPatterns = {"/explorador.jsp", "/interaccion", "/puntuacion"})
 public class FiltroAutenticacion implements Filter {
@@ -31,12 +31,12 @@ public class FiltroAutenticacion implements Filter {
         Usuario usuario = (sesion != null) ? (Usuario) sesion.getAttribute("usuario") : null;
 
         if (usuario == null) {
-            // No hay sesion: se envia al login.
+            // No hay sesión: se envía al login.
             resp.sendRedirect(req.getContextPath() + "/login.jsp?requerido=1");
             return;
         }
         if (usuario.isBloqueado()) {
-            // El admin lo bloqueo mientras navegaba: se cierra la sesion.
+            // El admin lo bloqueó mientras navegaba: se cierra la sesión.
             sesion.invalidate();
             resp.sendRedirect(req.getContextPath() + "/login.jsp?bloqueado=1");
             return;

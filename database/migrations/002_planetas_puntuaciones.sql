@@ -1,8 +1,11 @@
 -- ================================================================
 -- Migracion 002: normalizar puntuaciones por planeta
--- Ejecutar sobre una base sistema_solar ya existente.
+-- Ejecutar sobre una base ya existente conectada en pgAdmin.
+-- Data Center: conectar a BD_cosmos y ejecutar en esquema public.
 -- Si vas a empezar desde cero, usa database/sistema_solar.sql.
 -- ================================================================
+
+SET search_path TO public;
 
 CREATE TABLE IF NOT EXISTS planetas (
     id          SERIAL       PRIMARY KEY,

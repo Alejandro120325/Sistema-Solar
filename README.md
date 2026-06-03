@@ -153,6 +153,6 @@ SISTEMA SOLAR/
 │           ├── explorador.jsp
 │           └── ...
 ├── target/
-│   └── sistema-solar.war
+│   └── educosmos-4.war
 ├── pom.xml
 └── README.md
