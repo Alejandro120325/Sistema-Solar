@@ -306,10 +306,12 @@ body::after {
     z-index: 1;
     border-radius: 50%;
     background-repeat: repeat-x;
-    background-size: 225% 100%;
+    background-size: 260% 100%;
     background-position: 0% 50%;
     filter: saturate(1.12) contrast(1.08);
-    animation: previewTextureDrift 42s linear infinite;
+    animation: previewTextureDrift var(--planet-spin-speed, 4s) linear infinite !important;
+    will-change: background-position;
+    transform: translateZ(0);
 }
 
 .planet-sphere::before {
@@ -333,12 +335,16 @@ body::after {
         linear-gradient(116deg, rgba(255, 255, 255, 0.08), transparent 34%, rgba(0, 0, 0, 0.58) 86%);
 }
 
-.planet-earth { --planet-size: 132px; }
-.planet-jupiter { --planet-size: 142px; }
-.planet-saturn { --planet-size: 120px; }
-.planet-mercury { --planet-size: 104px; }
+.planet-earth { --planet-size: 132px; --planet-spin-speed: 3.6s; }
+.planet-mars { --planet-spin-speed: 3.8s; }
+.planet-jupiter { --planet-size: 142px; --planet-spin-speed: 4.4s; }
+.planet-venus { --planet-spin-speed: 4.1s; }
+.planet-saturn { --planet-size: 120px; --planet-spin-speed: 4.6s; }
+.planet-mercury { --planet-size: 104px; --planet-spin-speed: 3.4s; }
 .planet-uranus,
 .planet-neptune { --planet-size: 118px; }
+.planet-uranus { --planet-spin-speed: 4s; }
+.planet-neptune { --planet-spin-speed: 4s; }
 
 .planet-mars {
     box-shadow:
@@ -414,7 +420,8 @@ body::after {
 }
 
 @keyframes previewTextureDrift {
-    to { background-position: 225% 50%; }
+    from { background-position: 0% 50%; }
+    to { background-position: -360% 50%; }
 }
 
 @media (max-width: 1199px) {
@@ -492,7 +499,7 @@ body::after {
 
 @media (prefers-reduced-motion: reduce) {
     .planet-sphere .planet-texture {
-        animation: none !important;
+        animation-duration: 12s !important;
     }
 
     .hero-earth-planet .planet-texture {
